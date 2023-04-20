@@ -1,0 +1,60 @@
+@import "../../../styles.scss";
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  background-color: #008000;
+  color: #fff;
+  font-weight: 600;
+
+  a:visited {
+    color: #eee;
+  }
+
+  a:hover {
+    color: #90ee90;
+  }
+}
+
+.toolbar div img {
+  margin: 0 16px;
+}
+
+.toolbar #twitter-logo {
+  height: 40px;
+  margin: 0 8px;
+}
+
+.toolbar #youtube-logo {
+  height: 40px;
+  margin: 0 16px;
+}
+
+.toolbar #twitter-logo:hover,
+.toolbar #youtube-logo:hover {
+  opacity: 0.8;
+}
+
+.circulo-if {
+  height: 40px;
+  width: 40px;
+  background-color: #fff;
+  border-radius: 56%;
+  margin: 0 16px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.login {
+  margin: 0 16px;
+  color: #eee;
+  font-size: 16px;
+  text-decoration: none;
+}
+

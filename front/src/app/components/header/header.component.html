@@ -1,0 +1,15 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <div class="circulo-if">
+    <img
+    width="40"
+    alt="Angular Logo"
+    src="../../../../assets/if logo.png"
+  />
+  </div>
+
+  <div class="spacer"></div>
+  <a *ngIf="login" class="login" routerLink="/login">Login</a>
+  <a *ngIf="!login" class="login" routerLink="/home">Sair</a>
+</div>
+

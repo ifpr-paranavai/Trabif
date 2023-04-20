@@ -1,0 +1,47 @@
+.linha {
+  display: flex;
+  flex-direction: row;
+}
+
+.coluna {
+  display: flex;
+  flex-direction: column;
+}
+
+.margin-header {
+  margin-top: 72px;
+  height: 100%;
+  width: 100%;
+}
+
+.asside-acao {
+  height: 100%;
+  width: 240px;
+  background-color: #fafafa;
+  border-right: 1px solid #dadada;
+  ul {
+    list-style-type: none;
+    padding: 0 8px 0 8px;
+  }
+}
+
+.botao-menu {
+  background-color: #fafafa;
+  width: 100%;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  pointer-events: painted;
+  border: none;
+}
+
+.botao-menu:focus {
+  background-color: #dadada;
+}
+
+.todas-telas {
+  margin-top: 2px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0,0,0,0.2);
+}
