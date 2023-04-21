@@ -26,7 +26,6 @@ class EmailRepositoryTests {
 
     @Test
     void findByTitulo() {
-        // cria 3 objetos Email
         Email email1 = new Email();
         email1.setTitulo("Titulo1");
 
