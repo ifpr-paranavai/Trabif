@@ -14,32 +14,32 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
-import br.com.trabif.domain.Email;
-import br.com.trabif.repository.EmailRepository;
+import br.com.trabif.domain.Trabalho;
+import br.com.trabif.repository.TrabalhoRepository;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class EmailRepositoryTests {
+class TrabalhoRepositoryTests {
 
     @Mock
-    private EmailRepository emailRepository;
+    private TrabalhoRepository trabalhoRepository;
 
     @Test
     void findByTitulo() {
-        // cria 3 objetos Email
-        Email email1 = new Email();
-        email1.setTitulo("Titulo1");
+        // cria 3 objetos Trabalho
+        Trabalho trabalho1 = new Trabalho();
+        trabalho1.setTitulo("Titulo1");
 
-        Email email2 = new Email();
-        email2.setTitulo("Titulo2");
-        Email email3 = new Email();
-        email3.setTitulo("Titulo3");
+        Trabalho trabalho2 = new Trabalho();
+        trabalho2.setTitulo("Titulo2");
+        Trabalho trabalho3 = new Trabalho();
+        trabalho3.setTitulo("Titulo3");
 
-        Page<Email> page = new PageImpl<>(Arrays.asList(email1, email2, email3));
+        Page<Trabalho> page = new PageImpl<>(Arrays.asList(trabalho1, trabalho2, trabalho3));
 
-        Mockito.when(emailRepository.findByTitulo("ti", Pageable.unpaged())).thenReturn(page);
+        Mockito.when(trabalhoRepository.findByTitulo("ti", Pageable.unpaged())).thenReturn(page);
 
-        Page<Email> result = emailRepository.findByTitulo("ti", Pageable.unpaged());
+        Page<Trabalho> result = trabalhoRepository.findByTitulo("ti", Pageable.unpaged());
 
         assertEquals(3, result.getTotalElements());
         assertEquals("Titulo1", result.getContent().get(0).getTitulo());
