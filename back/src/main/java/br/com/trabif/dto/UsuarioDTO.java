@@ -9,12 +9,11 @@ import br.com.trabif.domain.Usuario;
 import lombok.Data;
 
 @Data
-public class UsuarioDTO {
+public class UsuarioDTO extends AuditoriaDTO {
 	private long id;
 	private String nome;
 	private String cpf;
 	private String email;
-	private Date dataCadastro;
 	
 	public UsuarioDTO converter(Usuario usuario) {
 		UsuarioDTO usuarioDTO = new UsuarioDTO();

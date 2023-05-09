@@ -9,12 +9,11 @@ import br.com.trabif.domain.Organizador;
 import lombok.Data;
 
 @Data
-public class OrganizadorDTO {
+public class OrganizadorDTO extends AuditoriaDTO {
 	private long id;
 	private String nome;
 	private String cpf;
 	private String email;
-	private Date dataCadastro;
 	private Date anoOrganizacao;
 	
 	public OrganizadorDTO converter(Organizador organizador) {

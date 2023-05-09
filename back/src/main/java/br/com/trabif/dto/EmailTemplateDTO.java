@@ -7,7 +7,7 @@ import br.com.trabif.domain.EmailTemplate;
 import lombok.Data;
 
 @Data
-public class EmailTemplateDTO {
+public class EmailTemplateDTO extends AuditoriaDTO {
 	private long id;
 	private String titulo;
 	private String mensagem;

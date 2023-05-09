@@ -9,7 +9,7 @@ import br.com.trabif.domain.Evento;
 import lombok.Data;
 
 @Data
-public class EventoDTO {
+public class EventoDTO extends AuditoriaDTO {
 	private long id;
 	private String nome;
 	private OrganizadorDTO organizadorDTO;

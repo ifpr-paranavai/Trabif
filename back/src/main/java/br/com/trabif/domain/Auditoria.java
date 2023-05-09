@@ -24,7 +24,7 @@ import lombok.Data;
 public abstract class Auditoria {
     @CreatedBy
     @Schema(description = "Usuário que realizou o cadastro")
-    @Column(name = "usuario_cadastro", nullable = false, updatable = false)
+    @Column(name = "usuario_cadastro", updatable = false)
     private String usuarioCadastro;
 
     @CreatedDate

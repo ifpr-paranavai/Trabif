@@ -7,7 +7,7 @@ import br.com.trabif.domain.Permissao;
 import lombok.Data;
 
 @Data
-public class PermissaoDTO {
+public class PermissaoDTO extends AuditoriaDTO {
 	private long id;
 	private String descricao;
 	

@@ -7,7 +7,7 @@ import br.com.trabif.domain.Autor;
 import lombok.Data;
 
 @Data
-public class AutorDTO {
+public class AutorDTO extends AuditoriaDTO {
 	private long id;
 	private String nome;
 	private String cpf;

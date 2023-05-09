@@ -7,7 +7,7 @@ import br.com.trabif.domain.Trabalho;
 import lombok.Data;
 
 @Data
-public class TrabalhoDTO {
+public class TrabalhoDTO extends AuditoriaDTO {
 	private long id;
 	private String titulo;
 	private CategoriaDTO categoriaDTO;

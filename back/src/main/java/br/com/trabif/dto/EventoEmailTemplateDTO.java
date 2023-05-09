@@ -7,7 +7,7 @@ import br.com.trabif.domain.EventoEmailTemplate;
 import lombok.Data;
 
 @Data
-public class EventoEmailTemplateDTO {
+public class EventoEmailTemplateDTO extends AuditoriaDTO {
 	private long id;
 	private EventoDTO eventoDTO;
 	private EmailTemplateDTO emailTemplateDTO;

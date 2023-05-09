@@ -9,12 +9,11 @@ import br.com.trabif.domain.Avaliador;
 import lombok.Data;
 
 @Data
-public class AvaliadorDTO {
+public class AvaliadorDTO extends AuditoriaDTO {
 	private long id;
 	private String nome;
 	private String cpf;
 	private String email;
-	private Date dataCadastro;
 	
 	public AvaliadorDTO converter(Avaliador avaliador) {
 		AvaliadorDTO avaliadorDTO = new AvaliadorDTO();

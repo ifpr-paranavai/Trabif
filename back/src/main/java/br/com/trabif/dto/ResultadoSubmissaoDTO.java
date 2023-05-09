@@ -7,7 +7,7 @@ import br.com.trabif.domain.ResultadoSubmissao;
 import lombok.Data;
 
 @Data
-public class ResultadoSubmissaoDTO {
+public class ResultadoSubmissaoDTO extends AuditoriaDTO {
 	private long id;
 	private int resultado;
 	private int confianca;

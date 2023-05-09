@@ -7,7 +7,7 @@ import br.com.trabif.domain.EventoOrganizador;
 import lombok.Data;
 
 @Data
-public class EventoOrganizadorDTO {
+public class EventoOrganizadorDTO extends AuditoriaDTO {
 	private long id;
 	private EventoDTO eventoDTO;
 	private OrganizadorDTO organizadorDTO;
