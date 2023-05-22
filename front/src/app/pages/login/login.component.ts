@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from 'src/app/components/header/header.component';
-import { EventService } from 'src/app/services/event/event.service';
-import { MainService } from 'src/app/services/main/main.service';
+import { EventService } from 'src/app/services/pages-services/event/event.service';
+import { MainService } from 'src/app/services/pages-services/main/main.service';
 
 @Component({
   selector: 'app-login',

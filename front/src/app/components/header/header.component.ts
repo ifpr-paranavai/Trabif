@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { HomeService } from 'src/app/services/home/home.service';
+import { HomeService } from 'src/app/services/pages-services/home/home.service';
 
 export enum BotaoHeader {
   LOGAR = "Logar",
