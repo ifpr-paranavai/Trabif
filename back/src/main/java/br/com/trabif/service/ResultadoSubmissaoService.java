@@ -56,6 +56,12 @@ public class ResultadoSubmissaoService {
 			}			
 			resultadoSubmissao.setStatus('A');
 			resultadoSubmissao.setDataCadastro(Calendar.getInstance().getTime());
+			if(resultadoSubmissao.getResultado() < 1) {
+				throw new IllegalArgumentException("O valor do resultado é menor que 1");
+			}
+			if(resultadoSubmissao.getResultado() > 5) {
+				throw new IllegalArgumentException("O valor do resultado é maior que 5");
+			}
 			ResultadoSubmissao resultadoSubmissaoNovo = resultadoSubmissaoRepository.save(resultadoSubmissao);
 			return resultadoSubmissaoNovo;
 		} else {
