@@ -12,14 +12,12 @@ import lombok.Data;
 public class EventoDTO extends AuditoriaDTO {
 	private long id;
 	private String nome;
-	private OrganizadorDTO organizadorDTO;
 	private Date dataInicio;
 	private Date dataFim;
 	
 	public EventoDTO converter(Evento evento) {
 		EventoDTO eventoDTO = new EventoDTO();
 		BeanUtils.copyProperties(evento, eventoDTO);
-		eventoDTO.setOrganizadorDTO(organizadorDTO.converter(evento.getOrganizador()));
 		return eventoDTO;
 	}
 	

@@ -37,11 +37,6 @@ public class Evento extends Auditoria implements Serializable {
 	@NotBlank
 	private String nome;
 
-	@Schema(description = "Organizador do evento", example = "")
-	@JoinColumn(name = "organizador")
-	@NotBlank
-	private Organizador organizador;
-
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataInicio;
 

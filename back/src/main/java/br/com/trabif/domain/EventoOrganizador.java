@@ -35,9 +35,9 @@ public class EventoOrganizador extends Auditoria implements Serializable {
 	private Evento evento;
 
 	@ManyToOne
-	@Schema(description = "Organizador", example = "")
-	@JoinColumn(name = "id_organizador")
-	private Organizador organizador;
+	@Schema(description = "Usuario", example = "")
+	@JoinColumn(name = "id_usuario")
+	private Usuario organizador;
 	
 	public EventoOrganizador() {}
 

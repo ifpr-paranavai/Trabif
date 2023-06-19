@@ -10,7 +10,7 @@ import lombok.Data;
 public class EventoOrganizadorDTO extends AuditoriaDTO {
 	private long id;
 	private EventoDTO eventoDTO;
-	private OrganizadorDTO organizadorDTO;
+	private UsuarioDTO organizadorDTO;
 	
 	public EventoOrganizadorDTO converter(EventoOrganizador eventoOrganizador) {
 		EventoOrganizadorDTO eventoOrganizadorDTO = new EventoOrganizadorDTO();
