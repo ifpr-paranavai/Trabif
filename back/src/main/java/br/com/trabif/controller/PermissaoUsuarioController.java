@@ -48,7 +48,7 @@ public class PermissaoUsuarioController {
 	@Autowired
 	private PermissaoUsuarioService permissaoUsuarioService;
 
-	@Operation(summary = "Busca permissaoUsuarios", description = "Buscar todos os permissaoUsuarios, buscar permissaoUsuarios por descricao", tags = {
+	@Operation(summary = "Busca permissaoUsuarios", description = "Buscar todas as permissaoUsuarios, buscar permissaoUsuarios por descricao", tags = {
 			"permissaoUsuario" })
 	@GetMapping(value = "/permissaoUsuario")
 	@CrossOrigin("http://localhost:3000")
@@ -61,7 +61,7 @@ public class PermissaoUsuarioController {
 	@Operation(summary = "Busca ID", description = "Buscar permissaoUsuario por ID", tags = { "permissaoUsuario" })
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Sucesso", content = @Content(schema = @Schema(implementation = PermissaoUsuario.class))),
-			@ApiResponse(responseCode = "404", description = "PermissaoUsuario não encontrado")
+			@ApiResponse(responseCode = "404", description = "PermissaoUsuario não encontrada")
 	})
 	@GetMapping(value = "/permissaoUsuario/{id}")
 	@CrossOrigin("http://localhost:3000")
@@ -80,7 +80,7 @@ public class PermissaoUsuarioController {
 	@Operation(summary = "Busca ID", description = "Buscar permissaoUsuario por ID do permissao", tags = { "permissaoUsuario" })
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Sucesso", content = @Content(schema = @Schema(implementation = PermissaoUsuario.class))),
-			@ApiResponse(responseCode = "404", description = "PermissaoUsuario não encontrado para este permissao")
+			@ApiResponse(responseCode = "404", description = "PermissaoUsuario não encontrada para esta permissao")
 	})
 	@GetMapping(value = "/permissaoUsuario/permissao/{id}")
 	@CrossOrigin("http://localhost:3000")
@@ -94,7 +94,7 @@ public class PermissaoUsuarioController {
 			"permissaoUsuario" })
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Sucesso", content = @Content(schema = @Schema(implementation = PermissaoUsuario.class))),
-			@ApiResponse(responseCode = "404", description = "PermissaoUsuario não encontrado para este permissao")
+			@ApiResponse(responseCode = "404", description = "PermissaoUsuario não encontrada para este usuario")
 	})
 	@GetMapping(value = "/permissaoUsuario/usuario/{id}")
 	@CrossOrigin("http://localhost:3000")
@@ -103,6 +103,36 @@ public class PermissaoUsuarioController {
 		Page<PermissaoUsuarioDTO> permissaoUsuarios = permissaoUsuarioService.findAllByIdUsuario(id, pageable);
 		return ResponseEntity.ok(permissaoUsuarios);
 	}
+
+	@Operation(summary = "Busca ID", description = "Buscar permissaoUsuario por ID do evento", tags = {
+			"permissaoUsuario" })
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Sucesso", content = @Content(schema = @Schema(implementation = PermissaoUsuario.class))),
+			@ApiResponse(responseCode = "404", description = "PermissaoUsuario não encontrada para este evento")
+	})
+	@GetMapping(value = "/permissaoUsuario/evento/{id}")
+	@CrossOrigin("http://localhost:3000")
+	public ResponseEntity<Page<PermissaoUsuarioDTO>> findPermissaoUsuarioByIdEvento(@PathVariable long id,
+			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
+		Page<PermissaoUsuarioDTO> permissaoUsuarios = permissaoUsuarioService.findAllByIdEvento(id, pageable);
+		return ResponseEntity.ok(permissaoUsuarios);
+	}
+
+	@Operation(summary = "Busca ID", description = "Buscar permissaoUsuario por ID do usuario e ID do evento", tags = {
+			"permissaoUsuario" })
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Sucesso", content = @Content(schema = @Schema(implementation = PermissaoUsuario.class))),
+			@ApiResponse(responseCode = "404", description = "PermissaoUsuario não encontrada para este usuario neste evento")
+	})
+	@GetMapping(value = "/permissaoUsuario/usuario/{id}/evento/{id}")
+	@CrossOrigin("http://localhost:3000")
+	public ResponseEntity<Page<PermissaoUsuarioDTO>> findPermissaoUsuarioByIdUsuarioAndIdEvento(@PathVariable long idUsuario, 
+			@PathVariable long idEvento,
+			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
+		Page<PermissaoUsuarioDTO> permissaoUsuarios = permissaoUsuarioService.findAllByIdUsuarioAndIdEvento(idUsuario, idEvento, pageable);
+		return ResponseEntity.ok(permissaoUsuarios);
+	}
+
 
 	@Operation(summary = "Adicionar permissaoUsuario", description = "Adicionar novo permissaoUsuario informado no banco de dados", tags = {
 			"permissaoUsuario" })

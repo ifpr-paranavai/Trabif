@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class AutorTrabalhoDTO extends AuditoriaDTO {
 	private long id;
-	private AutorDTO autorDTO;
+	private UsuarioDTO autorDTO;
 	private TrabalhoDTO trabalhoDTO;
 	
 	public AutorTrabalhoDTO converter(AutorTrabalho autorTrabalho) {

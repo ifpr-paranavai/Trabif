@@ -48,6 +48,16 @@ public class PermissaoUsuarioService {
 		Page<PermissaoUsuario> permissaoUsuarios = permissaoUsuarioRepository.findByUsuario(id, page);
 		return new PermissaoUsuarioDTO().converterListaPermissaoUsuarioDTO(permissaoUsuarios);
 	}
+
+	public Page<PermissaoUsuarioDTO> findAllByIdEvento(Long id, Pageable page) {
+		Page<PermissaoUsuario> permissaoUsuarios = permissaoUsuarioRepository.findByEvento(id, page);
+		return new PermissaoUsuarioDTO().converterListaPermissaoUsuarioDTO(permissaoUsuarios);
+	}
+
+	public Page<PermissaoUsuarioDTO> findAllByIdUsuarioAndIdEvento(Long idUsuario, Long idEvento, Pageable page) {
+		Page<PermissaoUsuario> permissaoUsuarios = permissaoUsuarioRepository.findByUsuarioAndEvento(idUsuario, idEvento, page);
+		return new PermissaoUsuarioDTO().converterListaPermissaoUsuarioDTO(permissaoUsuarios);
+	}
 	
 	public PermissaoUsuario save(PermissaoUsuario permissaoUsuario) throws BadResourceException, ResourceAlreadyExistsException {
 		if (permissaoUsuario.getPermissao() != null && permissaoUsuario.getUsuario() != null) {

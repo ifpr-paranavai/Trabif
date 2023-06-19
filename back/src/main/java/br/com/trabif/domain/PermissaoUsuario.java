@@ -38,6 +38,11 @@ public class PermissaoUsuario extends Auditoria implements Serializable {
 	@Schema(description = "Usuario", example = "")
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
+
+	@ManyToOne
+	@Schema(description = "Evento", example = "")
+	@JoinColumn(name = "id_evento")
+	private Evento evento;
 	
 	public PermissaoUsuario() {}
 

@@ -11,12 +11,14 @@ public class PermissaoUsuarioDTO extends AuditoriaDTO {
 	private long id;
 	private PermissaoDTO permissaoDTO;
 	private UsuarioDTO usuarioDTO;
+	private EventoDTO eventoDTO;
 	
 	public PermissaoUsuarioDTO converter(PermissaoUsuario permissaoUsuario) {
 		PermissaoUsuarioDTO permissaoUsuarioDTO = new PermissaoUsuarioDTO();
 		BeanUtils.copyProperties(permissaoUsuario, permissaoUsuarioDTO);
 		permissaoUsuarioDTO.setPermissaoDTO(permissaoDTO.converter(permissaoUsuario.getPermissao()));
 		permissaoUsuarioDTO.setUsuarioDTO(usuarioDTO.converter(permissaoUsuario.getUsuario()));
+		permissaoUsuarioDTO.setEventoDTO(eventoDTO.converter(permissaoUsuario.getEvento()));
 		return permissaoUsuarioDTO;
 	}
 	

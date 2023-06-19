@@ -32,7 +32,7 @@ public class AutorTrabalho extends Auditoria implements Serializable {
 	@ManyToOne
 	@Schema(description = "Autor", example = "")
 	@JoinColumn(name = "id_autor")
-	private Autor autor;
+	private Usuario autor;
 
 	@ManyToOne
 	@Schema(description = "Trabalho", example = "")
