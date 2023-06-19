@@ -35,9 +35,9 @@ public class AreaAvaliador extends Auditoria implements Serializable {
 	private Area area;
 
 	@ManyToOne
-	@Schema(description = "Avaliador", example = "")
-	@JoinColumn(name = "id_avaliador")
-	private Avaliador avaliador;
+	@Schema(description = "usuario", example = "")
+	@JoinColumn(name = "id_usuario")
+	private Usuario avaliador;
 	
 	public AreaAvaliador() {}
 

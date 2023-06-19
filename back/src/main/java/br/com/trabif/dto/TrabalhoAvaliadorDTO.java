@@ -10,7 +10,7 @@ import lombok.Data;
 public class TrabalhoAvaliadorDTO extends AuditoriaDTO {
 	private long id;
 	private TrabalhoDTO trabalhoDTO;
-	private AvaliadorDTO avaliadorDTO;
+	private UsuarioDTO avaliadorDTO;
 	private ResultadoSubmissaoDTO resultadoSubmissaoDTO;
 	
 	public TrabalhoAvaliadorDTO converter(TrabalhoAvaliador trabalhoAvaliador) {
