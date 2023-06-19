@@ -10,7 +10,7 @@ import lombok.Data;
 public class AreaAvaliadorDTO extends AuditoriaDTO {
 	private long id;
 	private AreaDTO areaDTO;
-	private AvaliadorDTO avaliadorDTO;
+	private UsuarioDTO avaliadorDTO;
 	
 	public AreaAvaliadorDTO converter(AreaAvaliador areaAvaliador) {
 		AreaAvaliadorDTO areaAvaliadorDTO = new AreaAvaliadorDTO();
