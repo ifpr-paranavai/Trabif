@@ -36,7 +36,6 @@ class ResultadoSubmissaoTests {
     
             assertEquals(resultadoSubmissao, resultado);
         } catch (BadResourceException | ResourceAlreadyExistsException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -58,7 +57,6 @@ class ResultadoSubmissaoTests {
             assertThrows(IllegalArgumentException.class, () -> {resultadoSubmissaoService.save(resultadoSubmissao);});
     
         } catch (BadResourceException | ResourceAlreadyExistsException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -80,7 +78,6 @@ class ResultadoSubmissaoTests {
             assertThrows(IllegalArgumentException.class, () -> {resultadoSubmissaoService.save(resultadoSubmissao);});
     
         } catch (BadResourceException | ResourceAlreadyExistsException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
