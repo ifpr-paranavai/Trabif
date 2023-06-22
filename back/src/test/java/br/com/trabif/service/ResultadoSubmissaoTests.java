@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import br.com.trabif.domain.ResultadoSubmissao;
 import br.com.trabif.exception.BadResourceException;
 import br.com.trabif.exception.ResourceAlreadyExistsException;
+import br.com.trabif.exception.ResourceNotFoundException;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -23,21 +24,38 @@ class ResultadoSubmissaoTests {
 
 
     @Test
-    void saveValidGrade() {
+    void saveValidGrade() throws BadResourceException, ResourceAlreadyExistsException, ResourceNotFoundException {
         ResultadoSubmissao resultadoSubmissao = new ResultadoSubmissao();
         resultadoSubmissao.setComentarioAutor("Trabalho bem feito");
         resultadoSubmissao.setComentarioOrganizador("Nada a comentar o autor foi pontual em suas afirmações");
         resultadoSubmissao.setConfianca(5);
         resultadoSubmissao.setResultado(5);
 
-        try {
-            Mockito.when(resultadoSubmissaoService.save(resultadoSubmissao)).thenReturn(resultadoSubmissao);
-            ResultadoSubmissao resultado = resultadoSubmissaoService.save(resultadoSubmissao);
-    
-            assertEquals(resultadoSubmissao, resultado);
-        } catch (BadResourceException | ResourceAlreadyExistsException e) {
-            e.printStackTrace();
-        }
+        ResultadoSubmissao resultadoEsperado = resultadoSubmissao;
+        resultadoEsperado.setId(1);
+
+        Mockito.when(resultadoSubmissaoService.save(resultadoSubmissao)).thenReturn(resultadoEsperado);
+        ResultadoSubmissao resultado = resultadoSubmissaoService.save(resultadoSubmissao);
+
+        assertEquals(resultadoEsperado, resultado);
+        
+        resultado.setResultado(1);
+        
+        resultadoSubmissaoService.update(resultado);
+
+        Mockito.when(resultadoSubmissaoService.findById(resultado.getId())).thenReturn(resultado);
+        resultadoEsperado = resultadoSubmissaoService.findById(resultado.getId());
+
+        assertEquals(resultadoEsperado, resultado);
+
+        resultado.setResultado(3);
+        
+        resultadoSubmissaoService.update(resultado);
+
+        Mockito.when(resultadoSubmissaoService.findById(resultado.getId())).thenReturn(resultado);
+        resultadoEsperado = resultadoSubmissaoService.findById(resultado.getId());
+
+        assertEquals(resultadoEsperado, resultado);
 
     }
 
