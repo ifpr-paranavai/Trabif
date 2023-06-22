@@ -82,20 +82,6 @@ public class EventoController {
 		}
 	
 	}
-
-	@Operation(summary = "Busca ID", description = "Buscar evento por ID do organizador", tags = {
-		"evento" })
-	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "Sucesso", content = @Content(schema = @Schema(implementation = Evento.class))),
-			@ApiResponse(responseCode = "404", description = "Evento não encontrado com este organizador")
-	})
-	@GetMapping(value = "/evento/organizador/{id}")
-	@CrossOrigin("http://localhost:3000")
-	public ResponseEntity<Page<EventoDTO>> findEventoByIdOrganizador(@PathVariable long id,
-			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
-		Page<EventoDTO> eventos = eventoService.findAllByIdOrganizador(id, pageable);
-		return ResponseEntity.ok(eventos);
-	}
 	
 	@Operation(summary = "Adicionar evento", description = "Adicionar novo evento informado no banco de dados", tags = {"evento"})
 	@PostMapping(value = "/evento")

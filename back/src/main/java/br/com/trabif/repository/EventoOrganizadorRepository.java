@@ -11,6 +11,6 @@ public interface EventoOrganizadorRepository extends JpaRepository<EventoOrganiz
 	@Query(value = "select p from EventoOrganizador p where p.evento.id=?1")
 	Page<EventoOrganizador> findByEvento(Long id, Pageable page);
 
-	@Query(value = "select p from EventoOrganizador p where p.organizador.id=?1")
+	@Query(value = "select p from EventoOrganizador p where p.usuario.id=?1")
 	Page<EventoOrganizador> findByOrganizador(Long id, Pageable page);
 }

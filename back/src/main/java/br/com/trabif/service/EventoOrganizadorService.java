@@ -50,7 +50,7 @@ public class EventoOrganizadorService {
 	}
 	
 	public EventoOrganizador save(EventoOrganizador eventoOrganizador) throws BadResourceException, ResourceAlreadyExistsException {
-		if (eventoOrganizador.getEvento() != null && eventoOrganizador.getOrganizador() != null) {
+		if (eventoOrganizador.getEvento() != null && eventoOrganizador.getUsuario() != null) {
 			if(existsById(eventoOrganizador.getId())) {
 				throw new ResourceAlreadyExistsException("EventoOrganizador com id: " + eventoOrganizador.getId() + " já existe.");
 			}			
@@ -66,7 +66,7 @@ public class EventoOrganizadorService {
 	}
 	
 	public void update(EventoOrganizador eventoOrganizador) throws BadResourceException, ResourceNotFoundException {
-		if (eventoOrganizador.getEvento() != null && eventoOrganizador.getOrganizador() != null) {
+		if (eventoOrganizador.getEvento() != null && eventoOrganizador.getUsuario() != null) {
 			if (!existsById(eventoOrganizador.getId())) {
 				throw new ResourceNotFoundException("EventoOrganizador não encontrado com o id: " + eventoOrganizador.getId());
 			}

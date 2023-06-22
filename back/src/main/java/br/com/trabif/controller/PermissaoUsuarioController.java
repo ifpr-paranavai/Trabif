@@ -124,7 +124,7 @@ public class PermissaoUsuarioController {
 			@ApiResponse(responseCode = "200", description = "Sucesso", content = @Content(schema = @Schema(implementation = PermissaoUsuario.class))),
 			@ApiResponse(responseCode = "404", description = "PermissaoUsuario não encontrada para este usuario neste evento")
 	})
-	@GetMapping(value = "/permissaoUsuario/usuario/{id}/evento/{id}")
+	@GetMapping(value = "/permissaoUsuario/usuario/{idUsuario}/evento/{idEvento}")
 	@CrossOrigin("http://localhost:3000")
 	public ResponseEntity<Page<PermissaoUsuarioDTO>> findPermissaoUsuarioByIdUsuarioAndIdEvento(@PathVariable long idUsuario, 
 			@PathVariable long idEvento,

@@ -10,8 +10,5 @@ import br.com.trabif.domain.Evento;
 public interface EventoRepository extends JpaRepository<Evento, Long> {
 	@Query(value = "select p from Evento p where p.nome like %?1%")
 	Page<Evento> findByNome(String nome, Pageable page);
-
-	@Query(value = "select p from Evento p where p.organizador.id=?1")
-	Page<Evento> findByOrganizador(Long id, Pageable page);
 }
 

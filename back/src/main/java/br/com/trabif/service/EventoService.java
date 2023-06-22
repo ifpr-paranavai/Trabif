@@ -45,11 +45,6 @@ public class EventoService {
 		
 		return new EventoDTO().converterListaEventoDTO(eventos);
 	}
-
-	public Page<EventoDTO> findAllByIdOrganizador(Long id, Pageable page) {
-		Page<Evento> eventos = eventoRepository.findByOrganizador(id, page);
-		return new EventoDTO().converterListaEventoDTO(eventos);
-	}
 	
 	public Evento save(Evento evento) throws BadResourceException, ResourceAlreadyExistsException {
 		if(!evento.getNome().isEmpty()) {

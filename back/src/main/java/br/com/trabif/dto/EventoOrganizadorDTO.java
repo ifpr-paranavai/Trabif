@@ -16,7 +16,7 @@ public class EventoOrganizadorDTO extends AuditoriaDTO {
 		EventoOrganizadorDTO eventoOrganizadorDTO = new EventoOrganizadorDTO();
 		BeanUtils.copyProperties(eventoOrganizador, eventoOrganizadorDTO);
 		eventoOrganizadorDTO.setEventoDTO(eventoDTO.converter(eventoOrganizador.getEvento()));
-		eventoOrganizadorDTO.setOrganizadorDTO(organizadorDTO.converter(eventoOrganizador.getOrganizador()));
+		eventoOrganizadorDTO.setOrganizadorDTO(organizadorDTO.converter(eventoOrganizador.getUsuario()));
 		return eventoOrganizadorDTO;
 	}
 	
