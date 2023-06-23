@@ -1,9 +1,9 @@
 import { Area } from "./area";
 import { Auditoria } from "./auditoria";
-import { Avaliador } from "./avaliador";
+import { Usuario } from "./usuario";
 
 export class AreaAvalidor extends Auditoria {
   id?: number;
   area?: Area;
-  avaliador?: Avaliador;
+  usuario?: Usuario;
 }
