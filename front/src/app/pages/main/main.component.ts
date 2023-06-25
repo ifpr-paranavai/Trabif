@@ -19,11 +19,6 @@ export class MainComponent implements OnInit {
     document.getElementById('avaliar-trabalhos')!.style.backgroundColor = '#fafafa';
   }
 
-  abrirEventos(): void {
-    this.retornaCorOriginalBotoes();
-    document.getElementById('eventos')!.style.backgroundColor = '#dadada';
-  }
-
   abrirAvaliadores(): void {
     this.retornaCorOriginalBotoes();
     document.getElementById('avaliadores')!.style.backgroundColor = '#dadada';
