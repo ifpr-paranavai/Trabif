@@ -51,7 +51,7 @@ public class AreaAvaliadorController {
 	@Operation(summary = "Busca areaAvaliadors", description = "Buscar todos os areaAvaliadors, buscar areaAvaliadors por descricao", tags = {
 			"areaAvaliador" })
 	@GetMapping(value = "/areaAvaliador")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<AreaAvaliadorDTO>> findAll(
 			@Parameter(description = "Descrição para pesquisa", allowEmptyValue = true) @RequestBody(required = false) String descricao,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
@@ -64,7 +64,7 @@ public class AreaAvaliadorController {
 			@ApiResponse(responseCode = "404", description = "AreaAvaliador não encontrado")
 	})
 	@GetMapping(value = "/areaAvaliador/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<AreaAvaliador> findAreaAvaliadorById(@PathVariable long id) {
 		try {
 			AreaAvaliador areaAvaliador = areaAvaliadorService.findById(id);
@@ -83,7 +83,7 @@ public class AreaAvaliadorController {
 			@ApiResponse(responseCode = "404", description = "AreaAvaliador não encontrado para este area")
 	})
 	@GetMapping(value = "/areaAvaliador/area/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<AreaAvaliadorDTO>> findAreaAvaliadorByIdArea(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<AreaAvaliadorDTO> areaAvaliadors = areaAvaliadorService.findAllByIdArea(id, pageable);
@@ -97,7 +97,7 @@ public class AreaAvaliadorController {
 			@ApiResponse(responseCode = "404", description = "AreaAvaliador não encontrado para este area")
 	})
 	@GetMapping(value = "/areaAvaliador/avaliador/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<AreaAvaliadorDTO>> findAreaAvaliadorByIdAvaliador(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<AreaAvaliadorDTO> areaAvaliadors = areaAvaliadorService.findAllByIdAvaliador(id, pageable);
@@ -107,7 +107,7 @@ public class AreaAvaliadorController {
 	@Operation(summary = "Adicionar areaAvaliador", description = "Adicionar novo areaAvaliador informado no banco de dados", tags = {
 			"areaAvaliador" })
 	@PostMapping(value = "/areaAvaliador")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<AreaAvaliadorDTO> addAreaAvaliador(@RequestBody AreaAvaliador areaAvaliador)
 			throws URISyntaxException {
 		try {
@@ -127,7 +127,7 @@ public class AreaAvaliadorController {
 	@Operation(summary = "Alterar AreaAvaliador", description = "Alterar valores do areaAvaliador com id selecionado", tags = {
 			"areaAvaliador" })
 	@PutMapping(value = "/areaAvaliador/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<AreaAvaliador> updateAreaAvaliador(@Valid @RequestBody AreaAvaliador areaAvaliador,
 			@PathVariable long id) {
 		try {
@@ -147,7 +147,7 @@ public class AreaAvaliadorController {
 	@Operation(summary = "Deletar areaAvaliador", description = "Deletar areaAvaliador com o ID informado", tags = {
 			"areaAvaliador" })
 	@DeleteMapping(path = "/areaAvaliador/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Void> deleteAreaAvaliadorById(@PathVariable long id) {
 		try {
 			areaAvaliadorService.deleteById(id);

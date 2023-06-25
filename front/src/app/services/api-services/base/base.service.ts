@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 
 export class BaseResults<K> {
-  results: K[] | undefined;
+  content: K[] | undefined;
 }
 
 export class BaseResult<K> {

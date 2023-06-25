@@ -51,7 +51,7 @@ public class AutorTrabalhoController {
 	@Operation(summary = "Busca autorTrabalhos", description = "Buscar todos os autorTrabalhos, buscar autorTrabalhos por descricao", tags = {
 			"autorTrabalho" })
 	@GetMapping(value = "/autorTrabalho")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<AutorTrabalhoDTO>> findAll(
 			@Parameter(description = "Descrição para pesquisa", allowEmptyValue = true) @RequestBody(required = false) String descricao,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
@@ -64,7 +64,7 @@ public class AutorTrabalhoController {
 			@ApiResponse(responseCode = "404", description = "AutorTrabalho não encontrado")
 	})
 	@GetMapping(value = "/autorTrabalho/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<AutorTrabalho> findAutorTrabalhoById(@PathVariable long id) {
 		try {
 			AutorTrabalho autorTrabalho = autorTrabalhoService.findById(id);
@@ -83,7 +83,7 @@ public class AutorTrabalhoController {
 			@ApiResponse(responseCode = "404", description = "AutorTrabalho não encontrado para este autor")
 	})
 	@GetMapping(value = "/autorTrabalho/autor/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<AutorTrabalhoDTO>> findAutorTrabalhoByIdAutor(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<AutorTrabalhoDTO> autorTrabalhos = autorTrabalhoService.findAllByIdAutor(id, pageable);
@@ -97,7 +97,7 @@ public class AutorTrabalhoController {
 			@ApiResponse(responseCode = "404", description = "AutorTrabalho não encontrado para este autor")
 	})
 	@GetMapping(value = "/autorTrabalho/trabalho/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<AutorTrabalhoDTO>> findAutorTrabalhoByIdTrabalho(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<AutorTrabalhoDTO> autorTrabalhos = autorTrabalhoService.findAllByIdTrabalho(id, pageable);
@@ -107,7 +107,7 @@ public class AutorTrabalhoController {
 	@Operation(summary = "Adicionar autorTrabalho", description = "Adicionar novo autorTrabalho informado no banco de dados", tags = {
 			"autorTrabalho" })
 	@PostMapping(value = "/autorTrabalho")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<AutorTrabalhoDTO> addAutorTrabalho(@RequestBody AutorTrabalho autorTrabalho)
 			throws URISyntaxException {
 		try {
@@ -127,7 +127,7 @@ public class AutorTrabalhoController {
 	@Operation(summary = "Alterar AutorTrabalho", description = "Alterar valores do autorTrabalho com id selecionado", tags = {
 			"autorTrabalho" })
 	@PutMapping(value = "/autorTrabalho/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<AutorTrabalho> updateAutorTrabalho(@Valid @RequestBody AutorTrabalho autorTrabalho,
 			@PathVariable long id) {
 		try {
@@ -147,7 +147,7 @@ public class AutorTrabalhoController {
 	@Operation(summary = "Deletar autorTrabalho", description = "Deletar autorTrabalho com o ID informado", tags = {
 			"autorTrabalho" })
 	@DeleteMapping(path = "/autorTrabalho/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Void> deleteAutorTrabalhoById(@PathVariable long id) {
 		try {
 			autorTrabalhoService.deleteById(id);

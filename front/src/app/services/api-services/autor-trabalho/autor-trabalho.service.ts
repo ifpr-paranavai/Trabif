@@ -8,7 +8,7 @@ import { BaseResult, BaseResults, BaseService } from '../base/base.service';
 })
 export class AutorTrabalhoService implements BaseService {
 
-  baseUrl = 'http://localhost:3000/autorTrabalho';
+  baseUrl = 'http://localhost:8080/api/autorTrabalho';
   constructor(private http: HttpClient) { }
   getAll(): Observable<BaseResults<any>> {
     return this.http.get<BaseResults<any>>(this.baseUrl);

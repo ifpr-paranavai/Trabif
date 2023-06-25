@@ -9,7 +9,7 @@ import { Evento } from 'src/app/models/evento';
 })
 export class EventoService implements BaseService {
 
-  baseUrl = 'http://localhost:3000/evento';
+  baseUrl = 'http://localhost:8080/api/evento';
   constructor(private http: HttpClient) { }
   getAll(): Observable<BaseResults<Evento>> {
     return this.http.get<BaseResults<Evento>>(this.baseUrl);

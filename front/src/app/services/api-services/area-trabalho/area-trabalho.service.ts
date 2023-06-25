@@ -9,7 +9,7 @@ import { AreaTabalho } from 'src/app/models/area-tabalho';
 })
 export class AreaTrabalhoService implements BaseService {
 
-  baseUrl = 'http://localhost:3000/areaTrabalho';
+  baseUrl = 'http://localhost:8080/api/areaTrabalho';
   constructor(private http: HttpClient) { }
   getAll(): Observable<BaseResults<AreaTabalho>> {
     return this.http.get<BaseResults<AreaTabalho>>(this.baseUrl);

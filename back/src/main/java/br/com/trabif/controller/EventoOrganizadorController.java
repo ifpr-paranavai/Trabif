@@ -51,7 +51,7 @@ public class EventoOrganizadorController {
 	@Operation(summary = "Busca eventoOrganizadores", description = "Buscar todos os eventoOrganizadores, buscar eventoOrganizadores por descricao", tags = {
 			"eventoOrganizador" })
 	@GetMapping(value = "/eventoOrganizador")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<EventoOrganizadorDTO>> findAll(
 			@Parameter(description = "Descrição para pesquisa", allowEmptyValue = true) @RequestBody(required = false) String descricao,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
@@ -64,7 +64,7 @@ public class EventoOrganizadorController {
 			@ApiResponse(responseCode = "404", description = "EventoOrganizador não encontrado")
 	})
 	@GetMapping(value = "/eventoOrganizador/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<EventoOrganizador> findEventoOrganizadorById(@PathVariable long id) {
 		try {
 			EventoOrganizador eventoOrganizador = eventoOrganizadorService.findById(id);
@@ -83,7 +83,7 @@ public class EventoOrganizadorController {
 			@ApiResponse(responseCode = "404", description = "EventoOrganizador não encontrado para este evento")
 	})
 	@GetMapping(value = "/eventoOrganizador/evento/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<EventoOrganizadorDTO>> findEventoOrganizadorByIdEvento(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<EventoOrganizadorDTO> eventoOrganizadores = eventoOrganizadorService.findAllByIdEvento(id, pageable);
@@ -97,7 +97,7 @@ public class EventoOrganizadorController {
 			@ApiResponse(responseCode = "404", description = "EventoOrganizador não encontrado para este evento")
 	})
 	@GetMapping(value = "/eventoOrganizador/organizador/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<EventoOrganizadorDTO>> findEventoOrganizadorByIdOrganizador(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<EventoOrganizadorDTO> eventoOrganizadores = eventoOrganizadorService.findAllByIdOrganizador(id, pageable);
@@ -107,7 +107,7 @@ public class EventoOrganizadorController {
 	@Operation(summary = "Adicionar eventoOrganizador", description = "Adicionar novo eventoOrganizador informado no banco de dados", tags = {
 			"eventoOrganizador" })
 	@PostMapping(value = "/eventoOrganizador")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<EventoOrganizadorDTO> addEventoOrganizador(@RequestBody EventoOrganizador eventoOrganizador)
 			throws URISyntaxException {
 		try {
@@ -127,7 +127,7 @@ public class EventoOrganizadorController {
 	@Operation(summary = "Alterar EventoOrganizador", description = "Alterar valores do eventoOrganizador com id selecionado", tags = {
 			"eventoOrganizador" })
 	@PutMapping(value = "/eventoOrganizador/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<EventoOrganizador> updateEventoOrganizador(@Valid @RequestBody EventoOrganizador eventoOrganizador,
 			@PathVariable long id) {
 		try {
@@ -147,7 +147,7 @@ public class EventoOrganizadorController {
 	@Operation(summary = "Deletar eventoOrganizador", description = "Deletar eventoOrganizador com o ID informado", tags = {
 			"eventoOrganizador" })
 	@DeleteMapping(path = "/eventoOrganizador/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Void> deleteEventoOrganizadorById(@PathVariable long id) {
 		try {
 			eventoOrganizadorService.deleteById(id);

@@ -51,7 +51,7 @@ public class EventoEmailTemplateController {
 	@Operation(summary = "Busca eventoEmailTemplates", description = "Buscar todos os eventoEmailTemplates, buscar eventoEmailTemplates por descricao", tags = {
 			"eventoEmailTemplate" })
 	@GetMapping(value = "/eventoEmailTemplate")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<EventoEmailTemplateDTO>> findAll(
 			@Parameter(description = "Descrição para pesquisa", allowEmptyValue = true) @RequestBody(required = false) String descricao,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
@@ -64,7 +64,7 @@ public class EventoEmailTemplateController {
 			@ApiResponse(responseCode = "404", description = "EventoEmailTemplate não encontrado")
 	})
 	@GetMapping(value = "/eventoEmailTemplate/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<EventoEmailTemplate> findEventoEmailTemplateById(@PathVariable long id) {
 		try {
 			EventoEmailTemplate eventoEmailTemplate = eventoEmailTemplateService.findById(id);
@@ -83,7 +83,7 @@ public class EventoEmailTemplateController {
 			@ApiResponse(responseCode = "404", description = "EventoEmailTemplate não encontrado para este evento")
 	})
 	@GetMapping(value = "/eventoEmailTemplate/evento/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<EventoEmailTemplateDTO>> findEventoEmailTemplateByIdEvento(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<EventoEmailTemplateDTO> eventoEmailTemplates = eventoEmailTemplateService.findAllByIdEvento(id, pageable);
@@ -97,7 +97,7 @@ public class EventoEmailTemplateController {
 			@ApiResponse(responseCode = "404", description = "EventoEmailTemplate não encontrado para este evento")
 	})
 	@GetMapping(value = "/eventoEmailTemplate/emailTemplate/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<EventoEmailTemplateDTO>> findEventoEmailTemplateByIdEmailTemplate(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<EventoEmailTemplateDTO> eventoEmailTemplates = eventoEmailTemplateService.findAllByIdEmailTemplate(id, pageable);
@@ -107,7 +107,7 @@ public class EventoEmailTemplateController {
 	@Operation(summary = "Adicionar eventoEmailTemplate", description = "Adicionar novo eventoEmailTemplate informado no banco de dados", tags = {
 			"eventoEmailTemplate" })
 	@PostMapping(value = "/eventoEmailTemplate")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<EventoEmailTemplateDTO> addEventoEmailTemplate(@RequestBody EventoEmailTemplate eventoEmailTemplate)
 			throws URISyntaxException {
 		try {
@@ -127,7 +127,7 @@ public class EventoEmailTemplateController {
 	@Operation(summary = "Alterar EventoEmailTemplate", description = "Alterar valores do eventoEmailTemplate com id selecionado", tags = {
 			"eventoEmailTemplate" })
 	@PutMapping(value = "/eventoEmailTemplate/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<EventoEmailTemplate> updateEventoEmailTemplate(@Valid @RequestBody EventoEmailTemplate eventoEmailTemplate,
 			@PathVariable long id) {
 		try {
@@ -147,7 +147,7 @@ public class EventoEmailTemplateController {
 	@Operation(summary = "Deletar eventoEmailTemplate", description = "Deletar eventoEmailTemplate com o ID informado", tags = {
 			"eventoEmailTemplate" })
 	@DeleteMapping(path = "/eventoEmailTemplate/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Void> deleteEventoEmailTemplateById(@PathVariable long id) {
 		try {
 			eventoEmailTemplateService.deleteById(id);

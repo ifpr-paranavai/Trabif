@@ -8,7 +8,7 @@ import { BaseResult, BaseResults, BaseService } from '../base/base.service';
 })
 export class EmailTemplateService implements BaseService {
 
-  baseUrl = 'http://localhost:3000/emailTemplate';
+  baseUrl = 'http://localhost:8080/api/emailTemplate';
   constructor(private http: HttpClient) { }
   getAll(): Observable<BaseResults<any>> {
     return this.http.get<BaseResults<any>>(this.baseUrl);

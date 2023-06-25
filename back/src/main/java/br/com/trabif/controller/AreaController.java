@@ -50,13 +50,13 @@ public class AreaController {
 	
 	@Operation(summary = "Busca areas", description = "Buscar todos os areas, buscar areas por descricao", tags = {"area"})
 	@GetMapping(value = "/area")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<AreaDTO>> findAll(
 			@Parameter(description = "Descrição para pesquisa", allowEmptyValue = true)
 			@RequestBody(required=false) String descricao,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true)
 			 Pageable pageable)	{
-		if(descricao.isEmpty()) {
+		if(descricao == null || descricao.isEmpty()) {
 			return ResponseEntity.ok(areaService.findAll(pageable));
 		} else {
 			return ResponseEntity.ok(areaService.findAllByDescricao(descricao, pageable));
@@ -70,7 +70,7 @@ public class AreaController {
 			@ApiResponse(responseCode = "404", description = "Area não encontrado")
 	})
 	@GetMapping(value = "/area/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Area> findAreaById(@PathVariable long id) {
 		try {
 			Area area = areaService.findById(id);
@@ -85,7 +85,7 @@ public class AreaController {
 	
 	@Operation(summary = "Adicionar area", description = "Adicionar novo area informado no banco de dados", tags = {"area"})
 	@PostMapping(value = "/area")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<AreaDTO> addArea(@RequestBody Area area) throws URISyntaxException {
 		try {
 			Area novoArea = areaService.save(area);
@@ -102,7 +102,7 @@ public class AreaController {
 	
 	@Operation(summary = "Alterar Area", description = "Alterar valores do area com id selecionado", tags = {"area"})
 	@PutMapping(value = "/area/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Area> updateArea(@Valid @RequestBody Area area, 
 			@PathVariable long id) {
 		try {
@@ -121,7 +121,7 @@ public class AreaController {
 	
 	@Operation(summary = "Deletar area", description = "Deletar area com o ID informado", tags = {"area"})
 	@DeleteMapping(path = "/area/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Void> deleteAreaById(@PathVariable long id) {
 		try {
 			areaService.deleteById(id);

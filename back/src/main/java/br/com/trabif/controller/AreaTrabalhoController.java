@@ -51,7 +51,7 @@ public class AreaTrabalhoController {
 	@Operation(summary = "Busca areaTrabalhos", description = "Buscar todos os areaTrabalhos, buscar areaTrabalhos por descricao", tags = {
 			"areaTrabalho" })
 	@GetMapping(value = "/areaTrabalho")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<AreaTrabalhoDTO>> findAll(
 			@Parameter(description = "Descrição para pesquisa", allowEmptyValue = true) @RequestBody(required = false) String descricao,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
@@ -64,7 +64,7 @@ public class AreaTrabalhoController {
 			@ApiResponse(responseCode = "404", description = "AreaTrabalho não encontrado")
 	})
 	@GetMapping(value = "/areaTrabalho/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<AreaTrabalho> findAreaTrabalhoById(@PathVariable long id) {
 		try {
 			AreaTrabalho areaTrabalho = areaTrabalhoService.findById(id);
@@ -83,7 +83,7 @@ public class AreaTrabalhoController {
 			@ApiResponse(responseCode = "404", description = "AreaTrabalho não encontrado para este area")
 	})
 	@GetMapping(value = "/areaTrabalho/area/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<AreaTrabalhoDTO>> findAreaTrabalhoByIdArea(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<AreaTrabalhoDTO> areaTrabalhos = areaTrabalhoService.findAllByIdArea(id, pageable);
@@ -97,7 +97,7 @@ public class AreaTrabalhoController {
 			@ApiResponse(responseCode = "404", description = "AreaTrabalho não encontrado para este area")
 	})
 	@GetMapping(value = "/areaTrabalho/trabalho/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<AreaTrabalhoDTO>> findAreaTrabalhoByIdTrabalho(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<AreaTrabalhoDTO> areaTrabalhos = areaTrabalhoService.findAllByIdTrabalho(id, pageable);
@@ -107,7 +107,7 @@ public class AreaTrabalhoController {
 	@Operation(summary = "Adicionar areaTrabalho", description = "Adicionar novo areaTrabalho informado no banco de dados", tags = {
 			"areaTrabalho" })
 	@PostMapping(value = "/areaTrabalho")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<AreaTrabalhoDTO> addAreaTrabalho(@RequestBody AreaTrabalho areaTrabalho)
 			throws URISyntaxException {
 		try {
@@ -127,7 +127,7 @@ public class AreaTrabalhoController {
 	@Operation(summary = "Alterar AreaTrabalho", description = "Alterar valores do areaTrabalho com id selecionado", tags = {
 			"areaTrabalho" })
 	@PutMapping(value = "/areaTrabalho/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<AreaTrabalho> updateAreaTrabalho(@Valid @RequestBody AreaTrabalho areaTrabalho,
 			@PathVariable long id) {
 		try {
@@ -147,7 +147,7 @@ public class AreaTrabalhoController {
 	@Operation(summary = "Deletar areaTrabalho", description = "Deletar areaTrabalho com o ID informado", tags = {
 			"areaTrabalho" })
 	@DeleteMapping(path = "/areaTrabalho/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Void> deleteAreaTrabalhoById(@PathVariable long id) {
 		try {
 			areaTrabalhoService.deleteById(id);

@@ -8,7 +8,7 @@ import { BaseResult, BaseResults, BaseService } from '../base/base.service';
 })
 export class PermissaoUsuarioService implements BaseService {
 
-  baseUrl = 'http://localhost:3000/permissaoUsuario';
+  baseUrl = 'http://localhost:8080/api/permissaoUsuario';
   constructor(private http: HttpClient) { }
   getAll(): Observable<BaseResults<any>> {
     return this.http.get<BaseResults<any>>(this.baseUrl);

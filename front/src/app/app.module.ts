@@ -27,6 +27,8 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { HttpClientModule } from '@angular/common/http';
+import { EventAddComponent } from './pages/event-add/event-add.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,9 +39,11 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     EventComponent,
     MainComponent,
+    EventAddComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MdbAccordionModule,

@@ -50,13 +50,13 @@ public class PermissaoController {
 	
 	@Operation(summary = "Busca permissoes", description = "Buscar todos os permissoes, buscar permissoes por descricao", tags = {"permissao"})
 	@GetMapping(value = "/permissao")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<PermissaoDTO>> findAll(
 			@Parameter(description = "Descrição para pesquisa", allowEmptyValue = true)
 			@RequestBody(required=false) String descricao,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true)
 			 Pageable pageable)	{
-		if(descricao.isEmpty()) {
+		if(descricao == null || descricao.isEmpty()) {
 			return ResponseEntity.ok(permissaoService.findAll(pageable));
 		} else {
 			return ResponseEntity.ok(permissaoService.findAllByDescricao(descricao, pageable));
@@ -70,7 +70,7 @@ public class PermissaoController {
 			@ApiResponse(responseCode = "404", description = "Permissao não encontrado")
 	})
 	@GetMapping(value = "/permissao/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Permissao> findPermissaoById(@PathVariable long id) {
 		try {
 			Permissao permissao = permissaoService.findById(id);
@@ -85,7 +85,7 @@ public class PermissaoController {
 	
 	@Operation(summary = "Adicionar permissao", description = "Adicionar novo permissao informado no banco de dados", tags = {"permissao"})
 	@PostMapping(value = "/permissao")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<PermissaoDTO> addPermissao(@RequestBody Permissao permissao) throws URISyntaxException {
 		try {
 			Permissao novoPermissao = permissaoService.save(permissao);
@@ -102,7 +102,7 @@ public class PermissaoController {
 	
 	@Operation(summary = "Alterar Permissao", description = "Alterar valores do permissao com id selecionado", tags = {"permissao"})
 	@PutMapping(value = "/permissao/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Permissao> updatePermissao(@Valid @RequestBody Permissao permissao, 
 			@PathVariable long id) {
 		try {
@@ -121,7 +121,7 @@ public class PermissaoController {
 	
 	@Operation(summary = "Deletar permissao", description = "Deletar permissao com o ID informado", tags = {"permissao"})
 	@DeleteMapping(path = "/permissao/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Void> deletePermissaoById(@PathVariable long id) {
 		try {
 			permissaoService.deleteById(id);

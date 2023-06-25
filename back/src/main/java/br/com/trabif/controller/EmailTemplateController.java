@@ -50,13 +50,13 @@ public class EmailTemplateController {
 	
 	@Operation(summary = "Busca emailTemplates", description = "Buscar todos os emailTemplates, buscar emailTemplates por título", tags = {"emailTemplate"})
 	@GetMapping(value = "/emailTemplate")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<EmailTemplateDTO>> findAll(
 			@Parameter(description = "Descrição para pesquisa", allowEmptyValue = true)
 			@RequestBody(required=false) String titulo,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true)
 			 Pageable pageable)	{
-		if(titulo.isEmpty()) {
+		if(titulo == null || titulo.isEmpty()) {
 			return ResponseEntity.ok(emailTemplateService.findAll(pageable));
 		} else {
 			return ResponseEntity.ok(emailTemplateService.findAllByTitulo(titulo, pageable));
@@ -70,7 +70,7 @@ public class EmailTemplateController {
 			@ApiResponse(responseCode = "404", description = "EmailTemplate não encontrado")
 	})
 	@GetMapping(value = "/emailTemplate/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<EmailTemplate> findEmailTemplateById(@PathVariable long id) {
 		try {
 			EmailTemplate emailTemplate = emailTemplateService.findById(id);
@@ -85,7 +85,7 @@ public class EmailTemplateController {
 	
 	@Operation(summary = "Adicionar emailTemplate", description = "Adicionar novo emailTemplate informado no banco de dados", tags = {"emailTemplate"})
 	@PostMapping(value = "/emailTemplate")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<EmailTemplateDTO> addEmailTemplate(@RequestBody EmailTemplate emailTemplate) throws URISyntaxException {
 		try {
 			EmailTemplate novoEmailTemplate = emailTemplateService.save(emailTemplate);
@@ -102,7 +102,7 @@ public class EmailTemplateController {
 	
 	@Operation(summary = "Alterar EmailTemplate", description = "Alterar valores do emailTemplate com id selecionado", tags = {"emailTemplate"})
 	@PutMapping(value = "/emailTemplate/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<EmailTemplate> updateEmailTemplate(@Valid @RequestBody EmailTemplate emailTemplate, 
 			@PathVariable long id) {
 		try {
@@ -121,7 +121,7 @@ public class EmailTemplateController {
 	
 	@Operation(summary = "Deletar emailTemplate", description = "Deletar emailTemplate com o ID informado", tags = {"emailTemplate"})
 	@DeleteMapping(path = "/emailTemplate/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Void> deleteEmailTemplateById(@PathVariable long id) {
 		try {
 			emailTemplateService.deleteById(id);

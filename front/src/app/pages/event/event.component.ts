@@ -15,8 +15,8 @@ export class EventComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventoApiService.getAll().subscribe((result) => {
-      if (result.results) {
-        this.eventos = result.results;
+      if (result.content) {
+        this.eventos = result.content;
       }
     });
   }

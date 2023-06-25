@@ -8,7 +8,7 @@ import { Area } from 'src/app/models/area';
   providedIn: 'root'
 })
 export class AreaService implements BaseService {
-  baseUrl = 'http://localhost:3000/area';
+  baseUrl = 'http://localhost:8080/api/area';
   constructor(private http: HttpClient) { }
   getAll(): Observable<BaseResults<Area>> {
     return this.http.get<BaseResults<Area>>(this.baseUrl);

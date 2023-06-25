@@ -50,13 +50,13 @@ public class TrabalhoController {
 	
 	@Operation(summary = "Busca trabalhos", description = "Buscar todos os trabalhos, buscar trabalhos por título", tags = {"trabalho"})
 	@GetMapping(value = "/trabalho")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<TrabalhoDTO>> findAll(
 			@Parameter(description = "Descrição para pesquisa", allowEmptyValue = true)
 			@RequestBody(required=false) String titulo,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true)
 			 Pageable pageable)	{
-		if(titulo.isEmpty()) {
+		if(titulo == null || titulo.isEmpty()) {
 			return ResponseEntity.ok(trabalhoService.findAll(pageable));
 		} else {
 			return ResponseEntity.ok(trabalhoService.findAllByTitulo(titulo, pageable));
@@ -70,7 +70,7 @@ public class TrabalhoController {
 			@ApiResponse(responseCode = "404", description = "Trabalho não encontrado")
 	})
 	@GetMapping(value = "/trabalho/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Trabalho> findTrabalhoById(@PathVariable long id) {
 		try {
 			Trabalho trabalho = trabalhoService.findById(id);
@@ -90,7 +90,7 @@ public class TrabalhoController {
 			@ApiResponse(responseCode = "404", description = "Trabalho não encontrado com esta categoria")
 	})
 	@GetMapping(value = "/trabalho/categoria/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<TrabalhoDTO>> findTrabalhoByIdCategoria(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<TrabalhoDTO> trabalhos = trabalhoService.findAllByIdCategoria(id, pageable);
@@ -99,7 +99,7 @@ public class TrabalhoController {
 	
 	@Operation(summary = "Adicionar trabalho", description = "Adicionar novo trabalho informado no banco de dados", tags = {"trabalho"})
 	@PostMapping(value = "/trabalho")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<TrabalhoDTO> addTrabalho(@RequestBody Trabalho trabalho) throws URISyntaxException {
 		try {
 			Trabalho novoTrabalho = trabalhoService.save(trabalho);
@@ -116,7 +116,7 @@ public class TrabalhoController {
 	
 	@Operation(summary = "Alterar Trabalho", description = "Alterar valores do trabalho com id selecionado", tags = {"trabalho"})
 	@PutMapping(value = "/trabalho/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Trabalho> updateTrabalho(@Valid @RequestBody Trabalho trabalho, 
 			@PathVariable long id) {
 		try {
@@ -135,7 +135,7 @@ public class TrabalhoController {
 	
 	@Operation(summary = "Deletar trabalho", description = "Deletar trabalho com o ID informado", tags = {"trabalho"})
 	@DeleteMapping(path = "/trabalho/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Void> deleteTrabalhoById(@PathVariable long id) {
 		try {
 			trabalhoService.deleteById(id);

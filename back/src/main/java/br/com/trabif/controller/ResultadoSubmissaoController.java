@@ -51,7 +51,7 @@ public class ResultadoSubmissaoController {
 	@Operation(summary = "Busca resultadoSubmissoes", description = "Buscar todos os resultadoSubmissoes, buscar resultadoSubmissoes por descricao", tags = {
 			"resultadoSubmissao" })
 	@GetMapping(value = "/resultadoSubmissao")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<ResultadoSubmissaoDTO>> findAll(
 			@Parameter(description = "Descrição para pesquisa", allowEmptyValue = true) @RequestBody(required = false) String descricao,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
@@ -64,7 +64,7 @@ public class ResultadoSubmissaoController {
 			@ApiResponse(responseCode = "404", description = "ResultadoSubmissao não encontrado")
 	})
 	@GetMapping(value = "/resultadoSubmissao/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<ResultadoSubmissao> findResultadoSubmissaoById(@PathVariable long id) {
 		try {
 			ResultadoSubmissao resultadoSubmissao = resultadoSubmissaoService.findById(id);
@@ -83,7 +83,7 @@ public class ResultadoSubmissaoController {
 			@ApiResponse(responseCode = "404", description = "ResultadoSubmissao não encontrado para este area")
 	})
 	@GetMapping(value = "/resultadoSubmissao/confianca/{confianca}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<ResultadoSubmissaoDTO>> findResultadoSubmissaoByIdCriterio(@PathVariable int confianca,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<ResultadoSubmissaoDTO> resultadoSubmissoes = resultadoSubmissaoService.findAllByConfianca(confianca, pageable);
@@ -97,7 +97,7 @@ public class ResultadoSubmissaoController {
 			@ApiResponse(responseCode = "404", description = "ResultadoSubmissao não encontrado para este area")
 	})
 	@GetMapping(value = "/resultadoSubmissao/resultado/{resultado}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<ResultadoSubmissaoDTO>> findResultadoSubmissaoByResultado(@PathVariable int resultado,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<ResultadoSubmissaoDTO> resultadoSubmissoes = resultadoSubmissaoService.findAllByResultado(resultado, pageable);
@@ -107,7 +107,7 @@ public class ResultadoSubmissaoController {
 	@Operation(summary = "Adicionar resultadoSubmissao", description = "Adicionar novo resultadoSubmissao informado no banco de dados", tags = {
 			"resultadoSubmissao" })
 	@PostMapping(value = "/resultadoSubmissao")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<ResultadoSubmissaoDTO> addResultadoSubmissao(@RequestBody ResultadoSubmissao resultadoSubmissao)
 			throws URISyntaxException {
 		try {
@@ -127,7 +127,7 @@ public class ResultadoSubmissaoController {
 	@Operation(summary = "Alterar ResultadoSubmissao", description = "Alterar valores do resultadoSubmissao com id selecionado", tags = {
 			"resultadoSubmissao" })
 	@PutMapping(value = "/resultadoSubmissao/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<ResultadoSubmissao> updateResultadoSubmissao(@Valid @RequestBody ResultadoSubmissao resultadoSubmissao,
 			@PathVariable long id) {
 		try {
@@ -147,7 +147,7 @@ public class ResultadoSubmissaoController {
 	@Operation(summary = "Deletar resultadoSubmissao", description = "Deletar resultadoSubmissao com o ID informado", tags = {
 			"resultadoSubmissao" })
 	@DeleteMapping(path = "/resultadoSubmissao/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Void> deleteResultadoSubmissaoById(@PathVariable long id) {
 		try {
 			resultadoSubmissaoService.deleteById(id);

@@ -50,13 +50,13 @@ public class EventoController {
 	
 	@Operation(summary = "Busca eventos", description = "Buscar todos os eventos, buscar eventos por nome", tags = {"evento"})
 	@GetMapping(value = "/evento")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<EventoDTO>> findAll(
 			@Parameter(description = "Nome para pesquisa", allowEmptyValue = true)
 			@RequestBody(required=false) String nome,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true)
 			 Pageable pageable)	{
-		if(nome.isEmpty()) {
+		if(nome == null || nome.isEmpty()) {
 			return ResponseEntity.ok(eventoService.findAll(pageable));
 		} else {
 			return ResponseEntity.ok(eventoService.findAllByNome(nome, pageable));
@@ -70,7 +70,7 @@ public class EventoController {
 			@ApiResponse(responseCode = "404", description = "Evento não encontrado")
 	})
 	@GetMapping(value = "/evento/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Evento> findEventoById(@PathVariable long id) {
 		try {
 			Evento evento = eventoService.findById(id);
@@ -85,7 +85,7 @@ public class EventoController {
 	
 	@Operation(summary = "Adicionar evento", description = "Adicionar novo evento informado no banco de dados", tags = {"evento"})
 	@PostMapping(value = "/evento")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<EventoDTO> addEvento(@RequestBody Evento evento) throws URISyntaxException {
 		try {
 			Evento novoEvento = eventoService.save(evento);
@@ -102,7 +102,7 @@ public class EventoController {
 	
 	@Operation(summary = "Alterar Evento", description = "Alterar valores do evento com id selecionado", tags = {"evento"})
 	@PutMapping(value = "/evento/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Evento> updateEvento(@Valid @RequestBody Evento evento, 
 			@PathVariable long id) {
 		try {
@@ -121,7 +121,7 @@ public class EventoController {
 	
 	@Operation(summary = "Deletar evento", description = "Deletar evento com o ID informado", tags = {"evento"})
 	@DeleteMapping(path = "/evento/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Void> deleteEventoById(@PathVariable long id) {
 		try {
 			eventoService.deleteById(id);

@@ -11,5 +11,6 @@ import { MainService } from 'src/app/services/pages-services/main/main.service';
 export class LoginComponent {
   constructor(
     public mainService: MainService,
+    public eventService: EventService,
   ) {}
 }

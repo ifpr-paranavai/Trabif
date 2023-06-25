@@ -50,13 +50,13 @@ public class CategoriaController {
 	
 	@Operation(summary = "Busca categorias", description = "Buscar todos os categorias, buscar categorias por descricao", tags = {"categoria"})
 	@GetMapping(value = "/categoria")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<CategoriaDTO>> findAll(
 			@Parameter(description = "Descrição para pesquisa", allowEmptyValue = true)
 			@RequestBody(required=false) String descricao,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true)
 			 Pageable pageable)	{
-		if(descricao.isEmpty()) {
+		if(descricao == null || descricao.isEmpty()) {
 			return ResponseEntity.ok(categoriaService.findAll(pageable));
 		} else {
 			return ResponseEntity.ok(categoriaService.findAllByDescricao(descricao, pageable));
@@ -70,7 +70,7 @@ public class CategoriaController {
 			@ApiResponse(responseCode = "404", description = "Categoria não encontrado")
 	})
 	@GetMapping(value = "/categoria/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Categoria> findCategoriaById(@PathVariable long id) {
 		try {
 			Categoria categoria = categoriaService.findById(id);
@@ -85,7 +85,7 @@ public class CategoriaController {
 	
 	@Operation(summary = "Adicionar categoria", description = "Adicionar novo categoria informado no banco de dados", tags = {"categoria"})
 	@PostMapping(value = "/categoria")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<CategoriaDTO> addCategoria(@RequestBody Categoria categoria) throws URISyntaxException {
 		try {
 			Categoria novoCategoria = categoriaService.save(categoria);
@@ -102,7 +102,7 @@ public class CategoriaController {
 	
 	@Operation(summary = "Alterar Categoria", description = "Alterar valores do categoria com id selecionado", tags = {"categoria"})
 	@PutMapping(value = "/categoria/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Categoria> updateCategoria(@Valid @RequestBody Categoria categoria, 
 			@PathVariable long id) {
 		try {
@@ -121,7 +121,7 @@ public class CategoriaController {
 	
 	@Operation(summary = "Deletar categoria", description = "Deletar categoria com o ID informado", tags = {"categoria"})
 	@DeleteMapping(path = "/categoria/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Void> deleteCategoriaById(@PathVariable long id) {
 		try {
 			categoriaService.deleteById(id);

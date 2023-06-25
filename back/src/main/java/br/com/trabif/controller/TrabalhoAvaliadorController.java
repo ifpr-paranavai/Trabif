@@ -51,7 +51,7 @@ public class TrabalhoAvaliadorController {
 	@Operation(summary = "Busca trabalhoAvaliadores", description = "Buscar todos os trabalhoAvaliadores, buscar trabalhoAvaliadores por descricao", tags = {
 			"trabalhoAvaliador" })
 	@GetMapping(value = "/trabalhoAvaliador")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<TrabalhoAvaliadorDTO>> findAll(
 			@Parameter(description = "Descrição para pesquisa", allowEmptyValue = true) @RequestBody(required = false) String descricao,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
@@ -64,7 +64,7 @@ public class TrabalhoAvaliadorController {
 			@ApiResponse(responseCode = "404", description = "TrabalhoAvaliador não encontrado")
 	})
 	@GetMapping(value = "/trabalhoAvaliador/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<TrabalhoAvaliador> findTrabalhoAvaliadorById(@PathVariable long id) {
 		try {
 			TrabalhoAvaliador trabalhoAvaliador = trabalhoAvaliadorService.findById(id);
@@ -83,7 +83,7 @@ public class TrabalhoAvaliadorController {
 			@ApiResponse(responseCode = "404", description = "TrabalhoAvaliador não encontrado para este trabalho")
 	})
 	@GetMapping(value = "/trabalhoAvaliador/trabalho/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<TrabalhoAvaliadorDTO>> findTrabalhoAvaliadorByIdTrabalho(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<TrabalhoAvaliadorDTO> trabalhoAvaliadores = trabalhoAvaliadorService.findAllByIdTrabalho(id, pageable);
@@ -97,7 +97,7 @@ public class TrabalhoAvaliadorController {
 			@ApiResponse(responseCode = "404", description = "TrabalhoAvaliador não encontrado para este trabalho")
 	})
 	@GetMapping(value = "/trabalhoAvaliador/avaliador/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<TrabalhoAvaliadorDTO>> findTrabalhoAvaliadorByIdAvaliador(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<TrabalhoAvaliadorDTO> trabalhoAvaliadores = trabalhoAvaliadorService.findAllByIdAvaliador(id, pageable);
@@ -111,7 +111,7 @@ public class TrabalhoAvaliadorController {
 			@ApiResponse(responseCode = "404", description = "TrabalhoAvaliador não encontrado para este resultadoSubmissao")
 	})
 	@GetMapping(value = "/trabalhoAvaliador/resultadoSubmisao/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<TrabalhoAvaliadorDTO>> findTrabalhoAvaliadorByIdResultadoSubmissao(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<TrabalhoAvaliadorDTO> trabalhoAvaliadores = trabalhoAvaliadorService.findAllByIdResultadoSubmissao(id, pageable);
@@ -121,7 +121,7 @@ public class TrabalhoAvaliadorController {
 	@Operation(summary = "Adicionar trabalhoAvaliador", description = "Adicionar novo trabalhoAvaliador informado no banco de dados", tags = {
 			"trabalhoAvaliador" })
 	@PostMapping(value = "/trabalhoAvaliador")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<TrabalhoAvaliadorDTO> addTrabalhoAvaliador(@RequestBody TrabalhoAvaliador trabalhoAvaliador)
 			throws URISyntaxException {
 		try {
@@ -141,7 +141,7 @@ public class TrabalhoAvaliadorController {
 	@Operation(summary = "Alterar TrabalhoAvaliador", description = "Alterar valores do trabalhoAvaliador com id selecionado", tags = {
 			"trabalhoAvaliador" })
 	@PutMapping(value = "/trabalhoAvaliador/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<TrabalhoAvaliador> updateTrabalhoAvaliador(@Valid @RequestBody TrabalhoAvaliador trabalhoAvaliador,
 			@PathVariable long id) {
 		try {
@@ -161,7 +161,7 @@ public class TrabalhoAvaliadorController {
 	@Operation(summary = "Deletar trabalhoAvaliador", description = "Deletar trabalhoAvaliador com o ID informado", tags = {
 			"trabalhoAvaliador" })
 	@DeleteMapping(path = "/trabalhoAvaliador/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Void> deleteTrabalhoAvaliadorById(@PathVariable long id) {
 		try {
 			trabalhoAvaliadorService.deleteById(id);

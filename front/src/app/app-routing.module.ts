@@ -5,12 +5,14 @@ import { EventComponent } from './pages/event/event.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
+import { EventAddComponent } from './pages/event-add/event-add.component';
 
 const routes: Routes = [
   {path: 'modalBase', component: ModalBaseComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'event', component: EventComponent},
+  {path: 'eventAdd', component: EventAddComponent},
   {path: 'main', component: MainComponent},
 ];
 

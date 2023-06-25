@@ -51,7 +51,7 @@ public class PermissaoUsuarioController {
 	@Operation(summary = "Busca permissaoUsuarios", description = "Buscar todas as permissaoUsuarios, buscar permissaoUsuarios por descricao", tags = {
 			"permissaoUsuario" })
 	@GetMapping(value = "/permissaoUsuario")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<PermissaoUsuarioDTO>> findAll(
 			@Parameter(description = "Descrição para pesquisa", allowEmptyValue = true) @RequestBody(required = false) String descricao,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
@@ -64,7 +64,7 @@ public class PermissaoUsuarioController {
 			@ApiResponse(responseCode = "404", description = "PermissaoUsuario não encontrada")
 	})
 	@GetMapping(value = "/permissaoUsuario/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<PermissaoUsuario> findPermissaoUsuarioById(@PathVariable long id) {
 		try {
 			PermissaoUsuario permissaoUsuario = permissaoUsuarioService.findById(id);
@@ -83,7 +83,7 @@ public class PermissaoUsuarioController {
 			@ApiResponse(responseCode = "404", description = "PermissaoUsuario não encontrada para esta permissao")
 	})
 	@GetMapping(value = "/permissaoUsuario/permissao/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<PermissaoUsuarioDTO>> findPermissaoUsuarioByIdPermissao(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<PermissaoUsuarioDTO> permissaoUsuarios = permissaoUsuarioService.findAllByIdPermissao(id, pageable);
@@ -97,7 +97,7 @@ public class PermissaoUsuarioController {
 			@ApiResponse(responseCode = "404", description = "PermissaoUsuario não encontrada para este usuario")
 	})
 	@GetMapping(value = "/permissaoUsuario/usuario/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<PermissaoUsuarioDTO>> findPermissaoUsuarioByIdUsuario(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<PermissaoUsuarioDTO> permissaoUsuarios = permissaoUsuarioService.findAllByIdUsuario(id, pageable);
@@ -111,7 +111,7 @@ public class PermissaoUsuarioController {
 			@ApiResponse(responseCode = "404", description = "PermissaoUsuario não encontrada para este evento")
 	})
 	@GetMapping(value = "/permissaoUsuario/evento/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<PermissaoUsuarioDTO>> findPermissaoUsuarioByIdEvento(@PathVariable long id,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
 		Page<PermissaoUsuarioDTO> permissaoUsuarios = permissaoUsuarioService.findAllByIdEvento(id, pageable);
@@ -125,7 +125,7 @@ public class PermissaoUsuarioController {
 			@ApiResponse(responseCode = "404", description = "PermissaoUsuario não encontrada para este usuario neste evento")
 	})
 	@GetMapping(value = "/permissaoUsuario/usuario/{idUsuario}/evento/{idEvento}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<PermissaoUsuarioDTO>> findPermissaoUsuarioByIdUsuarioAndIdEvento(@PathVariable long idUsuario, 
 			@PathVariable long idEvento,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
@@ -137,7 +137,7 @@ public class PermissaoUsuarioController {
 	@Operation(summary = "Adicionar permissaoUsuario", description = "Adicionar novo permissaoUsuario informado no banco de dados", tags = {
 			"permissaoUsuario" })
 	@PostMapping(value = "/permissaoUsuario")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<PermissaoUsuarioDTO> addPermissaoUsuario(@RequestBody PermissaoUsuario permissaoUsuario)
 			throws URISyntaxException {
 		try {
@@ -157,7 +157,7 @@ public class PermissaoUsuarioController {
 	@Operation(summary = "Alterar PermissaoUsuario", description = "Alterar valores do permissaoUsuario com id selecionado", tags = {
 			"permissaoUsuario" })
 	@PutMapping(value = "/permissaoUsuario/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<PermissaoUsuario> updatePermissaoUsuario(@Valid @RequestBody PermissaoUsuario permissaoUsuario,
 			@PathVariable long id) {
 		try {
@@ -177,7 +177,7 @@ public class PermissaoUsuarioController {
 	@Operation(summary = "Deletar permissaoUsuario", description = "Deletar permissaoUsuario com o ID informado", tags = {
 			"permissaoUsuario" })
 	@DeleteMapping(path = "/permissaoUsuario/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Void> deletePermissaoUsuarioById(@PathVariable long id) {
 		try {
 			permissaoUsuarioService.deleteById(id);

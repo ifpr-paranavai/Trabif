@@ -50,13 +50,13 @@ public class UsuarioController {
 	
 	@Operation(summary = "Busca usuarios", description = "Buscar todos os usuarios, buscar usuarios por nome", tags = {"usuario"})
 	@GetMapping(value = "/usuario")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Page<UsuarioDTO>> findAll(
 			@Parameter(description = "Descrição para pesquisa", allowEmptyValue = true)
 			@RequestBody(required=false) String nome,
 			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true)
 			 Pageable pageable)	{
-		if(nome.isEmpty()) {
+		if(nome == null || nome.isEmpty()) {
 			return ResponseEntity.ok(usuarioService.findAll(pageable));
 		} else {
 			return ResponseEntity.ok(usuarioService.findAllByNome(nome, pageable));
@@ -70,7 +70,7 @@ public class UsuarioController {
 			@ApiResponse(responseCode = "404", description = "Usuario não encontrado")
 	})
 	@GetMapping(value = "/usuario/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Usuario> findUsuarioById(@PathVariable long id) {
 		try {
 			Usuario usuario = usuarioService.findById(id);
@@ -85,7 +85,7 @@ public class UsuarioController {
 	
 	@Operation(summary = "Adicionar usuario", description = "Adicionar novo usuario informado no banco de dados", tags = {"usuario"})
 	@PostMapping(value = "/usuario")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<UsuarioDTO> addUsuario(@RequestBody Usuario usuario) throws URISyntaxException {
 		try {
 			Usuario novoUsuario = usuarioService.save(usuario);
@@ -102,7 +102,7 @@ public class UsuarioController {
 	
 	@Operation(summary = "Alterar Usuario", description = "Alterar valores do usuario com id selecionado", tags = {"usuario"})
 	@PutMapping(value = "/usuario/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Usuario> updateUsuario(@Valid @RequestBody Usuario usuario, 
 			@PathVariable long id) {
 		try {
@@ -121,7 +121,7 @@ public class UsuarioController {
 	
 	@Operation(summary = "Deletar usuario", description = "Deletar usuario com o ID informado", tags = {"usuario"})
 	@DeleteMapping(path = "/usuario/{id}")
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:4200")
 	public ResponseEntity<Void> deleteUsuarioById(@PathVariable long id) {
 		try {
 			usuarioService.deleteById(id);
