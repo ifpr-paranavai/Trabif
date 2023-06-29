@@ -17,7 +17,7 @@ public class TrabalhoAvaliadorDTO extends AuditoriaDTO {
 		TrabalhoAvaliadorDTO trabalhoAvaliadorDTO = new TrabalhoAvaliadorDTO();
 		BeanUtils.copyProperties(trabalhoAvaliador, trabalhoAvaliadorDTO);
 		trabalhoAvaliadorDTO.setTrabalhoDTO(trabalhoDTO.converter(trabalhoAvaliador.getTrabalho()));
-		trabalhoAvaliadorDTO.setAvaliadorDTO(avaliadorDTO.converter(trabalhoAvaliador.getAvaliador()));
+		trabalhoAvaliadorDTO.setAvaliadorDTO(avaliadorDTO.converter(trabalhoAvaliador.getUsuario()));
 		trabalhoAvaliadorDTO.setResultadoSubmissaoDTO(resultadoSubmissaoDTO.converter(trabalhoAvaliador.getResultadoSubmissao()));
 		return trabalhoAvaliadorDTO;
 	}

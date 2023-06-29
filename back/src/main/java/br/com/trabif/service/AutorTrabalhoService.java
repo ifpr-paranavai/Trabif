@@ -50,7 +50,7 @@ public class AutorTrabalhoService {
 	}
 	
 	public AutorTrabalho save(AutorTrabalho autorTrabalho) throws BadResourceException, ResourceAlreadyExistsException {
-		if (autorTrabalho.getAutor() != null && autorTrabalho.getTrabalho() != null) {
+		if (autorTrabalho.getUsuario() != null && autorTrabalho.getTrabalho() != null) {
 			if(existsById(autorTrabalho.getId())) {
 				throw new ResourceAlreadyExistsException("AutorTrabalho com id: " + autorTrabalho.getId() + " já existe.");
 			}			
@@ -66,7 +66,7 @@ public class AutorTrabalhoService {
 	}
 	
 	public void update(AutorTrabalho autorTrabalho) throws BadResourceException, ResourceNotFoundException {
-		if (autorTrabalho.getAutor() != null && autorTrabalho.getTrabalho() != null) {
+		if (autorTrabalho.getUsuario() != null && autorTrabalho.getTrabalho() != null) {
 			if (!existsById(autorTrabalho.getId())) {
 				throw new ResourceNotFoundException("AutorTrabalho não encontrado com o id: " + autorTrabalho.getId());
 			}

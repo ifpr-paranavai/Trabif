@@ -15,7 +15,7 @@ public class AutorTrabalhoDTO extends AuditoriaDTO {
 	public AutorTrabalhoDTO converter(AutorTrabalho autorTrabalho) {
 		AutorTrabalhoDTO autorTrabalhoDTO = new AutorTrabalhoDTO();
 		BeanUtils.copyProperties(autorTrabalho, autorTrabalhoDTO);
-		autorTrabalhoDTO.setAutorDTO(autorDTO.converter(autorTrabalho.getAutor()));
+		autorTrabalhoDTO.setAutorDTO(autorDTO.converter(autorTrabalho.getUsuario()));
 		autorTrabalhoDTO.setTrabalhoDTO(trabalhoDTO.converter(autorTrabalho.getTrabalho()));
 		return autorTrabalhoDTO;
 	}

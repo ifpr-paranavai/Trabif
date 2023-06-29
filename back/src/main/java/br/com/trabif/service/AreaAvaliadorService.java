@@ -50,7 +50,7 @@ public class AreaAvaliadorService {
 	}
 	
 	public AreaAvaliador save(AreaAvaliador areaAvaliador) throws BadResourceException, ResourceAlreadyExistsException {
-		if (areaAvaliador.getArea() != null && areaAvaliador.getAvaliador() != null) {
+		if (areaAvaliador.getArea() != null && areaAvaliador.getUsuario() != null) {
 			if(existsById(areaAvaliador.getId())) {
 				throw new ResourceAlreadyExistsException("AreaAvaliador com id: " + areaAvaliador.getId() + " já existe.");
 			}			
@@ -66,7 +66,7 @@ public class AreaAvaliadorService {
 	}
 	
 	public void update(AreaAvaliador areaAvaliador) throws BadResourceException, ResourceNotFoundException {
-		if (areaAvaliador.getArea() != null && areaAvaliador.getAvaliador() != null) {
+		if (areaAvaliador.getArea() != null && areaAvaliador.getUsuario() != null) {
 			if (!existsById(areaAvaliador.getId())) {
 				throw new ResourceNotFoundException("AreaAvaliador não encontrado com o id: " + areaAvaliador.getId());
 			}

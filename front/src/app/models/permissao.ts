@@ -1,6 +1,6 @@
 import { Auditoria } from "./auditoria";
 
-export class Criterio extends Auditoria {
+export class Permissao extends Auditoria {
   id?: number;
   descricao?: string;
 }

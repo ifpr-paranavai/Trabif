@@ -37,7 +37,7 @@ public class TrabalhoAvaliador extends Auditoria implements Serializable {
 	@ManyToOne
 	@Schema(description = "Usuario", example = "")
 	@JoinColumn(name = "id_usuario")
-	private Usuario avaliador;
+	private Usuario usuario;
 
 	@ManyToOne
 	@Schema(description = "Resultado Submissao", example = "")

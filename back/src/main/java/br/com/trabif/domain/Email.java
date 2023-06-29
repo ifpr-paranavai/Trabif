@@ -40,9 +40,9 @@ public class Email extends Auditoria implements Serializable {
 	@NotBlank
 	private String titulo;
 
-	@Schema(description = "Menssagem do e-mail", example = "")
+	@Schema(description = "Mensagem do e-mail", example = "")
 	@NotBlank
-	private String messagem;
+	private String mensagem;
 	
 	public Email() {}
 

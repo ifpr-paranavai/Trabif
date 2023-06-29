@@ -55,7 +55,7 @@ public class TrabalhoAvaliadorService {
 	}
 	
 	public TrabalhoAvaliador save(TrabalhoAvaliador trabalhoAvaliador) throws BadResourceException, ResourceAlreadyExistsException {
-		if (trabalhoAvaliador.getTrabalho() != null && trabalhoAvaliador.getAvaliador() != null) {
+		if (trabalhoAvaliador.getTrabalho() != null && trabalhoAvaliador.getUsuario() != null) {
 			if(existsById(trabalhoAvaliador.getId())) {
 				throw new ResourceAlreadyExistsException("TrabalhoAvaliador com id: " + trabalhoAvaliador.getId() + " já existe.");
 			}			
@@ -71,7 +71,7 @@ public class TrabalhoAvaliadorService {
 	}
 	
 	public void update(TrabalhoAvaliador trabalhoAvaliador) throws BadResourceException, ResourceNotFoundException {
-		if (trabalhoAvaliador.getTrabalho() != null && trabalhoAvaliador.getAvaliador() != null) {
+		if (trabalhoAvaliador.getTrabalho() != null && trabalhoAvaliador.getUsuario() != null) {
 			if (!existsById(trabalhoAvaliador.getId())) {
 				throw new ResourceNotFoundException("TrabalhoAvaliador não encontrado com o id: " + trabalhoAvaliador.getId());
 			}

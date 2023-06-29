@@ -16,7 +16,7 @@ public class AreaAvaliadorDTO extends AuditoriaDTO {
 		AreaAvaliadorDTO areaAvaliadorDTO = new AreaAvaliadorDTO();
 		BeanUtils.copyProperties(areaAvaliador, areaAvaliadorDTO);
 		areaAvaliadorDTO.setAreaDTO(areaDTO.converter(areaAvaliador.getArea()));
-		areaAvaliadorDTO.setAvaliadorDTO(avaliadorDTO.converter(areaAvaliador.getAvaliador()));
+		areaAvaliadorDTO.setAvaliadorDTO(avaliadorDTO.converter(areaAvaliador.getUsuario()));
 		return areaAvaliadorDTO;
 	}
 	
