@@ -21,8 +21,7 @@ public class EventoEmailTemplateDTO extends AuditoriaDTO {
 	}
 	
 	public Page<EventoEmailTemplateDTO> converterListaEventoEmailTemplateDTO(Page<EventoEmailTemplate> pageEventoEmailTemplate) {
-		Page<EventoEmailTemplateDTO> listaDTO = pageEventoEmailTemplate.map(this::converter);
-		return listaDTO;
+		return pageEventoEmailTemplate.map(this::converter);
 	}
 	
 }

@@ -21,8 +21,7 @@ public class AutorTrabalhoDTO extends AuditoriaDTO {
 	}
 	
 	public Page<AutorTrabalhoDTO> converterListaAutorTrabalhoDTO(Page<AutorTrabalho> pageAutorTrabalho) {
-		Page<AutorTrabalhoDTO> listaDTO = pageAutorTrabalho.map(this::converter);
-		return listaDTO;
+		return pageAutorTrabalho.map(this::converter);
 	}
 	
 }

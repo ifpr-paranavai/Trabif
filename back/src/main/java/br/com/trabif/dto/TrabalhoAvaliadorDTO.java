@@ -23,8 +23,7 @@ public class TrabalhoAvaliadorDTO extends AuditoriaDTO {
 	}
 	
 	public Page<TrabalhoAvaliadorDTO> converterListaTrabalhoAvaliadorDTO(Page<TrabalhoAvaliador> pageTrabalhoAvaliador) {
-		Page<TrabalhoAvaliadorDTO> listaDTO = pageTrabalhoAvaliador.map(this::converter);
-		return listaDTO;
+		return pageTrabalhoAvaliador.map(this::converter);
 	}
 	
 }

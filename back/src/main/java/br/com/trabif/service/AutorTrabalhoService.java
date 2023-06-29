@@ -56,8 +56,7 @@ public class AutorTrabalhoService {
 			}			
 			autorTrabalho.setStatus('A');
 			autorTrabalho.setDataCadastro(Calendar.getInstance().getTime());
-			AutorTrabalho autorTrabalhoNovo = autorTrabalhoRepository.save(autorTrabalho);
-			return autorTrabalhoNovo;
+			return autorTrabalhoRepository.save(autorTrabalho);
 		} else {
 			BadResourceException exe = new BadResourceException("Erro ao salvar autorTrabalho");
 			exe.addErrorMessage("AutorTrabalho esta vazio ou nulo");

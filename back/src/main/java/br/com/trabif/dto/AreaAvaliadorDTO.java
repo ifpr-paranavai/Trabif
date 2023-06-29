@@ -21,8 +21,7 @@ public class AreaAvaliadorDTO extends AuditoriaDTO {
 	}
 	
 	public Page<AreaAvaliadorDTO> converterListaAreaAvaliadorDTO(Page<AreaAvaliador> pageAreaAvaliador) {
-		Page<AreaAvaliadorDTO> listaDTO = pageAreaAvaliador.map(this::converter);
-		return listaDTO;
+		return pageAreaAvaliador.map(this::converter);
 	}
 	
 }

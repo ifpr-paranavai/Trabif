@@ -61,8 +61,7 @@ public class TrabalhoAvaliadorService {
 			}			
 			trabalhoAvaliador.setStatus('A');
 			trabalhoAvaliador.setDataCadastro(Calendar.getInstance().getTime());
-			TrabalhoAvaliador trabalhoAvaliadorNovo = trabalhoAvaliadorRepository.save(trabalhoAvaliador);
-			return trabalhoAvaliadorNovo;
+			return trabalhoAvaliadorRepository.save(trabalhoAvaliador);
 		} else {
 			BadResourceException exe = new BadResourceException("Erro ao salvar trabalhoAvaliador");
 			exe.addErrorMessage("TrabalhoAvaliador esta vazio ou nulo");

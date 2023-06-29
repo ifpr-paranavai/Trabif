@@ -56,8 +56,7 @@ public class AreaAvaliadorService {
 			}			
 			areaAvaliador.setStatus('A');
 			areaAvaliador.setDataCadastro(Calendar.getInstance().getTime());
-			AreaAvaliador areaAvaliadorNovo = areaAvaliadorRepository.save(areaAvaliador);			
-			return areaAvaliadorNovo;
+			return areaAvaliadorRepository.save(areaAvaliador);
 		} else {
 			BadResourceException exe = new BadResourceException("Erro ao salvar areaAvaliador");
 			exe.addErrorMessage("AreaAvaliador esta vazio ou nulo");

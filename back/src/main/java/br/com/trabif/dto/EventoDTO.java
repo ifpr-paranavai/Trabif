@@ -22,8 +22,7 @@ public class EventoDTO extends AuditoriaDTO {
 	}
 	
 	public Page<EventoDTO> converterListaEventoDTO(Page<Evento> pageEvento) {
-		Page<EventoDTO> listaDTO = pageEvento.map(this::converter);
-		return listaDTO;
+		return pageEvento.map(this::converter);
 	}
 	
 }
