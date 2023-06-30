@@ -43,7 +43,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Tag(name = "eventoOrganizador", description = "API de EventoOrganizador")
 public class EventoOrganizadorController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	// private final int ROW_PER_PAGE = 5;
 
 	@Autowired
 	private EventoOrganizadorService eventoOrganizadorService;

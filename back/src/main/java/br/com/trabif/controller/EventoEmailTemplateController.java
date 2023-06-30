@@ -43,7 +43,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Tag(name = "eventoEmailTemplate", description = "API de EventoEmailTemplate")
 public class EventoEmailTemplateController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	// private final int ROW_PER_PAGE = 5;
 
 	@Autowired
 	private EventoEmailTemplateService eventoEmailTemplateService;

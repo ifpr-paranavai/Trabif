@@ -1,7 +1,5 @@
 package br.com.trabif.dto;
 
-import java.util.Date;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 
