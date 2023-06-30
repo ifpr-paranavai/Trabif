@@ -17,6 +17,12 @@ export class TrabalhoService implements BaseService {
   getById(id: number): Observable<BaseResult<Trabalho>> {
     return this.http.get<BaseResult<Trabalho>>(this.baseUrl + '/' + id);
   }
+  getAllByCategoryId(id: number): Observable<BaseResults<Trabalho>> {
+    return this.http.get<BaseResults<Trabalho>>(this.baseUrl + '/categoria/' + id);
+  }
+  getAllByEventId(id: number): Observable<BaseResults<Trabalho>> {
+    return this.http.get<BaseResults<Trabalho>>(this.baseUrl + '/evento/' + id);
+  }
   post(obj: Trabalho): Observable<BaseResult<Trabalho>> {
     return this.http.post<BaseResult<Trabalho>>(this.baseUrl, obj);
   }

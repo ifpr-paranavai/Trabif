@@ -13,5 +13,8 @@ public interface TrabalhoRepository extends JpaRepository<Trabalho, Long> {
 
 	@Query(value = "select p from Trabalho p where p.categoria.id=?1")
 	Page<Trabalho> findByCategoria(Long id, Pageable page);
+
+	@Query(value = "select p from Trabalho p where p.evento.id=?1")
+	Page<Trabalho> findByEvento(Long id, Pageable page);
 }
 
