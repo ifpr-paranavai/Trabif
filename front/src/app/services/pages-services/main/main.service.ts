@@ -10,7 +10,7 @@ export class MainService {
     private router: Router,
   ) { }
 
-  irParaMain(): void {
+  goToMain(): void {
     this.router.navigate(['/main']);
   }
 }

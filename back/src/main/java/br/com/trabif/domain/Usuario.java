@@ -3,6 +3,7 @@ package br.com.trabif.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,9 +38,11 @@ public class Usuario extends Auditoria implements Serializable {
 	private String nome;
 	
 	@Schema(description = "CPF do usuário", example = "00.000.000-00")
+	@Column(unique = true)
 	private String cpf;
 	
 	@Schema(description = "E-mail do usuário, usado para acessar o sistema", example = "josesilva@gmail.com")
+	@Column(unique = true)
 	private String email;
 	
 	@Schema(description = "Código usado para recuperar senha do email informado")

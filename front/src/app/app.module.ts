@@ -29,6 +29,7 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { HttpClientModule } from '@angular/common/http';
 import { EventAddComponent } from './pages/event-add/event-add.component';
 import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { FormsModule } from '@angular/forms';
     EventComponent,
     MainComponent,
     EventAddComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

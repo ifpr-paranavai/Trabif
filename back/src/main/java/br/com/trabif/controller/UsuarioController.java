@@ -132,4 +132,15 @@ public class UsuarioController {
 					HttpStatus.NOT_FOUND, ex.getMessage(), ex);
 		}
 	}
+
+	@Operation(summary = "Login do usuario", description = "Verificar dados para realizar o login do usuário", tags = {"usuario"})
+	@PostMapping(value = "/usuario/login")
+	@CrossOrigin("http://localhost:4200")
+	public ResponseEntity<UsuarioDTO> login(@RequestBody Usuario usuario) throws URISyntaxException {
+		UsuarioDTO usuarioDTO = usuarioService.loginUsuario(usuario);
+		if (usuarioDTO == null) {
+			return ResponseEntity.badRequest().build();
+		}
+		return ResponseEntity.ok(usuarioDTO);
+	}
 }

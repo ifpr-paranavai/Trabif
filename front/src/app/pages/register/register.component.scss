@@ -1,0 +1,102 @@
+@import "../../../styles.scss";
+
+.card {
+  all: unset;
+  border-radius: 4px;
+  border: 1px solid #dadada;
+  background-color: #fafafa;
+  height: 520px;
+  width: 400px;
+  margin: auto;
+  margin-top: 184px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+}
+button {
+  border-radius: 8px;
+  border-color: transparent;
+  background-color: #008000;
+  margin-bottom: 4%;
+  margin-top: 8%;
+  width: 100px;
+  color: #fff;
+  height: 45px;
+  font-size: 16px;
+}
+label {
+  font-size: 20px;
+}
+h1{
+  padding-top: 2rem;
+}
+
+input {
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.2);
+  height: 56px;
+  width: 100%;
+  padding: 13px 15px;
+}
+
+input:focus {
+  outline: none !important;
+  border:1px solid rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px #008000;
+}
+
+.input-user {
+  margin-bottom: 8%;
+  width: 100%;
+}
+
+.margin-login {
+  margin: 0px auto 24px 80px;
+  position: static;
+}
+
+.margin-label-login {
+  margin: 0px auto 16px 80px;
+  position: static;
+}
+
+.header-card {
+  background-color: #008000;
+  width: 432px;
+  height: 56px;
+  margin: 0px 14px 400px -16px;
+  position: absolute;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom: solid 2px #dadada;
+}
+
+.titulo-user {
+  color: #000000;
+  width: 100%;
+  text-align: center;
+}
+
+.body-user {
+  width: 100%;
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.registar {
+  text-align: center;
+  width: 100%;
+}
+
+.esqueceu-senha {
+  text-align: start;
+  width: 100%;
+}

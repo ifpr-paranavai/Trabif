@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.trabif.domain.Usuario;
@@ -18,6 +19,9 @@ import br.com.trabif.repository.UsuarioRepository;
 @Service
 public class UsuarioService {
 	
+	@Autowired
+    PasswordEncoder passwordEncoder;
+
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
@@ -55,15 +59,16 @@ public class UsuarioService {
 			}			
 			usuario.setStatus('A');
 			usuario.setDataCadastro(Calendar.getInstance().getTime());
+			usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
 			Usuario usuarioNovo = usuarioRepository.save(usuario);
+			usuarioNovo.setSenha(null);
 			return usuarioNovo;
 		} else {
 			BadResourceException exe = new BadResourceException("Erro ao salvar usuario");
 			exe.addErrorMessage("Usuario esta vazio ou nulo");
 			throw exe;
 		}
-		
-		
+
 	}
 	
 	public void update(Usuario usuario) throws BadResourceException, ResourceNotFoundException {
@@ -91,4 +96,19 @@ public class UsuarioService {
 		return usuarioRepository.count();
 	}
 	
+	public UsuarioDTO loginUsuario(Usuario usuario) {
+		UsuarioDTO usuarioDTO = null;
+		if(usuario.getEmail() == null)
+			return usuarioDTO;
+		if (usuario.getSenha() == null)
+			return usuarioDTO;
+		Usuario usuarioDb = usuarioRepository.findByEmail(usuario.getEmail());
+		if(usuarioDb == null)
+			return usuarioDTO;
+		if(passwordEncoder.matches(usuario.getSenha(), usuarioDb.getSenha())) {
+			usuarioDTO = new UsuarioDTO().converter(usuarioDb);
+		}
+		return usuarioDTO;
+	}
+ 
 }

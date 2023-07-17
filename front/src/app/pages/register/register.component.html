@@ -1,0 +1,21 @@
+<app-header ></app-header>
+<div class="margin-header">
+  <div class="card">
+    <h1 class="titulo-user">Cadastro de Usuário</h1>
+    <div class="body-user">
+      <div class="form-group input-user">
+        <input type="text" class="form-control" id="nome"  placeholder="Nome:" [(ngModel)]="usuario.nome">
+      </div>
+      <div class="form-group input-user">
+        <input type="text" class="form-control" id="cpf" placeholder="CPF:" [(ngModel)]="usuario.cpf" mask="999.999.999-99">
+      </div>
+      <div class="form-group input-user">
+        <input type="email" class="form-control" id="email" placeholder="E-mail:" [(ngModel)]="usuario.email">
+      </div>
+      <div class="form-group input-user">
+        <input type="password" class="form-control" id="senha" placeholder="Senha:" [(ngModel)]="usuario.senha">
+      </div>
+      <button (click)="saveUsuario()">Salvar</button>
+    </div>
+  </div>
+</div>

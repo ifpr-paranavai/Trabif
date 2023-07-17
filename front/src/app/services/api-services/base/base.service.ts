@@ -5,7 +5,7 @@ export class BaseResults<K> {
 }
 
 export class BaseResult<K> {
-  result: K | undefined;
+  content: K | undefined;
 }
 export interface BaseService {
   getAll(): Observable<BaseResults<any>>;

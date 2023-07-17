@@ -11,7 +11,7 @@ public interface TrabalhoAvaliadorRepository extends JpaRepository<TrabalhoAvali
 	@Query(value = "select p from TrabalhoAvaliador p where p.trabalho.id=?1")
 	Page<TrabalhoAvaliador> findByTrabalho(Long id, Pageable page);
 
-	@Query(value = "select p from TrabalhoAvaliador p where p.avaliador.id=?1")
+	@Query(value = "select p from TrabalhoAvaliador p where p.usuario.id=?1")
 	Page<TrabalhoAvaliador> findByAvaliador(Long id, Pageable page);
 
 	@Query(value = "select p from TrabalhoAvaliador p where p.resultadoSubmissao.id=?1")

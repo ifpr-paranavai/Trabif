@@ -10,7 +10,7 @@ export class EventService {
     private router: Router,
   ) { }
 
-  irParaEvent(): void {
+  goToEvent(): void {
     this.router.navigate(['/event']);
   }
 }

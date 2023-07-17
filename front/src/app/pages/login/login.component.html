@@ -7,14 +7,16 @@
   <div class="card">
     <h1 class="titulo-login">Login</h1>
     <div class="body-login">
-      <input type="email" class="input-email" placeholder="E-mail:">
-      <input type="password" class="" placeholder="Senha:">
+      <div class="form-group" style="width: 100%;">
+        <input type="email" class="form-control input-email" placeholder="E-mail:" [(ngModel)]="usuario.email">
+        <input type="password" class="form-control" placeholder="Senha:" [(ngModel)]="usuario.senha">
+      </div>
       <div class="esqueceu-senha">
         <a class="" href="/">Esqueceu a senha?</a>
       </div>
-      <button (click)="eventService.irParaEvent()">Entrar</button>
+      <button (click)="login()">Entrar</button>
       <div class="registar">
-        <a class="" href="/">Registar-se</a>
+        <a class="" (click)="this.registerService.goToRegister()">Registar-se</a>
       </div>
     </div>
   </div>

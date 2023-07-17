@@ -20,7 +20,7 @@ export class EventAddComponent {
     if (this.evento.nome) {
       this.eventoApiService.post(this.evento).subscribe(() => {
         alert("Evento criado com sucesso!");
-        this.eventService.irParaEvent();
+        this.eventService.goToEvent();
       });
     }
   }

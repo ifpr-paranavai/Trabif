@@ -10,7 +10,7 @@ export class HomeService {
     private router: Router,
   ) { }
 
-  irParaHome(): void {
+  goToHome(): void {
     this.router.navigate(['/home']);
   }
 }
