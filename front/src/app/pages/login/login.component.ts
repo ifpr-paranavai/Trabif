@@ -1,3 +1,4 @@
+import { RecoverPasswordService } from './../../services/pages-services/recover-password/recover-password.service';
 import { RegisterService } from './../../services/pages-services/register/register.service';
 import { UsuarioService } from './../../services/api-services/usuario/usuario.service';
 import { Usuario } from './../../models/usuario';
@@ -16,6 +17,7 @@ export class LoginComponent {
     public mainService: MainService,
     public eventService: EventService,
     public registerService: RegisterService,
+    public recoverPasswordService: RecoverPasswordService,
     public usuarioService: UsuarioService
   ) {}
 
@@ -24,7 +26,7 @@ export class LoginComponent {
     this.usuarioService.login(this.usuario).subscribe({
       next: (result) => {
         if (result.content) {
-          this.usuarioService.loggedUser = result.content;
+          // this.usuarioService.loggedUser = result.content;
           this.eventService.goToEvent();
         } else {
           alert('Usuário ou senha inválidos');

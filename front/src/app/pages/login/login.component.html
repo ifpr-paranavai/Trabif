@@ -12,7 +12,7 @@
         <input type="password" class="form-control" placeholder="Senha:" [(ngModel)]="usuario.senha">
       </div>
       <div class="esqueceu-senha">
-        <a class="" href="/">Esqueceu a senha?</a>
+        <a (click)="this.recoverPasswordService.goToRecover()">Esqueceu a senha?</a>
       </div>
       <button (click)="login()">Entrar</button>
       <div class="registar">

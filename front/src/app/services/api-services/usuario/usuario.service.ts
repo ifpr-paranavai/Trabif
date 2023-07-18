@@ -29,7 +29,13 @@ export class UsuarioService implements BaseService {
   delete(id: number): Observable<any> {
     return this.http.delete(this.baseUrl + '/' + id);
   }
-  login(obj: Usuario): Observable<BaseResult<Usuario>> {
-    return this.http.post<BaseResult<Usuario>>(this.baseUrl + '/login', obj);
+  login(obj: Usuario): Observable<BaseResult<Map<String, Object>>> {
+    return this.http.post<BaseResult<Map<String, Object>>>(this.baseUrl + '-gerenciamento/login', obj);
+  }
+  recoverPassword(obj: Usuario): Observable<BaseResult<String>> {
+    return this.http.post<BaseResult<String>>(this.baseUrl + '-gerenciamento/senha-codigo', obj);
+  }
+  changePassword(obj: Usuario): Observable<BaseResult<String>> {
+    return this.http.post<BaseResult<String>>(this.baseUrl + '-gerenciamento/senha-alterar', obj);
   }
 }

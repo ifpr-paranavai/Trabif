@@ -7,6 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
 import { EventAddComponent } from './pages/event-add/event-add.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 
 const routes: Routes = [
   {path: 'modalBase', component: ModalBaseComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'eventAdd', component: EventAddComponent},
   {path: 'main', component: MainComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'recoverPassword', component: RecoverPasswordComponent},
 ];
 
 @NgModule({

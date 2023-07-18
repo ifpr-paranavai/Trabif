@@ -30,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EventAddComponent } from './pages/event-add/event-add.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
+import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { RegisterComponent } from './pages/register/register.component';
     MainComponent,
     EventAddComponent,
     RegisterComponent,
+    RecoverPasswordComponent,
   ],
   imports: [
     BrowserModule,

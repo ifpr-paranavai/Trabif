@@ -18,36 +18,35 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig {
 
-    // @Autowired
-	// private AuthEntryPointJwt unauthorizedHandler;
+    @Autowired
+	private AuthEntryPointJwt unauthorizedHandler;
 
-    // @Bean
-    // public AuthFilterToken authFilterToken(){
-    //     return new AuthFilterToken();
-    // }
+    @Bean
+    public AuthFilterToken authFilterToken(){
+        return new AuthFilterToken();
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
-    // @Bean
-    // public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)throws Exception{
-    //     return authenticationConfiguration.getAuthenticationManager();
-    // }
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)throws Exception{
+        return authenticationConfiguration.getAuthenticationManager();
+    }
 
-    // @Bean
-    // public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-    //     http.cors().and().csrf().disable()
-    //         .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-    //         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-    //         .and().authorizeRequests().antMatchers("/api/pessoa-gerenciamento/**").permitAll()
-    //         .antMatchers("/api/usuario/**").hasAnyAuthority("Administrador")
-    //         .anyRequest().authenticated();
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+        http.cors().and().csrf().disable()
+            .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and().authorizeRequests().antMatchers("/api/usuario-gerenciamento/**").permitAll()
+            .antMatchers("/api/usuario/**").permitAll();
 
-    //         http.addFilterBefore(authFilterToken(), UsernamePasswordAuthenticationFilter.class);
+            http.addFilterBefore(authFilterToken(), UsernamePasswordAuthenticationFilter.class);
 
-    //     return http.build();
-    // }
+        return http.build();
+    }
     
 }

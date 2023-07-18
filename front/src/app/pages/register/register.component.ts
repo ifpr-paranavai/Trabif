@@ -20,7 +20,8 @@ export class RegisterComponent {
   saveUsuario(): void {
     this.usuarioService.post(this.usuario).subscribe({
       next: (result) => {
-        if (result.content) {
+        if (result) {
+          alert('Usuário criado com sucesso');
           this.loginService.goToLogin();
         }
       },
