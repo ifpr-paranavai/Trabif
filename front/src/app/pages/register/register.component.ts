@@ -21,7 +21,7 @@ export class RegisterComponent {
     this.usuarioService.post(this.usuario).subscribe({
       next: (result) => {
         if (result) {
-          alert('Usuário criado com sucesso');
+          alert('Usuário criado com sucesso!');
           this.loginService.goToLogin();
         }
       },

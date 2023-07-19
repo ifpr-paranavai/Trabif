@@ -53,13 +53,14 @@ public class UsuarioService {
 	
 	public Usuario save(Usuario usuario) throws BadResourceException, ResourceAlreadyExistsException {
 		if(!usuario.getNome().isEmpty()) {
-			usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 			if(existsById(usuario.getId())) {
 				throw new ResourceAlreadyExistsException("Usuario com id: " + usuario.getId() + " já existe.");
 			}			
 			usuario.setStatus('A');
 			usuario.setDataCadastro(Calendar.getInstance().getTime());
-			usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
+			if(usuario.getSenha() != null) {
+				usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
+			}
 			Usuario usuarioNovo = usuarioRepository.save(usuario);
 			usuarioNovo.setSenha(null);
 			return usuarioNovo;

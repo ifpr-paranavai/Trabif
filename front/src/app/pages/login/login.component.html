@@ -12,11 +12,11 @@
         <input type="password" class="form-control" placeholder="Senha:" [(ngModel)]="usuario.senha">
       </div>
       <div class="esqueceu-senha">
-        <a (click)="this.recoverPasswordService.goToRecover()">Esqueceu a senha?</a>
+        <a [routerLink]="" (click)="this.recoverPasswordService.goToRecover()">Esqueceu a senha?</a>
       </div>
-      <button (click)="login()">Entrar</button>
+      <button class="btn btn-primary" (click)="login()">Entrar</button>
       <div class="registar">
-        <a class="" (click)="this.registerService.goToRegister()">Registar-se</a>
+        <a class="" [routerLink]="" (click)="this.registerService.goToRegister()">Registar-se</a>
       </div>
     </div>
   </div>

@@ -18,12 +18,11 @@ import br.com.trabif.domain.Usuario;
 import br.com.trabif.security.JwtUtil;
 import br.com.trabif.service.UsuarioGerenciamentoSerivce;
 
-
 @RestController
 @RequestMapping("/api/usuario-gerenciamento")
 @CrossOrigin
 public class UsuarioGerenciamentoController {
-    
+
     @Autowired
     private UsuarioGerenciamentoSerivce usuarioGerenciamentoService;
 
@@ -35,30 +34,34 @@ public class UsuarioGerenciamentoController {
 
     @PostMapping("/senha-codigo")
     @CrossOrigin("http://localhost:4200")
-    public String recuperarCodigo(@RequestBody Usuario usuario){
-       return usuarioGerenciamentoService.solicitarCodigo(usuario.getEmail());
+    public ResponseEntity<?> recuperarCodigo(@RequestBody Usuario usuario) {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("resposta", usuarioGerenciamentoService.solicitarCodigo(usuario.getEmail()));
+        return ResponseEntity.ok(map);
     }
 
     @PostMapping("/senha-alterar")
     @CrossOrigin("http://localhost:4200")
-    public String alterarSenha(@RequestBody Usuario usuario){
-       return usuarioGerenciamentoService.alterarSenha(usuario);
+    public ResponseEntity<?> alterarSenha(@RequestBody Usuario usuario) {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("resposta", usuarioGerenciamentoService.alterarSenha(usuario));
+        return ResponseEntity.ok(map);
     }
 
     @PostMapping("/login")
     @CrossOrigin("http://localhost:4200")
-    public ResponseEntity<?> login(@RequestBody Usuario usuario){
-      Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(usuario.getEmail(), usuario.getSenha()));
-      SecurityContextHolder.getContext().setAuthentication(authentication);
-      Usuario autenticado = (Usuario) authentication.getPrincipal();
-      String token = jwtUtil.gerarTokenUsername(autenticado);
-      HashMap<String, Object> map = new HashMap<>();
-      map.put("token", token);
-      map.put("usuario", usuario);
-      return ResponseEntity.ok(map);
+    public ResponseEntity<?> login(@RequestBody Usuario usuario) {
+        Authentication authentication = authenticationManager
+                .authenticate(new UsernamePasswordAuthenticationToken(usuario.getEmail(), usuario.getSenha()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        Usuario autenticado = (Usuario) authentication.getPrincipal();
+        String token = jwtUtil.gerarTokenUsername(autenticado);
+        autenticado.setSenha(null);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("token", token);
+        map.put("usuario", autenticado);
+        return ResponseEntity.ok(map);
 
     }
-
-
 
 }

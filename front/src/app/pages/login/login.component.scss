@@ -93,9 +93,16 @@ input:focus {
 .registar {
   text-align: center;
   width: 100%;
+  color:#00A0C6;
 }
 
 .esqueceu-senha {
   text-align: start;
   width: 100%;
+  color:#00A0C6;
 }
+
+a:hover {
+  cursor:pointer;
+}
+
