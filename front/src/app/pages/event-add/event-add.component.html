@@ -1,20 +1,26 @@
 <app-header></app-header>
 
 <div class="margin-header espacamento-base">
-  <h1>Adicionar Evento</h1>
-  <div class="form-group mb-3">
-    <label for="nome">Nome do evento:</label>
-    <input type="text" class="form-control" id="nome" [(ngModel)]="evento.nome">
-  </div>
-  <div class="form-group mb-3">
-    <label for="nome">Data de início do evento:</label>
-    <input type="date" class="form-control" id="nome" [(ngModel)]="evento.dataInicio">
-  </div>
-  <div class="form-group mb-3">
-    <label for="nome">Data de fim do evento:</label>
-    <input type="date" class="form-control" id="nome" [(ngModel)]="evento.dataFim">
-  </div>
+  <div class="card card-event">
+    <div class="card-body">
+      <h1 class="card-title">Adicionar Evento</h1>
+      <div class="form-group mb-3">
+        <label for="nome">Nome do evento:</label>
+        <input type="text" class="form-control" id="nome" [(ngModel)]="evento.nome">
+      </div>
+      <div class="form-group mb-3">
+        <label for="nome">Data de início do evento:</label>
+        <input type="date" class="form-control" id="nome" [(ngModel)]="evento.dataInicio">
+      </div>
+      <div class="form-group mb-3">
+        <label for="nome">Data de fim do evento:</label>
+        <input type="date" class="form-control" id="nome" [(ngModel)]="evento.dataFim">
+      </div>
+      <div class="div-button">
+        <button (click)="addEvent()" class="btn btn-primary">Salvar</button>
+      </div>
 
-  <button (click)="addEvent()" class="btn btn-primary">Salvar</button>
+    </div>
 
+  </div>
 </div>
