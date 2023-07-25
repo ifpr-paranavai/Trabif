@@ -3,6 +3,7 @@ package br.com.trabif.service;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -56,6 +57,12 @@ public class UsuarioGerenciamentoSerivce {
     private String getCodigoRecuperacaoSenha(Long id) {
         DateFormat format = new SimpleDateFormat("ddMMyyyyHHmmssmm");
         return format.format(new Date()) + id;
+    }
+
+
+    public String emailTemplateEnvio(String email, Map<String, String> propriedades) {
+        emailService.enviarEmailTemplate(email, propriedades);
+        return "E-mail Enviado!";
     }
 
 }

@@ -1,6 +1,7 @@
 package br.com.trabif.controller;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,6 +64,14 @@ public class UsuarioGerenciamentoController {
         map.put("usuario", autenticado);
         return ResponseEntity.ok(map);
 
+    }
+
+    @PostMapping("/template-envio/{email}")
+    @CrossOrigin("http://localhost:4200")
+    public ResponseEntity<?> envioEmailTemplate(@PathVariable String email, @RequestBody Map<String, String> propriedades) {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("resposta", usuarioGerenciamentoService.emailTemplateEnvio(email, propriedades));
+        return ResponseEntity.ok(map);
     }
 
 }
