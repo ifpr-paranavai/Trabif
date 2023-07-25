@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseResult, BaseResults, BaseService } from '../base/base.service';
 import { Evento } from 'src/app/models/evento';
+import { Usuario } from 'src/app/models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,9 @@ export class EventoService implements BaseService {
   }
   post(obj: any): Observable<BaseResult<Evento>> {
     return this.http.post<BaseResult<Evento>>(this.baseUrl, obj);
+  }
+  postEvent(id: number, obj: any): Observable<BaseResult<Evento>> {
+    return this.http.post<BaseResult<Evento>>(this.baseUrl + '/' + id, obj);
   }
   put(id: number, obj: Evento): Observable<BaseResult<Evento>> {
     return this.http.put<BaseResult<Evento>>(this.baseUrl + '/' + id, obj);

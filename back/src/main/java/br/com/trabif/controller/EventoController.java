@@ -83,11 +83,12 @@ public class EventoController {
 	}
 	
 	@Operation(summary = "Adicionar evento", description = "Adicionar novo evento informado no banco de dados", tags = {"evento"})
-	@PostMapping(value = "/evento")
+	@PostMapping(value = "/evento/{usuarioId}")
 	@CrossOrigin("http://localhost:4200")
-	public ResponseEntity<EventoDTO> addEvento(@RequestBody Evento evento) throws URISyntaxException {
+	public ResponseEntity<EventoDTO> addEvento(@RequestBody Evento evento, @PathVariable long usuarioId) throws URISyntaxException {
 		try {
-			Evento novoEvento = eventoService.save(evento);
+			
+			Evento novoEvento = eventoService.save(evento, usuarioId);
 			
 			return ResponseEntity.created(new URI("/api/evento" + novoEvento.getId())).body(new EventoDTO().converter(evento));
 		} catch (ResourceAlreadyExistsException ex) {
