@@ -11,6 +11,9 @@ export class PermissaoUsuarioService implements BaseService {
 
   baseUrl = 'http://localhost:8080/api/permissaoUsuario';
   constructor(private http: HttpClient) { }
+
+  userPermissionEvent: PermissaoUsuario = new PermissaoUsuario();
+
   getAll(): Observable<BaseResults<PermissaoUsuario>> {
     return this.http.get<BaseResults<PermissaoUsuario>>(this.baseUrl);
   }
@@ -25,5 +28,9 @@ export class PermissaoUsuarioService implements BaseService {
   }
   delete(id: number): Observable<any> {
     return this.http.delete(this.baseUrl + '/' + id);
+  }
+
+  getPermissaoUsuarioByIdUsuarioAndIdEvento(idUsuario: number, idEvento: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + "/usuario/" + idUsuario + "/evento/" + idEvento);
   }
 }

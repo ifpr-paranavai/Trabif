@@ -16,7 +16,7 @@
             <h5 class="card-title">{{ evento.nome }}</h5>
             <p class="card-text">{{ "Data de Inicio:" + evento.dataInicio }}</p>
             <p class="card-text">{{ "Data de Fim:" + evento.dataFim }}</p>
-            <a class="btn btn-primary" [routerLink]="['/main']">Acessar Evento</a>
+            <a class="btn btn-primary" (click)="acessEvent(evento)">Acessar Evento</a>
           </div>
         </div>
       </div>
