@@ -10,14 +10,17 @@ import lombok.Data;
 public class TrabalhoAvaliadorDTO extends AuditoriaDTO {
 	private long id;
 	private TrabalhoDTO trabalhoDTO;
-	private UsuarioDTO avaliadorDTO;
+	private UsuarioDTO usuarioDTO;
 	private ResultadoSubmissaoDTO resultadoSubmissaoDTO;
 	
 	public TrabalhoAvaliadorDTO converter(TrabalhoAvaliador trabalhoAvaliador) {
 		TrabalhoAvaliadorDTO trabalhoAvaliadorDTO = new TrabalhoAvaliadorDTO();
 		BeanUtils.copyProperties(trabalhoAvaliador, trabalhoAvaliadorDTO);
+		this.trabalhoDTO = new TrabalhoDTO();
+		this.usuarioDTO = new UsuarioDTO();
+		this.resultadoSubmissaoDTO = new ResultadoSubmissaoDTO();
 		trabalhoAvaliadorDTO.setTrabalhoDTO(trabalhoDTO.converter(trabalhoAvaliador.getTrabalho()));
-		trabalhoAvaliadorDTO.setAvaliadorDTO(avaliadorDTO.converter(trabalhoAvaliador.getUsuario()));
+		trabalhoAvaliadorDTO.setUsuarioDTO(usuarioDTO.converter(trabalhoAvaliador.getUsuario()));
 		trabalhoAvaliadorDTO.setResultadoSubmissaoDTO(resultadoSubmissaoDTO.converter(trabalhoAvaliador.getResultadoSubmissao()));
 		return trabalhoAvaliadorDTO;
 	}

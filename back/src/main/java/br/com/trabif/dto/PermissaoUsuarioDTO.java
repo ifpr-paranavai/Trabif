@@ -16,6 +16,9 @@ public class PermissaoUsuarioDTO extends AuditoriaDTO {
 	public PermissaoUsuarioDTO converter(PermissaoUsuario permissaoUsuario) {
 		PermissaoUsuarioDTO permissaoUsuarioDTO = new PermissaoUsuarioDTO();
 		BeanUtils.copyProperties(permissaoUsuario, permissaoUsuarioDTO);
+		this.permissaoDTO = new PermissaoDTO();
+		this.usuarioDTO = new UsuarioDTO();
+		this.eventoDTO = new EventoDTO();
 		permissaoUsuarioDTO.setPermissaoDTO(permissaoDTO.converter(permissaoUsuario.getPermissao()));
 		permissaoUsuarioDTO.setUsuarioDTO(usuarioDTO.converter(permissaoUsuario.getUsuario()));
 		permissaoUsuarioDTO.setEventoDTO(eventoDTO.converter(permissaoUsuario.getEvento()));

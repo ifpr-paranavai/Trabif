@@ -9,13 +9,15 @@ import lombok.Data;
 @Data
 public class AutorTrabalhoDTO extends AuditoriaDTO {
 	private long id;
-	private UsuarioDTO autorDTO;
+	private UsuarioDTO usuarioDTO;
 	private TrabalhoDTO trabalhoDTO;
 	
 	public AutorTrabalhoDTO converter(AutorTrabalho autorTrabalho) {
 		AutorTrabalhoDTO autorTrabalhoDTO = new AutorTrabalhoDTO();
 		BeanUtils.copyProperties(autorTrabalho, autorTrabalhoDTO);
-		autorTrabalhoDTO.setAutorDTO(autorDTO.converter(autorTrabalho.getUsuario()));
+		this.usuarioDTO = new UsuarioDTO();
+		this.trabalhoDTO = new TrabalhoDTO();
+		autorTrabalhoDTO.setUsuarioDTO(usuarioDTO.converter(autorTrabalho.getUsuario()));
 		autorTrabalhoDTO.setTrabalhoDTO(trabalhoDTO.converter(autorTrabalho.getTrabalho()));
 		return autorTrabalhoDTO;
 	}

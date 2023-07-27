@@ -15,6 +15,8 @@ public class EventoEmailTemplateDTO extends AuditoriaDTO {
 	public EventoEmailTemplateDTO converter(EventoEmailTemplate eventoEmailTemplate) {
 		EventoEmailTemplateDTO eventoEmailTemplateDTO = new EventoEmailTemplateDTO();
 		BeanUtils.copyProperties(eventoEmailTemplate, eventoEmailTemplateDTO);
+		this.eventoDTO = new EventoDTO();
+		this.emailTemplateDTO = new EmailTemplateDTO();
 		eventoEmailTemplateDTO.setEventoDTO(eventoDTO.converter(eventoEmailTemplate.getEvento()));
 		eventoEmailTemplateDTO.setEmailTemplateDTO(emailTemplateDTO.converter(eventoEmailTemplate.getEmailTemplate()));
 		return eventoEmailTemplateDTO;

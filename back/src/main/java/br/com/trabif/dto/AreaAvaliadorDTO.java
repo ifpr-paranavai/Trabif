@@ -10,13 +10,15 @@ import lombok.Data;
 public class AreaAvaliadorDTO extends AuditoriaDTO {
 	private long id;
 	private AreaDTO areaDTO;
-	private UsuarioDTO avaliadorDTO;
+	private UsuarioDTO usuarioDTO;
 	
 	public AreaAvaliadorDTO converter(AreaAvaliador areaAvaliador) {
 		AreaAvaliadorDTO areaAvaliadorDTO = new AreaAvaliadorDTO();
 		BeanUtils.copyProperties(areaAvaliador, areaAvaliadorDTO);
+		this.areaDTO = new AreaDTO();
+		this.usuarioDTO = new UsuarioDTO();
 		areaAvaliadorDTO.setAreaDTO(areaDTO.converter(areaAvaliador.getArea()));
-		areaAvaliadorDTO.setAvaliadorDTO(avaliadorDTO.converter(areaAvaliador.getUsuario()));
+		areaAvaliadorDTO.setUsuarioDTO(usuarioDTO.converter(areaAvaliador.getUsuario()));
 		return areaAvaliadorDTO;
 	}
 	

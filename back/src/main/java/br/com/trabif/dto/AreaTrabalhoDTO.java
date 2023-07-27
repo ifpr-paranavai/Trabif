@@ -15,6 +15,8 @@ public class AreaTrabalhoDTO extends AuditoriaDTO {
 	public AreaTrabalhoDTO converter(AreaTrabalho areaTrabalho) {
 		AreaTrabalhoDTO areaTrabalhoDTO = new AreaTrabalhoDTO();
 		BeanUtils.copyProperties(areaTrabalho, areaTrabalhoDTO);
+		this.areaDTO = new AreaDTO();
+		this.trabalhoDTO = new TrabalhoDTO();
 		areaTrabalhoDTO.setAreaDTO(areaDTO.converter(areaTrabalho.getArea()));
 		areaTrabalhoDTO.setTrabalhoDTO(trabalhoDTO.converter(areaTrabalho.getTrabalho()));
 		return areaTrabalhoDTO;
