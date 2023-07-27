@@ -12,7 +12,7 @@ export class PermissaoUsuarioService implements BaseService {
   baseUrl = 'http://localhost:8080/api/permissaoUsuario';
   constructor(private http: HttpClient) { }
 
-  userPermissionEvent: PermissaoUsuario = new PermissaoUsuario();
+  userPermissionEvent: PermissaoUsuario[] = [new PermissaoUsuario()];
 
   getAll(): Observable<BaseResults<PermissaoUsuario>> {
     return this.http.get<BaseResults<PermissaoUsuario>>(this.baseUrl);

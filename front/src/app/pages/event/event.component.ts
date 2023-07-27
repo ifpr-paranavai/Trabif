@@ -31,7 +31,7 @@ export class EventComponent implements OnInit {
   }
 
   acessEvent(evento: Evento): void {
-    this.permissaoUsuarioService.getPermissaoUsuarioByIdUsuarioAndIdEvento(evento.id!, this.usuarioService.loggedUser.id!).subscribe((result) => {
+    this.permissaoUsuarioService.getPermissaoUsuarioByIdUsuarioAndIdEvento(this.usuarioService.loggedUser.id!, evento.id!).subscribe((result) => {
       if (result.content) {
         this.permissaoUsuarioService.userPermissionEvent = result.content;
         this.mainService.goToMain();
