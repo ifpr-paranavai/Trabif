@@ -1,42 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { EventoService } from 'src/app/services/api-services/evento/evento.service';
+import { PermissaoUsuarioService } from 'src/app/services/api-services/permissao-usuario/permissao-usuario.service';
+import { UsuarioService } from 'src/app/services/api-services/usuario/usuario.service';
+
+enum SelectedButton {
+  Nenhum = 'Nenhum',
+  Avaliadores = 'Avaliadores',
+  Submissoes = 'Submissoes',
+  AvaliarTrabalhos = 'AvaliarTrabalhos',
+  SeusTrabalhos = 'SeusTrabalhos',
+}
+
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
 
-  ngOnInit(): void {
-    document.getElementById('eventos')!.style.backgroundColor = '#dadada';
-  }
+  constructor(
+    private eventoApiService: EventoService,
+    public usuarioService: UsuarioService,
+    public permissaoUsuarioService: PermissaoUsuarioService
+  ) {}
 
-  retornaCorOriginalBotoes(): void {
-    document.getElementById('eventos')!.style.backgroundColor = '#fafafa';
-    document.getElementById('avaliadores')!.style.backgroundColor = '#fafafa';
-    document.getElementById('submissoes')!.style.backgroundColor = '#fafafa';
-    document.getElementById('trabalhos')!.style.backgroundColor = '#fafafa';
-    document.getElementById('avaliar-trabalhos')!.style.backgroundColor = '#fafafa';
-  }
+  selectedButton: SelectedButton = SelectedButton.Nenhum;
 
   abrirAvaliadores(): void {
-    this.retornaCorOriginalBotoes();
-    document.getElementById('avaliadores')!.style.backgroundColor = '#dadada';
+    this.selectedButton = SelectedButton.Avaliadores;
   }
 
   abrirSubmissoes(): void {
-    this.retornaCorOriginalBotoes();
-    document.getElementById('submissoes')!.style.backgroundColor = '#dadada';
+    this.selectedButton = SelectedButton.Submissoes;
   }
 
-  abrirTrabalhos(): void {
-    this.retornaCorOriginalBotoes();
-    document.getElementById('trabalhos')!.style.backgroundColor = '#dadada';
+  abrirSeusTrabalhos(): void {
+    this.selectedButton = SelectedButton.SeusTrabalhos;
   }
 
   abrirAvaliarTrabalhos(): void {
-    this.retornaCorOriginalBotoes();
-    document.getElementById('avaliar-trabalhos')!.style.backgroundColor = '#dadada';
+    this.selectedButton = SelectedButton.AvaliarTrabalhos;
   }
 
 }

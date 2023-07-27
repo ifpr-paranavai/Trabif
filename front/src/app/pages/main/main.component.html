@@ -1,18 +1,22 @@
 <app-header></app-header>
 <div class="margin-header linha">
-  <div class="coluna asside-acao">
-    <ul>
-      <button id="avaliadores" class="botao-menu" (click)="abrirAvaliadores()">
+  <div class="coluna asside-acao" *ngFor="let permissaoUsuarioEvento of this.permissaoUsuarioService.userPermissionEvent">
+    <ul *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Organizador'">
+      <button id="avaliadores" [ngClass]="this.selectedButton == 'Avaliadores' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAvaliadores()">
         Avaliadores
       </button>
-      <button id="submissoes" class="botao-menu" (click)="abrirSubmissoes()">
+      <button id="submissoes" [ngClass]="this.selectedButton == 'Submissoes' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirSubmissoes()">
         Submissões
       </button>
-      <button id="trabalhos" class="botao-menu" (click)="abrirTrabalhos()">
-        Trabalhos
+    </ul>
+    <ul *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Avaliador'">
+      <button id="avaliar-trabalhos" [ngClass]="this.selectedButton == 'AvaliarTrabalhos' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAvaliarTrabalhos()">
+        Avaliar trabalhos
       </button>
-      <button id="avaliar-trabalhos" class="botao-menu" (click)="abrirAvaliarTrabalhos()">
-        Avaliar Trabalhos
+    </ul>
+    <ul *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Autor'">
+      <button id="trabalhos" [ngClass]="this.selectedButton == 'SeusTrabalhos' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirSeusTrabalhos()">
+        Seus trabalhos
       </button>
     </ul>
   </div>
