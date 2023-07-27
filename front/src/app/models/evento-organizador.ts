@@ -4,6 +4,6 @@ import { Auditoria } from "./auditoria";
 
 export class EventoOrganizador extends Auditoria {
   id?: number;
-  evento?: Evento;
-  usuario?: Usuario;
+  eventoDTO?: Evento;
+  usuarioDTO?: Usuario;
 }

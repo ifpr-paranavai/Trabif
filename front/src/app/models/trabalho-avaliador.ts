@@ -4,6 +4,6 @@ import { Usuario } from './usuario';
 
 export class TrabalhoAvaliador extends Auditoria {
   id?: number;
-  trabalho?: Trabalho;
-  usuario?: Usuario;
+  trabalhoDTO?: Trabalho;
+  usuarioDTO?: Usuario;
 }

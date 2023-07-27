@@ -4,6 +4,6 @@ import { Evento } from "./evento";
 
 export class EventoEmailTemplate extends Auditoria {
   id?: number;
-  evento?: Evento;
-  emailTemplate?: EmailTemplate;
+  eventoDTO?: Evento;
+  emailTemplateDTO?: EmailTemplate;
 }

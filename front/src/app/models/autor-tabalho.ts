@@ -4,6 +4,6 @@ import { Usuario } from "./usuario";
 
 export class AutorTabalho extends Auditoria {
   id?: number;
-  autor?: Usuario;
-  tabalho?: Trabalho;
+  usuarioDTO?: Usuario;
+  tabalhoDTO?: Trabalho;
 }
