@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Evento } from 'src/app/models/evento';
 import { EventoService } from 'src/app/services/api-services/evento/evento.service';
 import { PermissaoUsuarioService } from 'src/app/services/api-services/permissao-usuario/permissao-usuario.service';
+import { LoginService } from 'src/app/services/pages-services/login/login.service';
 
 @Component({
   selector: 'app-event',
@@ -17,7 +18,7 @@ export class EventComponent implements OnInit {
 
   constructor(
     private eventoApiService: EventoService,
-    private usuarioService: UsuarioService,
+    private loginService: LoginService,
     private permissaoUsuarioService: PermissaoUsuarioService,
     private mainService: MainService
   ) {}
@@ -31,7 +32,7 @@ export class EventComponent implements OnInit {
   }
 
   acessEvent(evento: Evento): void {
-    this.permissaoUsuarioService.getPermissaoUsuarioByIdUsuarioAndIdEvento(this.usuarioService.loggedUser.id!, evento.id!).subscribe((result) => {
+    this.permissaoUsuarioService.getPermissaoUsuarioByIdUsuarioAndIdEvento(this.loginService.getLoggedUserId!, evento.id!).subscribe((result) => {
       if (result.content) {
         this.permissaoUsuarioService.userPermissionEvent = result.content;
         this.mainService.goToMain();

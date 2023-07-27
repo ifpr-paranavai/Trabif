@@ -12,8 +12,6 @@ export class UsuarioService implements BaseService {
   baseUrl = 'http://localhost:8080/api/usuario';
   constructor(private http: HttpClient) { }
 
-  loggedUser: Usuario = new Usuario();
-
   getAll(): Observable<BaseResults<Usuario>> {
     return this.http.get<BaseResults<Usuario>>(this.baseUrl);
   }

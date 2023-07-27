@@ -1,3 +1,4 @@
+import { LoginService } from 'src/app/services/pages-services/login/login.service';
 import { UsuarioService } from './../../services/api-services/usuario/usuario.service';
 import { Component } from '@angular/core';
 import { Evento } from 'src/app/models/evento';
@@ -15,13 +16,13 @@ export class EventAddComponent {
   constructor(
     private eventoApiService: EventoService,
     private eventService: EventService,
-    private usuarioService: UsuarioService
+    private loginService: LoginService
   ) {}
 
   addEvent(): void {
     if (this.evento.nome) {
 
-      this.eventoApiService.postEvent(this.usuarioService.loggedUser.id!, this.evento).subscribe(() => {
+      this.eventoApiService.postEvent(this.loginService.getLoggedUserId!, this.evento).subscribe(() => {
         alert("Evento criado com sucesso!");
         this.eventService.goToEvent();
       });

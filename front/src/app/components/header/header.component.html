@@ -9,7 +9,7 @@
   </div>
 
   <div class="spacer"></div>
-  <a *ngIf="login" class="login" routerLink="/login">Login</a>
-  <a *ngIf="!login" class="login" routerLink="/home">Sair</a>
+  <a *ngIf="login" class="login" (click)="this.verifyUserAlreadyLogged()" >Login</a>
+  <a *ngIf="!login" class="login" (click)="this.logout()">Sair</a>
 </div>
 

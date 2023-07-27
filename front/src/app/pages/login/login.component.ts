@@ -25,8 +25,9 @@ export class LoginComponent {
   login(): void {
     this.usuarioService.login(this.usuario).subscribe({
       next: (result) => {
-        if (result.usuario) {
-          this.usuarioService.loggedUser = result.usuario;
+        if (result.usuario && result.token) {
+          localStorage.setItem('token', result.token);
+          localStorage.setItem('usuario', JSON.stringify(result.usuario));
           this.eventService.goToEvent();
         } else {
           alert('Usuário ou senha inválidos');
