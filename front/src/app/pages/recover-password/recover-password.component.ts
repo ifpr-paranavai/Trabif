@@ -19,10 +19,13 @@ export class RecoverPasswordComponent {
   usuario: Usuario = new Usuario();
   confirmSenha: string = '';
   divRecover = true
+  loading = false;
 
   recoverPassword(): void {
+    this.loading = true;
     this.usuarioService.recoverPassword(this.usuario).subscribe({
       next: (result) => {
+        this.loading = false
         if (result) {
           alert(result.resposta);
           this.divRecover = !this.divRecover
@@ -31,6 +34,7 @@ export class RecoverPasswordComponent {
         }
       },
       error: (error) => {
+        this.loading = false
         if (error.status == 400) {
           alert('E-mail ou senha inválidos');
         } else {
@@ -42,6 +46,7 @@ export class RecoverPasswordComponent {
 
   changePassword(): void {
     if (this.usuario.senha == this.confirmSenha) {
+      this.loading = true;
       this.usuarioService.changePassword(this.usuario).subscribe({
         next: (result) => {
           if (result) {
@@ -50,6 +55,7 @@ export class RecoverPasswordComponent {
           } else {
             alert('Erro ao gerar código de recuperação de senha');
           }
+          this.loading = false;
         },
         error: (error) => {
           if (error.status == 400) {
@@ -57,6 +63,7 @@ export class RecoverPasswordComponent {
           } else {
             alert('Ocorreu um erro inesperado');
           }
+          this.loading = false;
         },
       });
     } else {
