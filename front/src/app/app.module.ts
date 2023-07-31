@@ -16,6 +16,8 @@ import { EventAddComponent } from './pages/event-add/event-add.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
+import { EvaluatorComponent } from './pages/evaluator/evaluator.component';
+import { EvaluatorAddComponent } from './pages/evaluator-add/evaluator-add.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { RecoverPasswordComponent } from './pages/recover-password/recover-passw
     EventAddComponent,
     RegisterComponent,
     RecoverPasswordComponent,
+    EvaluatorComponent,
+    EvaluatorAddComponent,
   ],
   imports: [
     BrowserModule,

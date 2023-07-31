@@ -33,4 +33,13 @@ export class PermissaoUsuarioService implements BaseService {
   getPermissaoUsuarioByIdUsuarioAndIdEvento(idUsuario: number, idEvento: number): Observable<any> {
     return this.http.get<any>(this.baseUrl + "/usuario/" + idUsuario + "/evento/" + idEvento);
   }
+  getAutoresByIdEvento(idEvento: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/autores/' + idEvento);
+  }
+  getOrganizadoresByIdEvento(idEvento: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/organizadores/' + idEvento);
+  }
+  getAvaliadoresByIdEvento(idEvento: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/avaliadores/' + idEvento);
+  }
 }

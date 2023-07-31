@@ -1,0 +1,18 @@
+<app-header></app-header>
+
+<div class="margin-header espacamento-base">
+  <div class="card card-event">
+    <div class="card-body">
+      <h1 class="card-title">Adicionar Avaliador</h1>
+      <div class="form-group mb-3">
+        <label for="email">Email do avaliador:</label>
+        <input type="text" class="form-control" id="email" [(ngModel)]="sendObj.email">
+      </div>
+      <div class="div-button">
+        <button (click)="addEvaluator()" class="btn btn-primary">Salvar</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
