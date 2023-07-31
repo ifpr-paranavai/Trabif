@@ -44,6 +44,21 @@ public class PermissaoUsuarioService {
 		return new PermissaoUsuarioDTO().converterListaPermissaoUsuarioDTO(permissaoUsuarios);
 	}
 
+	public Page<PermissaoUsuarioDTO> findAllAutores(Long idEvento, Pageable page) {
+		Long idPermissao = (long) 1;
+		return this.findAllByIdPermissaoAndIdEvento(idPermissao, idEvento, page);
+	}
+
+	public Page<PermissaoUsuarioDTO> findAllOrganizadores(Long idEvento, Pageable page) {
+		Long idPermissao = (long) 2;
+		return this.findAllByIdPermissaoAndIdEvento(idPermissao, idEvento, page);
+	}
+
+	public Page<PermissaoUsuarioDTO> findAllAvaliadores(Long idEvento, Pageable page) {
+		Long idPermissao = (long) 3;
+		return this.findAllByIdPermissaoAndIdEvento(idPermissao, idEvento, page);
+	}	
+
 	public Page<PermissaoUsuarioDTO> findAllByIdUsuario(Long id, Pageable page) {
 		Page<PermissaoUsuario> permissaoUsuarios = permissaoUsuarioRepository.findByUsuario(id, page);
 		return new PermissaoUsuarioDTO().converterListaPermissaoUsuarioDTO(permissaoUsuarios);
@@ -56,6 +71,11 @@ public class PermissaoUsuarioService {
 
 	public Page<PermissaoUsuarioDTO> findAllByIdUsuarioAndIdEvento(Long idUsuario, Long idEvento, Pageable page) {
 		Page<PermissaoUsuario> permissaoUsuarios = permissaoUsuarioRepository.findByUsuarioAndEvento(idUsuario, idEvento, page);
+		return new PermissaoUsuarioDTO().converterListaPermissaoUsuarioDTO(permissaoUsuarios);
+	}
+
+	public Page<PermissaoUsuarioDTO> findAllByIdPermissaoAndIdEvento(Long idPermissao, Long idEvento, Pageable page) {
+		Page<PermissaoUsuario> permissaoUsuarios = permissaoUsuarioRepository.findByPermissaoAndEvento(idPermissao, idEvento, page);
 		return new PermissaoUsuarioDTO().converterListaPermissaoUsuarioDTO(permissaoUsuarios);
 	}
 	

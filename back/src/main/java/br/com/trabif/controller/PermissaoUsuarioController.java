@@ -90,6 +90,30 @@ public class PermissaoUsuarioController {
 		return ResponseEntity.ok(permissaoUsuarios);
 	}
 
+	@GetMapping(value = "/permissaoUsuario/autores/{idEvento}")
+	@CrossOrigin("http://localhost:4200")
+	public ResponseEntity<Page<PermissaoUsuarioDTO>> findPermissaoUsuarioAutores(@PathVariable long idEvento,
+		@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
+		Page<PermissaoUsuarioDTO> permissaoUsuarios = permissaoUsuarioService.findAllAutores(idEvento, pageable);
+		return ResponseEntity.ok(permissaoUsuarios);
+	}
+
+	@GetMapping(value = "/permissaoUsuario/organizadores/{idEvento}")
+	@CrossOrigin("http://localhost:4200")
+	public ResponseEntity<Page<PermissaoUsuarioDTO>> findPermissaoUsuarioOrganizadores(@PathVariable long idEvento,
+		@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
+		Page<PermissaoUsuarioDTO> permissaoUsuarios = permissaoUsuarioService.findAllOrganizadores(idEvento, pageable);
+		return ResponseEntity.ok(permissaoUsuarios);
+	}
+
+	@GetMapping(value = "/permissaoUsuario/avaliadores/{idEvento}")
+	@CrossOrigin("http://localhost:4200")
+	public ResponseEntity<Page<PermissaoUsuarioDTO>> findPermissaoUsuarioAvaliadores(@PathVariable long idEvento,
+		@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
+		Page<PermissaoUsuarioDTO> permissaoUsuarios = permissaoUsuarioService.findAllAvaliadores(idEvento, pageable);
+		return ResponseEntity.ok(permissaoUsuarios);
+	}
+
 	@Operation(summary = "Busca ID", description = "Buscar permissaoUsuario por ID do usuario", tags = {
 			"permissaoUsuario" })
 	@ApiResponses(value = {

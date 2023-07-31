@@ -20,4 +20,7 @@ public interface PermissaoUsuarioRepository extends JpaRepository<PermissaoUsuar
 
 	@Query(value = "select p from PermissaoUsuario p where p.usuario.id = :idUsuario and p.evento.id = :idEvento")
 	Page<PermissaoUsuario> findByUsuarioAndEvento(@Param("idUsuario") Long idUsuario, @Param("idEvento") Long idEvento, Pageable page);
+
+	@Query(value = "select p from PermissaoUsuario p where p.permissao.id = :idPermissao and p.evento.id = :idEvento")
+	Page<PermissaoUsuario> findByPermissaoAndEvento(@Param("idPermissao") Long idPermissao, @Param("idEvento") Long idEvento, Pageable page);
 }
