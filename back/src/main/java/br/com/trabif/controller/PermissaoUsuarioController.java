@@ -178,6 +178,75 @@ public class PermissaoUsuarioController {
 		}
 	}
 
+	@Operation(summary = "Adicionar permissaoUsuario", description = "Adicionar novo permissaoUsuario informado no banco de dados", tags = {
+			"permissaoUsuario" })
+	@PostMapping(value = "/permissaoUsuario/autor")
+	@CrossOrigin("http://localhost:4200")
+	public ResponseEntity<PermissaoUsuarioDTO> addPermissaoUsuarioAutor(@RequestBody PermissaoUsuario permissaoUsuario)
+			throws URISyntaxException {
+		try {
+			PermissaoUsuario novoPermissaoUsuario = permissaoUsuarioService.saveAutor(permissaoUsuario);
+
+			return ResponseEntity.created(new URI("/api/permissaoUsuario" + novoPermissaoUsuario.getId()))
+					.body(new PermissaoUsuarioDTO().converter(permissaoUsuario));
+		} catch (ResourceAlreadyExistsException ex) {
+			logger.error(ex.getMessage());
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		} catch (BadResourceException ex) {
+			logger.error(ex.getMessage());
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (ResourceNotFoundException ex) {
+			logger.error(ex.getMessage());
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+	}
+
+	@Operation(summary = "Adicionar permissaoUsuario", description = "Adicionar novo permissaoUsuario informado no banco de dados", tags = {
+			"permissaoUsuario" })
+	@PostMapping(value = "/permissaoUsuario/organizador")
+	@CrossOrigin("http://localhost:4200")
+	public ResponseEntity<PermissaoUsuarioDTO> addPermissaoUsuarioOrganizador(@RequestBody PermissaoUsuario permissaoUsuario)
+			throws URISyntaxException {
+		try {
+			PermissaoUsuario novoPermissaoUsuario = permissaoUsuarioService.saveOrganizador(permissaoUsuario);
+
+			return ResponseEntity.created(new URI("/api/permissaoUsuario" + novoPermissaoUsuario.getId()))
+					.body(new PermissaoUsuarioDTO().converter(permissaoUsuario));
+		} catch (ResourceAlreadyExistsException ex) {
+			logger.error(ex.getMessage());
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		} catch (BadResourceException ex) {
+			logger.error(ex.getMessage());
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (ResourceNotFoundException ex) {
+			logger.error(ex.getMessage());
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+	}
+
+	@Operation(summary = "Adicionar permissaoUsuario", description = "Adicionar novo permissaoUsuario informado no banco de dados", tags = {
+			"permissaoUsuario" })
+	@PostMapping(value = "/permissaoUsuario/avaliador")
+	@CrossOrigin("http://localhost:4200")
+	public ResponseEntity<PermissaoUsuarioDTO> addPermissaoUsuarioAvaliador(@RequestBody PermissaoUsuario permissaoUsuario)
+			throws URISyntaxException {
+		try {
+			PermissaoUsuario novoPermissaoUsuario = permissaoUsuarioService.saveAvaliador(permissaoUsuario);
+
+			return ResponseEntity.created(new URI("/api/permissaoUsuario" + novoPermissaoUsuario.getId()))
+					.body(new PermissaoUsuarioDTO().converter(permissaoUsuario));
+		} catch (ResourceAlreadyExistsException ex) {
+			logger.error(ex.getMessage());
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		} catch (BadResourceException ex) {
+			logger.error(ex.getMessage());
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (ResourceNotFoundException ex) {
+			logger.error(ex.getMessage());
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+	}
+
 	@Operation(summary = "Alterar PermissaoUsuario", description = "Alterar valores do permissaoUsuario com id selecionado", tags = {
 			"permissaoUsuario" })
 	@PutMapping(value = "/permissaoUsuario/{id}")

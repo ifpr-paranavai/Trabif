@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Evento } from 'src/app/models/evento';
 import { PermissaoUsuario } from 'src/app/models/permissao-usuario';
+import { Usuario } from 'src/app/models/usuario';
 import { PermissaoUsuarioService } from 'src/app/services/api-services/permissao-usuario/permissao-usuario.service';
 import { LoginService } from 'src/app/services/pages-services/login/login.service';
 import { MainService } from 'src/app/services/pages-services/main/main.service';
@@ -10,7 +12,7 @@ import { MainService } from 'src/app/services/pages-services/main/main.service';
   styleUrls: ['./evaluator-add.component.scss']
 })
 export class EvaluatorAddComponent {
-  permissaoUsuario: PermissaoUsuario = new PermissaoUsuario();
+  permissaoUsuario: any = new PermissaoUsuario();
   sendObj: any = new Object();
 
   constructor(
@@ -21,10 +23,16 @@ export class EvaluatorAddComponent {
 
   addEvaluator(): void {
     if (this.sendObj.email) {
-      // this.permissaoUsuarioApiService.postEvent(this.loginService.getLoggedUserId!, this.evento).subscribe(() => {
-      //   alert("Evento criado com sucesso!");
-      //   this.mainService.goToMain();
-      // });
+      this.permissaoUsuario.usuario = new Usuario();
+      this.permissaoUsuario.usuario.email = this.sendObj.email;
+      this.permissaoUsuario.evento = new Evento();
+      this.permissaoUsuario.evento.id = this.permissaoUsuarioApiService.userPermissionEvent[0].eventoDTO?.id;
+      this.permissaoUsuarioApiService.postEvaluator(this.permissaoUsuario).subscribe((result) => {
+        if (result.content) {
+          alert("Avaliador adicionado com sucesso!");
+          this.mainService.goToMain();
+        }
+      });
     }
   }
 }

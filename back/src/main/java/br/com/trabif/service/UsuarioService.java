@@ -38,6 +38,14 @@ public class UsuarioService {
 			return usuario;
 		}
 	}
+
+	public Usuario findByEmail(String email) throws ResourceNotFoundException {
+		return usuarioRepository.findByEmail(email);
+	}
+
+	public Usuario findByCpf(String cpf) throws ResourceNotFoundException {
+		return usuarioRepository.findByCpf(cpf);
+	}
 	
 	public Page<UsuarioDTO> findAll(Pageable pageable) {
 		

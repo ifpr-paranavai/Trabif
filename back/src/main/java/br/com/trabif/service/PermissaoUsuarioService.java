@@ -7,7 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import br.com.trabif.domain.Permissao;
 import br.com.trabif.domain.PermissaoUsuario;
+import br.com.trabif.domain.Usuario;
 import br.com.trabif.dto.PermissaoUsuarioDTO;
 import br.com.trabif.exception.BadResourceException;
 import br.com.trabif.exception.ResourceAlreadyExistsException;
@@ -19,6 +21,12 @@ public class PermissaoUsuarioService {
 	
 	@Autowired
 	private PermissaoUsuarioRepository permissaoUsuarioRepository;
+
+	@Autowired
+	private UsuarioService usuarioService;
+	
+	@Autowired
+	private PermissaoService permissaoService;
 	
 	private boolean existsById(Long id) {
 		return permissaoUsuarioRepository.existsById(id);
@@ -93,6 +101,45 @@ public class PermissaoUsuarioService {
 			exe.addErrorMessage("PermissaoUsuario esta vazio ou nulo");
 			throw exe;
 		}		
+	}
+
+	public PermissaoUsuario saveAutor(PermissaoUsuario permissaoUsuario) throws BadResourceException, ResourceAlreadyExistsException, ResourceNotFoundException {
+		Usuario usuario;
+		Permissao avaliador = permissaoService.findById((long) 1);
+		try {
+			usuario = usuarioService.findByEmail(permissaoUsuario.getUsuario().getEmail());
+		} catch (ResourceNotFoundException e) {
+			usuario = usuarioService.save(permissaoUsuario.getUsuario());
+		}
+		permissaoUsuario.setUsuario(usuario);
+		permissaoUsuario.setPermissao(avaliador);
+		return this.save(permissaoUsuario);	
+	}
+
+	public PermissaoUsuario saveOrganizador(PermissaoUsuario permissaoUsuario) throws BadResourceException, ResourceAlreadyExistsException, ResourceNotFoundException {
+		Usuario usuario;
+		Permissao avaliador = permissaoService.findById((long) 2);
+		try {
+			usuario = usuarioService.findByEmail(permissaoUsuario.getUsuario().getEmail());
+		} catch (ResourceNotFoundException e) {
+			usuario = usuarioService.save(permissaoUsuario.getUsuario());
+		}
+		permissaoUsuario.setUsuario(usuario);
+		permissaoUsuario.setPermissao(avaliador);
+		return this.save(permissaoUsuario);		
+	}
+
+	public PermissaoUsuario saveAvaliador(PermissaoUsuario permissaoUsuario) throws BadResourceException, ResourceAlreadyExistsException, ResourceNotFoundException {
+		Usuario usuario;
+		Permissao avaliador = permissaoService.findById((long) 3);
+		try {
+			usuario = usuarioService.findByEmail(permissaoUsuario.getUsuario().getEmail());
+		} catch (ResourceNotFoundException e) {
+			usuario = usuarioService.save(permissaoUsuario.getUsuario());
+		}
+		permissaoUsuario.setUsuario(usuario);
+		permissaoUsuario.setPermissao(avaliador);
+		return this.save(permissaoUsuario);
 	}
 	
 	public void update(PermissaoUsuario permissaoUsuario) throws BadResourceException, ResourceNotFoundException {

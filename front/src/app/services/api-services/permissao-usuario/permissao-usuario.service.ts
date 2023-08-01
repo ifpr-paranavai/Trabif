@@ -42,4 +42,13 @@ export class PermissaoUsuarioService implements BaseService {
   getAvaliadoresByIdEvento(idEvento: number): Observable<any> {
     return this.http.get<any>(this.baseUrl + '/avaliadores/' + idEvento);
   }
+  postAuthor(obj: PermissaoUsuario): Observable<BaseResult<PermissaoUsuario>> {
+    return this.http.post<BaseResult<PermissaoUsuario>>(this.baseUrl + '/autor', obj);
+  }
+  postOrganizer(obj: PermissaoUsuario): Observable<BaseResult<PermissaoUsuario>> {
+    return this.http.post<BaseResult<PermissaoUsuario>>(this.baseUrl + '/organizador', obj);
+  }
+  postEvaluator(obj: PermissaoUsuario): Observable<BaseResult<PermissaoUsuario>> {
+    return this.http.post<BaseResult<PermissaoUsuario>>(this.baseUrl + '/avaliador', obj);
+  }
 }
