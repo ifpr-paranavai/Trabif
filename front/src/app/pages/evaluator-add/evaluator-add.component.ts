@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { Evento } from 'src/app/models/evento';
 import { PermissaoUsuario } from 'src/app/models/permissao-usuario';
@@ -28,7 +29,7 @@ export class EvaluatorAddComponent {
       this.permissaoUsuario.evento = new Evento();
       this.permissaoUsuario.evento.id = this.permissaoUsuarioApiService.userPermissionEvent[0].eventoDTO?.id;
       this.permissaoUsuarioApiService.postEvaluator(this.permissaoUsuario).subscribe((result) => {
-        if (result.content) {
+        if (result) {
           alert("Avaliador adicionado com sucesso!");
           this.mainService.goToMain();
         }
