@@ -8,8 +8,14 @@
         <label for="email">Email do avaliador:</label>
         <input type="email" class="form-control" id="email" [(ngModel)]="sendObj.email">
       </div>
-      <div class="div-button">
-        <button (click)="addEvaluator()" class="btn btn-primary">Salvar</button>
+      <div class="linha center">
+        <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="this.mainService.returnPreviousPage()">
+          Cancelar
+        </button>
+        <button (click)="addEvaluator()" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+          Salvar
+        </button>
       </div>
 
     </div>

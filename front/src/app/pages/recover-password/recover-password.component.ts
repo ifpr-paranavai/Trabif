@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { MainService } from './../../services/pages-services/main/main.service';
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';

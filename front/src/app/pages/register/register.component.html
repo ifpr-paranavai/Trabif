@@ -15,7 +15,15 @@
       <div class="form-group input-user">
         <input type="password" class="form-control" id="senha" placeholder="Senha:" [(ngModel)]="usuario.senha">
       </div>
-      <button class="btn btn-primary" (click)="saveUsuario()">Salvar</button>
+      <div class="linha">
+        <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="this.registerService.returnPreviousPage()">
+          Cancelar
+        </button>
+        <button class="btn btn-primary" (click)="saveUsuario()">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+          Salvar
+        </button>
+      </div>
     </div>
   </div>
 </div>

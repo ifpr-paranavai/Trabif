@@ -15,15 +15,17 @@ import { MainService } from 'src/app/services/pages-services/main/main.service';
 export class EvaluatorAddComponent {
   permissaoUsuario: any = new PermissaoUsuario();
   sendObj: any = new Object();
+  loading = false;
 
   constructor(
     private permissaoUsuarioApiService: PermissaoUsuarioService,
-    private mainService: MainService,
+    public mainService: MainService,
     private loginService: LoginService
   ) {}
 
   addEvaluator(): void {
     if (this.sendObj.email) {
+      this.loading = true;
       this.permissaoUsuario.usuario = new Usuario();
       this.permissaoUsuario.usuario.email = this.sendObj.email;
       this.permissaoUsuario.evento = new Evento();
@@ -33,6 +35,7 @@ export class EvaluatorAddComponent {
           alert("Avaliador adicionado com sucesso!");
           this.mainService.goToMain();
         }
+        this.loading = false;
       });
     }
   }

@@ -15,15 +15,18 @@ export class EventAddComponent {
 
   constructor(
     private eventoApiService: EventoService,
-    private eventService: EventService,
+    public eventService: EventService,
     private loginService: LoginService
   ) {}
 
+  loading = false;
+
   addEvent(): void {
     if (this.evento.nome) {
-
+      this.loading = true;
       this.eventoApiService.postEvent(this.loginService.getLoggedUserId!, this.evento).subscribe(() => {
         alert("Evento criado com sucesso!");
+        this.loading = false;
         this.eventService.goToEvent();
       });
     }

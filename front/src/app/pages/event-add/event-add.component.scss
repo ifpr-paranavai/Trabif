@@ -25,3 +25,12 @@ input:focus {
   display: flex;
   flex-direction: column;
 }
+
+.linha {
+  display: flex;
+  flex-direction: row;
+}
+
+.center {
+  justify-content: center;
+}

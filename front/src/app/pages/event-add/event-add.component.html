@@ -16,8 +16,14 @@
         <label for="nome">Data de fim do evento:</label>
         <input type="date" class="form-control" id="nome" [(ngModel)]="evento.dataFim">
       </div>
-      <div class="div-button">
-        <button (click)="addEvent()" class="btn btn-primary">Salvar</button>
+      <div class="linha center">
+        <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="this.eventService.returnPreviousPage()">
+          Cancelar
+        </button>
+        <button (click)="addEvent()" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+          Salvar
+        </button>
       </div>
 
     </div>
