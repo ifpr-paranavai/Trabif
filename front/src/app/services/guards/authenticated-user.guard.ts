@@ -1,13 +1,13 @@
 import { LoginService } from './../pages-services/login/login.service';
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { EventService } from '../pages-services/event/event.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticatedUserGuard implements CanActivate {
+export class AuthenticatedUserGuard  {
   constructor(
     public loginService: LoginService,
   ) {}
