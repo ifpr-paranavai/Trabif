@@ -1,3 +1,4 @@
+import { ToastService } from './../../services/pages-services/toast/toast.service';
 import { RegisterService } from './../../services/pages-services/register/register.service';
 import { Component } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
@@ -14,7 +15,8 @@ export class RegisterComponent {
   constructor(
     public loginService: LoginService,
     public usuarioService: UsuarioService,
-    public registerService: RegisterService
+    public registerService: RegisterService,
+    private toastService: ToastService
   ) {}
 
   usuario: Usuario = new Usuario();
@@ -25,13 +27,13 @@ export class RegisterComponent {
     this.usuarioService.post(this.usuario).subscribe({
       next: (result) => {
         if (result) {
-          alert('Usuário criado com sucesso!');
+          this.toastService.showSuccess('Usuário criado com sucesso!');
           this.loginService.goToLogin();
         }
         this.loading = false;
       },
       error: (error) => {
-        alert('Ocorreu um erro inesperado ao salvar o usuário');
+        this.toastService.showError('Ocorreu um erro inesperado ao salvar o usuário');
         this.loading = false;
       }
     })

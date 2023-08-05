@@ -56,3 +56,17 @@
   border: 1px solid rgba(0,0,0,0.2);
   padding: 20px;
 }
+
+.titulo-centralizado {
+  display: flex;
+  justify-content: center;
+}
+
+.nome-evento {
+  color: #008000;
+  margin-left: 10px;
+}
+
+.margin-botoes {
+  margin: 5rem;
+}

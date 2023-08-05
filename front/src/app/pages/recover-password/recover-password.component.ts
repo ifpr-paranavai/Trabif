@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/api-services/usuario/usuario.service';
 import { LoginService } from 'src/app/services/pages-services/login/login.service';
+import { ToastService } from 'src/app/services/pages-services/toast/toast.service';
 
 @Component({
   selector: 'app-recover-password',
@@ -14,7 +15,8 @@ export class RecoverPasswordComponent {
   constructor(
     public mainService: MainService,
     public loginService: LoginService,
-    public usuarioService: UsuarioService
+    public usuarioService: UsuarioService,
+    private toastService: ToastService
   ) {}
 
   usuario: Usuario = new Usuario();
@@ -28,18 +30,18 @@ export class RecoverPasswordComponent {
       next: (result) => {
         this.loading = false
         if (result) {
-          alert(result.resposta);
+          this.toastService.showSuccess(result.resposta);
           this.divRecover = !this.divRecover
         } else {
-          alert('Erro ao gerar código de recuperação de senha');
+          this.toastService.showError('Erro ao gerar código de recuperação de senha');
         }
       },
       error: (error) => {
         this.loading = false
-        if (error.status == 400) {
-          alert('E-mail ou senha inválidos');
+        if(error.error.message) {
+          this.toastService.showError(error.error.message);
         } else {
-          alert('Ocorreu um erro inesperado');
+          this.toastService.showError("Ocorreu um erro inesperado");
         }
       },
     });
@@ -51,24 +53,22 @@ export class RecoverPasswordComponent {
       this.usuarioService.changePassword(this.usuario).subscribe({
         next: (result) => {
           if (result) {
-            alert(result.resposta);
+            this.toastService.showSuccess(result.resposta);
             this.loginService.goToLogin();
-          } else {
-            alert('Erro ao gerar código de recuperação de senha');
           }
           this.loading = false;
         },
         error: (error) => {
-          if (error.status == 400) {
-            alert('E-mail ou senha inválidos');
+          if(error.error.message) {
+            this.toastService.showError(error.error.message);
           } else {
-            alert('Ocorreu um erro inesperado');
+            this.toastService.showError("Ocorreu um erro inesperado");
           }
           this.loading = false;
         },
       });
     } else {
-      alert('As senhas devem ser iguais');
+      this.toastService.showWarn('As senhas devem ser iguais');
     }
   }
 }

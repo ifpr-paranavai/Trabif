@@ -1,3 +1,4 @@
+import { ToastService } from './../../services/pages-services/toast/toast.service';
 import { Router } from '@angular/router';
 import { MainService } from './../../services/pages-services/main/main.service';
 import { Component } from '@angular/core';
@@ -16,7 +17,8 @@ export class EvaluatorComponent {
 
   constructor(
     private permissaoUsuarioApiService: PermissaoUsuarioService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -26,7 +28,7 @@ export class EvaluatorComponent {
   deleteUserPermission(id: number): void {
     this.permissaoUsuarioApiService.delete(id).subscribe((result) => {
       if (!result) {
-        alert("Avaliador removido com sucesso!");
+        this.toastService.showSuccess("Avaliador removido com sucesso!");
         this.getUserPermissions();
       }
     });

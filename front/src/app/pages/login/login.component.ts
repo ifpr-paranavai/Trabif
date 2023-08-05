@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { EventService } from 'src/app/services/pages-services/event/event.service';
 import { MainService } from 'src/app/services/pages-services/main/main.service';
+import { ToastService } from 'src/app/services/pages-services/toast/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent {
     public eventService: EventService,
     public registerService: RegisterService,
     public recoverPasswordService: RecoverPasswordService,
-    public usuarioService: UsuarioService
+    public usuarioService: UsuarioService,
+    private toastService: ToastService
   ) {}
 
   usuario: Usuario = new Usuario();
@@ -30,14 +32,14 @@ export class LoginComponent {
           localStorage.setItem('usuario', JSON.stringify(result.usuario));
           this.eventService.goToEvent();
         } else {
-          alert('Usuário ou senha inválidos');
+          this.toastService.showWarn("Usuário ou senha inválidos");
         }
       },
       error: (error) => {
-        if(error.status == 400) {
-          alert("E-mail ou senha inválidos");
+        if(error.error.message) {
+          this.toastService.showError(error.error.message);
         } else {
-          alert("Ocorreu um erro inesperado");
+          this.toastService.showError("Ocorreu um erro inesperado");
         }
       }
     });

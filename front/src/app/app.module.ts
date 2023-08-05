@@ -1,3 +1,4 @@
+import { MessageService } from 'primeng/api';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -18,6 +19,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 import { EvaluatorComponent } from './pages/evaluator/evaluator.component';
 import { EvaluatorAddComponent } from './pages/evaluator-add/evaluator-add.component';
+import { ToastModule } from 'primeng/toast';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -40,8 +43,10 @@ import { EvaluatorAddComponent } from './pages/evaluator-add/evaluator-add.compo
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ToastModule,
+    ProgressSpinnerModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

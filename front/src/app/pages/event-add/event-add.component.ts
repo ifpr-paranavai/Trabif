@@ -1,3 +1,4 @@
+import { ToastService } from './../../services/pages-services/toast/toast.service';
 import { LoginService } from 'src/app/services/pages-services/login/login.service';
 import { UsuarioService } from './../../services/api-services/usuario/usuario.service';
 import { Component } from '@angular/core';
@@ -16,7 +17,8 @@ export class EventAddComponent {
   constructor(
     private eventoApiService: EventoService,
     public eventService: EventService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private toastService: ToastService
   ) {}
 
   loading = false;
@@ -25,7 +27,7 @@ export class EventAddComponent {
     if (this.evento.nome) {
       this.loading = true;
       this.eventoApiService.postEvent(this.loginService.getLoggedUserId!, this.evento).subscribe(() => {
-        alert("Evento criado com sucesso!");
+        this.toastService.showSuccess("Evento criado com sucesso!");
         this.loading = false;
         this.eventService.goToEvent();
       });

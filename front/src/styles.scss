@@ -3,6 +3,8 @@
 @import '@fortawesome/fontawesome-free/scss/solid.scss';
 @import '@fortawesome/fontawesome-free/scss/regular.scss';
 @import '@fortawesome/fontawesome-free/scss/brands.scss';
+@import "primeng/resources/themes/saga-green/theme.css";
+@import "primeng/resources/primeng.css";
 
 
 head { height: 0; width: 0; display: none; }
@@ -27,18 +29,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: #008000;
   color: #fff;
   box-shadow: 0 8px 9px -4px rgba(59, 113, 202, 0.3), 0 4px 18px 0 rgba(59, 113, 202, 0.2);
+  border-color: transparent;
 }
 
 .btn-primary:hover {
   color: #fff;
   background-color: #006100;
   border-color: #006100;
+  border-color: transparent;
 }
 
 .btn-primary {
   background-color: #008000;
   color: #fff;
   box-shadow: 0 4px 9px -4px #008000;
+  border-color: transparent;
 }
 
 :host {
