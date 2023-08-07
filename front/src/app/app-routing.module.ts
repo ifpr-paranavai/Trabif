@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'recoverPassword', component: RecoverPasswordComponent},
   {path: 'evaluatorAdd', component: EvaluatorAddComponent},
-  {path: '/finalizar-cadastro/:id', component: FinalizeRegistrationComponent}
+  {path: 'finalizar-cadastro/:id', component: FinalizeRegistrationComponent}
 ];
 
 @NgModule({
