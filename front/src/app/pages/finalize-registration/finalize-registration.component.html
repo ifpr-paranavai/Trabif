@@ -1,0 +1,29 @@
+<app-header ></app-header>
+<div class="margin-header">
+  <div class="card">
+    <h1 class="titulo-user">Cadastro de Usuário</h1>
+    <div class="body-user">
+      <div class="form-group input-user">
+        <input type="text" class="form-control" id="nome"  placeholder="Nome:" [(ngModel)]="usuario.nome">
+      </div>
+      <div class="form-group input-user">
+        <input type="text" class="form-control" id="cpf" placeholder="CPF:" [(ngModel)]="usuario.cpf" mask="999.999.999-99">
+      </div>
+      <div class="form-group input-user">
+        <input type="email" class="form-control" id="email" placeholder="E-mail:" [(ngModel)]="usuario.email">
+      </div>
+      <div class="form-group input-user">
+        <input type="password" class="form-control" id="senha" placeholder="Senha:" [(ngModel)]="usuario.senha">
+      </div>
+      <div class="linha">
+        <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="homeService.goToHome()">
+          Cancelar
+        </button>
+        <button class="btn btn-primary" (click)="saveUsuario()">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+          Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

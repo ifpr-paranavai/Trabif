@@ -10,6 +10,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 import { AuthenticatedUserGuard } from './services/guards/authenticated-user.guard';
 import { EvaluatorAddComponent } from './pages/evaluator-add/evaluator-add.component';
+import { FinalizeRegistrationComponent } from './pages/finalize-registration/finalize-registration.component';
 
 const routes: Routes = [
   {path: 'modalBase', component: ModalBaseComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'recoverPassword', component: RecoverPasswordComponent},
   {path: 'evaluatorAdd', component: EvaluatorAddComponent},
+  {path: '/finalizar-cadastro/:id', component: FinalizeRegistrationComponent}
 ];
 
 @NgModule({

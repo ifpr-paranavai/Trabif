@@ -23,6 +23,7 @@ import { ToastModule } from 'primeng/toast';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MenubarModule } from 'primeng/menubar';
 import { TabMenuModule } from 'primeng/tabmenu';
+import { FinalizeRegistrationComponent } from './pages/finalize-registration/finalize-registration.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
     RecoverPasswordComponent,
     EvaluatorComponent,
     EvaluatorAddComponent,
+    FinalizeRegistrationComponent,
   ],
   imports: [
     BrowserModule,
