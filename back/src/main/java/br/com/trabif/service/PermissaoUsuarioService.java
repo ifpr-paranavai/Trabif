@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import br.com.trabif.Constantes;
 import br.com.trabif.domain.Permissao;
 import br.com.trabif.domain.PermissaoUsuario;
 import br.com.trabif.domain.Usuario;
@@ -148,7 +149,7 @@ public class PermissaoUsuarioService {
 			String mensagem = "<h1>Olá,</h1><p> Gostaríamos de informá-lo(a) que você foi cadastrado(a) como avaliador(a) do evento [evento-nome], acesse o site para finalizar seu cadastro: [site]. </p> <p> Atenciosamente, <br> Sistema </p>";
 			propriedades.put("mensagem", mensagem);
 			propriedades.put("evento-nome", titulo);
-			propriedades.put("site", "http://localhost:4200/finalizar-cadastro/" + usuario.getId());
+			propriedades.put("site", Constantes.URL_FRONT + "/finalizar-cadastro/" + usuario.getId());
 
 			emailService.enviarEmailTemplate(permissaoUsuario.getUsuario().getEmail(), null);
 		}
