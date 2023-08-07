@@ -1,6 +1,8 @@
 package br.com.trabif.service;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,6 +29,9 @@ public class PermissaoUsuarioService {
 	
 	@Autowired
 	private PermissaoService permissaoService;
+
+	@Autowired
+	private EmailService emailService;
 	
 	private boolean existsById(Long id) {
 		return permissaoUsuarioRepository.existsById(id);
@@ -136,6 +141,16 @@ public class PermissaoUsuarioService {
 			usuario = usuarioService.findByEmail(permissaoUsuario.getUsuario().getEmail());
 		} catch (ResourceNotFoundException e) {
 			usuario = usuarioService.save(permissaoUsuario.getUsuario());
+
+			String titulo = permissaoUsuario.getEvento().getNome();
+			Map<String, String> propriedades = new HashMap<>();
+			propriedades.put("titulo", titulo);
+			String mensagem = "<h1>Olá,</h1><p> Gostaríamos de informá-lo(a) que você foi cadastrado(a) como avaliador(a) do evento [evento-nome], acesse o site para finalizar seu cadastro: [site]. </p> <p> Atenciosamente, <br> Sistema </p>";
+			propriedades.put("mensagem", mensagem);
+			propriedades.put("evento-nome", titulo);
+			propriedades.put("site", "http://localhost:4200/finalizar-cadastro/" + usuario.getId());
+
+			emailService.enviarEmailTemplate(permissaoUsuario.getUsuario().getEmail(), null);
 		}
 		permissaoUsuario.setUsuario(usuario);
 		permissaoUsuario.setPermissao(avaliador);
