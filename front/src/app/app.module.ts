@@ -21,6 +21,9 @@ import { EvaluatorComponent } from './pages/evaluator/evaluator.component';
 import { EvaluatorAddComponent } from './pages/evaluator-add/evaluator-add.component';
 import { ToastModule } from 'primeng/toast';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { MenubarModule } from 'primeng/menubar';
+import { TabMenuModule } from 'primeng/tabmenu';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +47,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     BrowserAnimationsModule,
     HttpClientModule,
     ToastModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    TabMenuModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

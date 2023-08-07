@@ -1,4 +1,4 @@
-import { ToastService } from './../../services/pages-services/toast/toast.service';
+import { ToastService } from 'src/app/services/pages-services/toast/toast.service';
 import { RegisterService } from './../../services/pages-services/register/register.service';
 import { Component } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';

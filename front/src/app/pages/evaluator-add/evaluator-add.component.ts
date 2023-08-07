@@ -1,4 +1,4 @@
-import { ToastService } from './../../services/pages-services/toast/toast.service';
+import { ToastService } from 'src/app/services/pages-services/toast/toast.service';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { Evento } from 'src/app/models/evento';

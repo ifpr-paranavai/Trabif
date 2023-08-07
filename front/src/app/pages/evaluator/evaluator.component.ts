@@ -1,10 +1,11 @@
-import { ToastService } from './../../services/pages-services/toast/toast.service';
+
 import { Router } from '@angular/router';
 import { MainService } from './../../services/pages-services/main/main.service';
 import { Component } from '@angular/core';
 import { PermissaoUsuario } from 'src/app/models/permissao-usuario';
 import { PermissaoUsuarioService } from 'src/app/services/api-services/permissao-usuario/permissao-usuario.service';
 import { LoginService } from 'src/app/services/pages-services/login/login.service';
+import { ToastService } from 'src/app/services/pages-services/toast/toast.service';
 
 @Component({
   selector: 'app-evaluator',

@@ -9,6 +9,11 @@
   </div>
 
   <div class="spacer"></div>
+
+  <p-tabMenu *ngIf="!login" [model]="items" [activeItem]="activeItem">
+  </p-tabMenu>
+
+  <div class="spacer"></div>
   <a *ngIf="login" class="login" (click)="this.verifyUserAlreadyLogged()" >Login</a>
   <a *ngIf="!login" class="login" (click)="this.logout()">Sair</a>
 </div>

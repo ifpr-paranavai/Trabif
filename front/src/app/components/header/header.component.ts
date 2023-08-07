@@ -1,9 +1,10 @@
 import { EventService } from 'src/app/services/pages-services/event/event.service';
 import { UsuarioService } from './../../services/api-services/usuario/usuario.service';
 import { LoginService } from './../../services/pages-services/login/login.service';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HomeService } from 'src/app/services/pages-services/home/home.service';
 import { Usuario } from 'src/app/models/usuario';
+import { MenuItem } from 'primeng/api';
 
 export enum BotaoHeader {
   LOGAR = "Logar",
@@ -16,7 +17,7 @@ export enum BotaoHeader {
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   @Input() login: boolean = false;
 
   constructor(
@@ -25,6 +26,18 @@ export class HeaderComponent {
     public eventService: EventService,
     public usuarioService: UsuarioService,
   ) {}
+
+  items: MenuItem[] | undefined;
+
+  activeItem: MenuItem | undefined;
+
+  ngOnInit() {
+      this.items = [
+        { label: 'Eventos', icon: 'fa-solid fa-house', command: () => this.eventService.goToEvent() },
+      ];
+
+      this.activeItem = this.items[0];
+  }
 
   verifyUserAlreadyLogged(): void {
     if (this.loginService.logged) {

@@ -70,3 +70,13 @@
 .margin-botoes {
   margin: 5rem;
 }
+
+.botoes-centralizado {
+  display: flex;
+  justify-content: center;
+}
+
+.tamanho-botoes {
+  width: 20rem;
+  height: 5rem;
+}
