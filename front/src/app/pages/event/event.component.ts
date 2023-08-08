@@ -35,6 +35,8 @@ export class EventComponent implements OnInit {
     this.permissaoUsuarioService.getPermissaoUsuarioByIdUsuarioAndIdEvento(this.loginService.getLoggedUserId!, evento.id!).subscribe((result) => {
       if (result.content) {
         this.permissaoUsuarioService.userPermissionEvent = result.content;
+        localStorage.setItem('permissaoUsuario', JSON.stringify(result.content));
+        localStorage.setItem('evento', JSON.stringify(this.permissaoUsuarioService.userPermissionEvent[0].eventoDTO));
         this.mainService.goToMain();
       }
     });

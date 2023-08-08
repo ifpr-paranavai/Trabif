@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { EventService } from './../../services/pages-services/event/event.service';
+import { Component, OnInit } from '@angular/core';
 import { EventoService } from 'src/app/services/api-services/evento/evento.service';
 import { PermissaoUsuarioService } from 'src/app/services/api-services/permissao-usuario/permissao-usuario.service';
 import { UsuarioService } from 'src/app/services/api-services/usuario/usuario.service';
+import { MainService } from 'src/app/services/pages-services/main/main.service';
 
 enum SelectedButton {
   Nenhum = 'Nenhum',
@@ -17,15 +19,25 @@ enum SelectedButton {
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
 
   constructor(
     private eventoApiService: EventoService,
     public usuarioService: UsuarioService,
-    public permissaoUsuarioService: PermissaoUsuarioService
+    public permissaoUsuarioService: PermissaoUsuarioService,
+    public mainService: MainService,
+    public eventService: EventService
   ) {}
 
   selectedButton: SelectedButton = SelectedButton.Nenhum;
+
+  ngOnInit(): void {
+    if (!this.permissaoUsuarioService.userPermissionEvent[0].id && !this.mainService.getUserPermission) {
+      this.eventService.goToEvent();
+    } else if (!this.permissaoUsuarioService.userPermissionEvent[0].id) {
+      this.permissaoUsuarioService.userPermissionEvent = this.mainService.getUserPermission!;
+    }
+  }
 
   abrirAvaliadores(): void {
     this.selectedButton = SelectedButton.Avaliadores;
