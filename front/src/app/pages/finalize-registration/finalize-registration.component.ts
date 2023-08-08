@@ -29,8 +29,8 @@ export class FinalizeRegistrationComponent implements OnInit {
       this.loading = true;
       this.usuarioService.getById(id).subscribe((result) => {
         this.loading = false;
-        if (result.content) {
-          this.usuario = result.content;
+        if (result) {
+          this.usuario = result;
         }
         console.log(result);
       });
@@ -43,10 +43,8 @@ export class FinalizeRegistrationComponent implements OnInit {
     this.loading = true;
     this.usuarioService.put(this.usuario.id!, this.usuario).subscribe({
       next: (result) => {
-        if (result) {
-          this.toastService.showSuccess('O cadastro foi fionalizado com sucesso!');
-          this.loginService.goToLogin();
-        }
+        this.toastService.showSuccess('O cadastro foi finalizado com sucesso!');
+        this.loginService.goToLogin();
         this.loading = false;
       },
       error: (error) => {

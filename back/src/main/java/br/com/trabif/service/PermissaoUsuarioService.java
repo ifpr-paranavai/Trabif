@@ -141,17 +141,27 @@ public class PermissaoUsuarioService {
 		try {
 			usuario = usuarioService.findByEmail(permissaoUsuario.getUsuario().getEmail());
 		} catch (ResourceNotFoundException e) {
-			usuario = usuarioService.save(permissaoUsuario.getUsuario());
+			throw new ResourceNotFoundException("Usuario não encontrado");
+		}
+		if (usuario == null) {
+			Usuario usuarioAux = new Usuario();
+			String email = permissaoUsuario.getUsuario().getEmail();
+			int pos = email.indexOf("@");
+
+			usuarioAux.setEmail(email);
+			usuarioAux.setNome(email.substring(0, pos));
+
+			usuario = usuarioService.save(usuarioAux);
 
 			String titulo = permissaoUsuario.getEvento().getNome();
 			Map<String, String> propriedades = new HashMap<>();
 			propriedades.put("titulo", titulo);
-			String mensagem = "<h1>Olá,</h1><p> Gostaríamos de informá-lo(a) que você foi cadastrado(a) como avaliador(a) do evento [evento-nome], acesse o site para finalizar seu cadastro: [site]. </p> <p> Atenciosamente, <br> Sistema </p>";
+			String mensagem = "<h1>Olá,</h1><p> Gostaríamos de informá-lo(a) que você foi cadastrado(a) como avaliador(a) do evento [evento-nome], acesse o site para finalizar seu cadastro: <a href=\"[site]\">[site]</a>. </p> <p> Atenciosamente, <br> Sistema </p>";
 			propriedades.put("mensagem", mensagem);
 			propriedades.put("evento-nome", titulo);
 			propriedades.put("site", Constantes.URL_FRONT + "/finalizar-cadastro/" + usuario.getId());
 
-			emailService.enviarEmailTemplate(permissaoUsuario.getUsuario().getEmail(), null);
+			emailService.enviarEmailTemplate(permissaoUsuario.getUsuario().getEmail(), propriedades);
 		}
 		permissaoUsuario.setUsuario(usuario);
 		permissaoUsuario.setPermissao(avaliador);

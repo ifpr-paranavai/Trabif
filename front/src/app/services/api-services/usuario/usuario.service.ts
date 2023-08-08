@@ -15,8 +15,8 @@ export class UsuarioService implements BaseService {
   getAll(): Observable<BaseResults<Usuario>> {
     return this.http.get<BaseResults<Usuario>>(this.baseUrl);
   }
-  getById(id: number): Observable<BaseResult<Usuario>> {
-    return this.http.get<BaseResult<Usuario>>(this.baseUrl + '/' + id);
+  getById(id: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/' + id);
   }
   post(obj: Usuario): Observable<BaseResult<Usuario>> {
     return this.http.post<BaseResult<Usuario>>(this.baseUrl, obj);

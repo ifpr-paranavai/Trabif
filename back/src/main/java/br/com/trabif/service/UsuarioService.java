@@ -31,6 +31,7 @@ public class UsuarioService {
 	
 	public Usuario findById(Long id) throws ResourceNotFoundException {
 		Usuario usuario = usuarioRepository.findById(id).orElse(null);
+		usuario.setSenha(null);
 		
 		if(usuario == null) {
 			throw new ResourceNotFoundException("Usuario não encontrado com o id: " + id);
@@ -60,7 +61,8 @@ public class UsuarioService {
 	}
 	
 	public Usuario save(Usuario usuario) throws BadResourceException, ResourceAlreadyExistsException {
-		if(!usuario.getNome().isEmpty()) {
+		if((usuario.getNome() != null && !usuario.getNome().isEmpty()) ||
+		 (usuario.getEmail() != null && !usuario.getEmail().isEmpty())) {
 			if(existsById(usuario.getId())) {
 				throw new ResourceAlreadyExistsException("Usuario com id: " + usuario.getId() + " já existe.");
 			}			

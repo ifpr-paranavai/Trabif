@@ -13,16 +13,16 @@ import { EvaluatorAddComponent } from './pages/evaluator-add/evaluator-add.compo
 import { FinalizeRegistrationComponent } from './pages/finalize-registration/finalize-registration.component';
 
 const routes: Routes = [
+  {path: '', component: HomeComponent},
   {path: 'modalBase', component: ModalBaseComponent},
-  {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'recoverPassword', component: RecoverPasswordComponent},
+  {path: 'finalizar-cadastro/:id', component: FinalizeRegistrationComponent},
   {path: 'event', component: EventComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'eventAdd', component: EventAddComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'main', component: MainComponent, canActivate: [AuthenticatedUserGuard]},
-  {path: 'register', component: RegisterComponent},
-  {path: 'recoverPassword', component: RecoverPasswordComponent},
-  {path: 'evaluatorAdd', component: EvaluatorAddComponent},
-  {path: 'finalizar-cadastro/:id', component: FinalizeRegistrationComponent}
+  {path: 'evaluatorAdd', component: EvaluatorAddComponent, canActivate: [AuthenticatedUserGuard]}
 ];
 
 @NgModule({

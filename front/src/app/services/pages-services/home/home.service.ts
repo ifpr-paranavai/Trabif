@@ -14,7 +14,7 @@ export class HomeService implements BaseRouteService {
   ) { }
 
   goToHome(): void {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 
   returnPreviousPage(): void {
