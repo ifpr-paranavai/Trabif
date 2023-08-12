@@ -1,0 +1,26 @@
+
+
+<app-header></app-header>
+
+<div class="margin-header espacamento-base">
+  <div class="linha mb-3">
+    <h1>Eventos</h1>
+    <div class="spacer"></div>
+    <button class="btn btn-primary" style="margin-bottom: 0.5rem;" [routerLink]="['/eventAdd']">Adicionar Evento</button>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let evento of eventos">
+        <div class="card card-event mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ evento.nome }}</h5>
+            <p class="card-text">{{ "Data de Inicio:" + evento.dataInicio }}</p>
+            <p class="card-text">{{ "Data de Fim:" + evento.dataFim }}</p>
+            <a class="btn btn-primary" (click)="acessEvent(evento)">Acessar Evento</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

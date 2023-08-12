@@ -11,6 +11,7 @@ import { RecoverPasswordComponent } from './pages/recover-password/recover-passw
 import { AuthenticatedUserGuard } from './services/guards/authenticated-user.guard';
 import { EvaluatorAddComponent } from './pages/evaluator-add/evaluator-add.component';
 import { FinalizeRegistrationComponent } from './pages/finalize-registration/finalize-registration.component';
+import { MyEventComponent } from './pages/my-event/my-event.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'event', component: EventComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'eventAdd', component: EventAddComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'main', component: MainComponent, canActivate: [AuthenticatedUserGuard]},
-  {path: 'evaluatorAdd', component: EvaluatorAddComponent, canActivate: [AuthenticatedUserGuard]}
+  {path: 'evaluatorAdd', component: EvaluatorAddComponent, canActivate: [AuthenticatedUserGuard]},
+  {path: 'myEvent', component: MyEventComponent, canActivate: [AuthenticatedUserGuard]}
 ];
 
 @NgModule({

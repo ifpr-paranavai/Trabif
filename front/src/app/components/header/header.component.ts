@@ -1,3 +1,4 @@
+
 import { EventService } from 'src/app/services/pages-services/event/event.service';
 import { UsuarioService } from './../../services/api-services/usuario/usuario.service';
 import { LoginService } from './../../services/pages-services/login/login.service';
@@ -5,6 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { HomeService } from 'src/app/services/pages-services/home/home.service';
 import { Usuario } from 'src/app/models/usuario';
 import { MenuItem } from 'primeng/api';
+import { MyEventService } from 'src/app/services/pages-services/my-event/my-event.service';
 
 export enum BotaoHeader {
   LOGAR = "Logar",
@@ -25,6 +27,7 @@ export class HeaderComponent implements OnInit {
     public loginService: LoginService,
     public eventService: EventService,
     public usuarioService: UsuarioService,
+    public myEventService: MyEventService
   ) {}
 
   items: MenuItem[] | undefined;
@@ -34,6 +37,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
       this.items = [
         { label: 'Eventos', icon: 'fa-solid fa-house', command: () => this.eventService.goToEvent() },
+        { label: 'Meus Eventos', icon: 'fa-solid fa-person', command: () => this.myEventService.goToMyEvent() },
       ];
 
       this.activeItem = this.items[0];

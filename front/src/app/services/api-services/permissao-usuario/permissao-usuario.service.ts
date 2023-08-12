@@ -30,6 +30,9 @@ export class PermissaoUsuarioService implements BaseService {
     return this.http.delete(this.baseUrl + '/' + id);
   }
 
+  getPermissaoUsuarioByIdUsuario(idUsuario: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + "/usuario/" + idUsuario);
+  }
   getPermissaoUsuarioByIdUsuarioAndIdEvento(idUsuario: number, idEvento: number): Observable<any> {
     return this.http.get<any>(this.baseUrl + "/usuario/" + idUsuario + "/evento/" + idEvento);
   }

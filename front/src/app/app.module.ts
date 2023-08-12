@@ -24,6 +24,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MenubarModule } from 'primeng/menubar';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { FinalizeRegistrationComponent } from './pages/finalize-registration/finalize-registration.component';
+import { MyEventComponent } from './pages/my-event/my-event.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { FinalizeRegistrationComponent } from './pages/finalize-registration/fin
     EvaluatorComponent,
     EvaluatorAddComponent,
     FinalizeRegistrationComponent,
+    MyEventComponent,
   ],
   imports: [
     BrowserModule,
