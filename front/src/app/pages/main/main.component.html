@@ -8,6 +8,12 @@
       <button id="submissoes" [ngClass]="this.selectedButton == 'Submissoes' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirSubmissoes()">
         Submissões
       </button>
+      <button id="categorias" [ngClass]="this.selectedButton == 'Categorias' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirCategorias()">
+        Categorias
+      </button>
+      <button id="areas" [ngClass]="this.selectedButton == 'Areas' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAreas()">
+        Áreas
+      </button>
     </ul>
     <ul *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Avaliador'">
       <button id="avaliar-trabalhos" [ngClass]="this.selectedButton == 'AvaliarTrabalhos' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAvaliarTrabalhos()">
@@ -32,6 +38,12 @@
           <button class="btn btn-primary margin-botoes tamanho-botoes" id="submissoes" (click)="abrirSubmissoes()">
             Submissões
           </button>
+          <button class="btn btn-primary margin-botoes tamanho-botoes" id="categorias" (click)="abrirCategorias()">
+            Categorias
+          </button>
+          <button class="btn btn-primary margin-botoes tamanho-botoes" id="areas" (click)="abrirAreas()">
+            Áreas
+          </button>
         </div>
         <div *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Avaliador'">
           <button class="btn btn-primary margin-botoes tamanho-botoes" id="avaliar-trabalhos" (click)="abrirAvaliarTrabalhos()">
@@ -48,5 +60,13 @@
     <app-evaluator *ngIf="this.selectedButton == 'Avaliadores'">
 
     </app-evaluator>
+
+    <app-category *ngIf="this.selectedButton == 'Categorias'">
+
+    </app-category>
+
+    <app-area *ngIf="this.selectedButton == 'Areas'">
+
+    </app-area>
   </div>
 </div>

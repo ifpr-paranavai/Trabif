@@ -1,0 +1,18 @@
+<div class="linha mb-3">
+  <h1>Categorias</h1>
+  <div class="spacer"></div>
+  <button class="btn btn-primary" style="margin-bottom: 0.5rem;" [routerLink]="['/categoryAdd']">Adicionar Categoria</button>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let categoria of categorias">
+      <div class="card card-event mb-3">
+        <div class="card-body linha">
+          <h5 class="card-title">{{ categoria.descricao }}</h5>
+          <div class="spacer"></div>
+          <button class="btn" (click)="deleteCategory(categoria.id!)"><i class="fa fa-trash"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

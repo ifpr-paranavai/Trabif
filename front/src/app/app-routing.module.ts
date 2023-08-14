@@ -12,6 +12,10 @@ import { AuthenticatedUserGuard } from './services/guards/authenticated-user.gua
 import { EvaluatorAddComponent } from './pages/evaluator-add/evaluator-add.component';
 import { FinalizeRegistrationComponent } from './pages/finalize-registration/finalize-registration.component';
 import { MyEventComponent } from './pages/my-event/my-event.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { CategoryAddComponent } from './pages/category-add/category-add.component';
+import { AreaComponent } from './pages/area/area.component';
+import { AreaAddComponent } from './pages/area-add/area-add.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -24,7 +28,11 @@ const routes: Routes = [
   {path: 'eventAdd', component: EventAddComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'main', component: MainComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'evaluatorAdd', component: EvaluatorAddComponent, canActivate: [AuthenticatedUserGuard]},
-  {path: 'myEvent', component: MyEventComponent, canActivate: [AuthenticatedUserGuard]}
+  {path: 'myEvent', component: MyEventComponent, canActivate: [AuthenticatedUserGuard]},
+  {path: 'categrory', component: CategoryComponent, canActivate: [AuthenticatedUserGuard]},
+  {path: 'categoryAdd', component: CategoryAddComponent, canActivate: [AuthenticatedUserGuard]},
+  {path: 'area', component: AreaComponent, canActivate: [AuthenticatedUserGuard]},
+  {path: 'areaAdd', component: AreaAddComponent, canActivate: [AuthenticatedUserGuard]}
 ];
 
 @NgModule({

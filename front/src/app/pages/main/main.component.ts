@@ -11,6 +11,8 @@ enum SelectedButton {
   Submissoes = 'Submissoes',
   AvaliarTrabalhos = 'AvaliarTrabalhos',
   SeusTrabalhos = 'SeusTrabalhos',
+  Categorias = 'Categorias',
+  Areas = 'Areas',
 }
 
 
@@ -45,6 +47,14 @@ export class MainComponent implements OnInit {
 
   abrirSubmissoes(): void {
     this.selectedButton = SelectedButton.Submissoes;
+  }
+
+  abrirCategorias(): void {
+    this.selectedButton = SelectedButton.Categorias;
+  }
+
+  abrirAreas(): void {
+    this.selectedButton = SelectedButton.Areas;
   }
 
   abrirSeusTrabalhos(): void {

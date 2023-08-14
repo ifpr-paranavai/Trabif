@@ -25,6 +25,10 @@ import { MenubarModule } from 'primeng/menubar';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { FinalizeRegistrationComponent } from './pages/finalize-registration/finalize-registration.component';
 import { MyEventComponent } from './pages/my-event/my-event.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { CategoryAddComponent } from './pages/category-add/category-add.component';
+import { AreaComponent } from './pages/area/area.component';
+import { AreaAddComponent } from './pages/area-add/area-add.component';
 
 
 @NgModule({
@@ -43,6 +47,10 @@ import { MyEventComponent } from './pages/my-event/my-event.component';
     EvaluatorAddComponent,
     FinalizeRegistrationComponent,
     MyEventComponent,
+    CategoryComponent,
+    CategoryAddComponent,
+    AreaComponent,
+    AreaAddComponent,
   ],
   imports: [
     BrowserModule,
