@@ -1,0 +1,18 @@
+<div class="linha mb-3">
+  <h1>Áreas do conhecimento do avaliador</h1>
+  <div class="spacer"></div>
+  <button class="btn btn-primary" style="margin-bottom: 0.5rem;" [routerLink]="['/areaEvaluatorAdd']">Adicionar Área</button>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let area of areaAvaliadores">
+      <div class="card card-event mb-3">
+        <div class="card-body linha">
+          <h5 class="card-title">{{ area.areaDTO?.descricao }}</h5>
+          <div class="spacer"></div>
+          <button class="btn" (click)="deleteArea(area.id!)"><i class="fa fa-trash"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

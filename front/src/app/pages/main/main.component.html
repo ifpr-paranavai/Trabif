@@ -19,6 +19,9 @@
       <button id="avaliar-trabalhos" [ngClass]="this.selectedButton == 'AvaliarTrabalhos' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAvaliarTrabalhos()">
         Avaliar trabalhos
       </button>
+      <button id="avaliar-trabalhos" [ngClass]="this.selectedButton == 'AreasConhecimento' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAreasConhecimento()">
+        Áreas do Conhecimento
+      </button>
     </ul>
     <ul *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Autor'">
       <button id="trabalhos" [ngClass]="this.selectedButton == 'SeusTrabalhos' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirSeusTrabalhos()">
@@ -49,6 +52,9 @@
           <button class="btn btn-primary margin-botoes tamanho-botoes" id="avaliar-trabalhos" (click)="abrirAvaliarTrabalhos()">
             Avaliar trabalhos
           </button>
+          <button class="btn btn-primary margin-botoes tamanho-botoes" id="areas-conhecimento" (click)="abrirAreasConhecimento()">
+            Áreas do Conhecimento
+          </button>
         </div>
         <div *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Autor'">
           <button class="btn btn-primary margin-botoes tamanho-botoes" id="trabalhos" (click)="abrirSeusTrabalhos()">
@@ -68,5 +74,9 @@
     <app-area *ngIf="this.selectedButton == 'Areas'">
 
     </app-area>
+
+    <app-area-evaluator *ngIf="this.selectedButton == 'AreasConhecimento'">
+
+    </app-area-evaluator>
   </div>
 </div>

@@ -8,7 +8,7 @@ import { AreaAvaliador } from 'src/app/models/area-avaliador';
   providedIn: 'root'
 })
 export class AreaAvaliadorService implements BaseService {
-  baseUrl = 'http://localhost:8080/api/area';
+  baseUrl = 'http://localhost:8080/api/areaAvaliador';
   constructor(private http: HttpClient) { }
   getAll(): Observable<BaseResults<AreaAvaliador>> {
     return this.http.get<BaseResults<AreaAvaliador>>(this.baseUrl);
@@ -24,5 +24,9 @@ export class AreaAvaliadorService implements BaseService {
   }
   delete(id: number): Observable<any> {
     return this.http.delete(this.baseUrl + '/' + id);
+  }
+
+  getAreaAvaliadorByIdAvaliador(idUsuario: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + "/avaliador/" + idUsuario);
   }
 }

@@ -1,0 +1,44 @@
+.card-event {
+  margin: auto;
+  align-items: center;
+  width: 32rem;
+  background-color: #fafafa;
+  border: solid 1px #dadada;
+}
+
+input {
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.2);
+  width: 100%;
+  padding: 13px 15px;
+}
+
+input:focus {
+  outline: none !important;
+  border:1px solid rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px #008000;
+}
+
+select {
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.2);
+  width: 100%;
+  padding: 13px 15px;
+}
+
+.div-button {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.linha {
+  display: flex;
+  flex-direction: row;
+}
+
+.center {
+  justify-content: center;
+}

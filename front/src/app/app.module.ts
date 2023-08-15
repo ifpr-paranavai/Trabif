@@ -14,7 +14,7 @@ import { EventComponent } from './pages/event/event.component';
 import { MainComponent } from './pages/main/main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EventAddComponent } from './pages/event-add/event-add.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 import { EvaluatorComponent } from './pages/evaluator/evaluator.component';
@@ -29,6 +29,9 @@ import { CategoryComponent } from './pages/category/category.component';
 import { CategoryAddComponent } from './pages/category-add/category-add.component';
 import { AreaComponent } from './pages/area/area.component';
 import { AreaAddComponent } from './pages/area-add/area-add.component';
+import { WorkComponent } from './pages/work/work.component';
+import { AreaEvaluatorComponent } from './pages/area-evaluator/area-evaluator.component';
+import { AreaEvaluatorAddComponent } from './pages/area-evaluator-add/area-evaluator-add.component';
 
 
 @NgModule({
@@ -51,6 +54,9 @@ import { AreaAddComponent } from './pages/area-add/area-add.component';
     CategoryAddComponent,
     AreaComponent,
     AreaAddComponent,
+    WorkComponent,
+    AreaEvaluatorComponent,
+    AreaEvaluatorAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +66,8 @@ import { AreaAddComponent } from './pages/area-add/area-add.component';
     HttpClientModule,
     ToastModule,
     ProgressSpinnerModule,
-    TabMenuModule
+    TabMenuModule,
+    ReactiveFormsModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

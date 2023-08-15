@@ -16,6 +16,8 @@ import { CategoryComponent } from './pages/category/category.component';
 import { CategoryAddComponent } from './pages/category-add/category-add.component';
 import { AreaComponent } from './pages/area/area.component';
 import { AreaAddComponent } from './pages/area-add/area-add.component';
+import { AreaEvaluatorComponent } from './pages/area-evaluator/area-evaluator.component';
+import { AreaEvaluatorAddComponent } from './pages/area-evaluator-add/area-evaluator-add.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -32,7 +34,9 @@ const routes: Routes = [
   {path: 'categrory', component: CategoryComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'categoryAdd', component: CategoryAddComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'area', component: AreaComponent, canActivate: [AuthenticatedUserGuard]},
-  {path: 'areaAdd', component: AreaAddComponent, canActivate: [AuthenticatedUserGuard]}
+  {path: 'areaAdd', component: AreaAddComponent, canActivate: [AuthenticatedUserGuard]},
+  {path: 'areaEvaluator', component: AreaEvaluatorComponent, canActivate: [AuthenticatedUserGuard]},
+  {path: 'areaEvaluatorAdd', component: AreaEvaluatorAddComponent, canActivate: [AuthenticatedUserGuard]}
 ];
 
 @NgModule({

@@ -26,7 +26,7 @@ export class AreaComponent {
   deleteArea(id: number): void {
     this.areaService.delete(id).subscribe((result) => {
       if (!result) {
-        this.toastService.showSuccess("Categoria removida com sucesso!");
+        this.toastService.showSuccess("Área do conhecimento removida com sucesso!");
         this.getArea();
       }
     });
