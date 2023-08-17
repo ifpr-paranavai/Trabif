@@ -29,9 +29,12 @@ import { CategoryComponent } from './pages/category/category.component';
 import { CategoryAddComponent } from './pages/category-add/category-add.component';
 import { AreaComponent } from './pages/area/area.component';
 import { AreaAddComponent } from './pages/area-add/area-add.component';
-import { WorkComponent } from './pages/work/work.component';
 import { AreaEvaluatorComponent } from './pages/area-evaluator/area-evaluator.component';
 import { AreaEvaluatorAddComponent } from './pages/area-evaluator-add/area-evaluator-add.component';
+import { MyWorksComponent } from './pages/my-works/my-works.component';
+import { EventWorksComponent } from './pages/event-works/event-works.component';
+import { WorkAddComponent } from './pages/work-add/work-add.component';
+import { EvaluateWorkComponent } from './pages/evaluate-work/evaluate-work.component';
 
 
 @NgModule({
@@ -54,9 +57,12 @@ import { AreaEvaluatorAddComponent } from './pages/area-evaluator-add/area-evalu
     CategoryAddComponent,
     AreaComponent,
     AreaAddComponent,
-    WorkComponent,
     AreaEvaluatorComponent,
     AreaEvaluatorAddComponent,
+    MyWorksComponent,
+    EventWorksComponent,
+    WorkAddComponent,
+    EvaluateWorkComponent,
   ],
   imports: [
     BrowserModule,
