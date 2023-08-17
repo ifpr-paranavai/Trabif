@@ -104,6 +104,21 @@ public class AutorTrabalhoController {
 		return ResponseEntity.ok(autorTrabalhos);
 	}
 
+	@Operation(summary = "Busca ID", description = "Buscar autorTrabalho por ID do usuario e ID do evento", tags = {
+			"autorTrabalho" })
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Sucesso", content = @Content(schema = @Schema(implementation = AutorTrabalho.class))),
+			@ApiResponse(responseCode = "404", description = "AutorTrabalho não encontrado para este usuario neste evento")
+	})
+	@GetMapping(value = "/autorTrabalho/usuario/{idUsuario}/evento/{idEvento}")
+	@CrossOrigin("http://localhost:4200")
+	public ResponseEntity<Page<AutorTrabalhoDTO>> findAutorTrabalhoByIdUsuarioAndIdEvento(@PathVariable long idUsuario, 
+			@PathVariable long idEvento,
+			@Parameter(description = "Paginação", example = "{\"page\":0,\"size\":1}", allowEmptyValue = true) Pageable pageable) {
+		Page<AutorTrabalhoDTO> autorTrabalhos = autorTrabalhoService.findAllByIdUsuarioAndIdEvento(idUsuario, idEvento, pageable);
+		return ResponseEntity.ok(autorTrabalhos);
+	}
+
 	@Operation(summary = "Adicionar autorTrabalho", description = "Adicionar novo autorTrabalho informado no banco de dados", tags = {
 			"autorTrabalho" })
 	@PostMapping(value = "/autorTrabalho")

@@ -48,6 +48,11 @@ public class AutorTrabalhoService {
 		Page<AutorTrabalho> autorTrabalhos = autorTrabalhoRepository.findByTrabalho(id, page);
 		return new AutorTrabalhoDTO().converterListaAutorTrabalhoDTO(autorTrabalhos);
 	}
+
+	public Page<AutorTrabalhoDTO> findAllByIdUsuarioAndIdEvento(Long idUsuario, Long idEvento, Pageable page) {
+		Page<AutorTrabalho> autorTrabalhos = autorTrabalhoRepository.findByUsuarioAndEvento(idUsuario, idEvento, page);
+		return new AutorTrabalhoDTO().converterListaAutorTrabalhoDTO(autorTrabalhos);
+	}
 	
 	public AutorTrabalho save(AutorTrabalho autorTrabalho) throws BadResourceException, ResourceAlreadyExistsException {
 		if (autorTrabalho.getUsuario() != null && autorTrabalho.getTrabalho() != null) {
