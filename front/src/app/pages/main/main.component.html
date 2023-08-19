@@ -24,8 +24,8 @@
       </button>
     </ul>
     <ul *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Autor'">
-      <button id="trabalhos" [ngClass]="this.selectedButton == 'SeusTrabalhos' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirSeusTrabalhos()">
-        Seus trabalhos
+      <button id="trabalhos" [ngClass]="this.selectedButton == 'MeusTrabalhos' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirMeusTrabalhos()">
+        Meus trabalhos
       </button>
     </ul>
   </div>
@@ -57,8 +57,8 @@
           </button>
         </div>
         <div *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Autor'">
-          <button class="btn btn-primary margin-botoes tamanho-botoes" id="trabalhos" (click)="abrirSeusTrabalhos()">
-            Seus trabalhos
+          <button class="btn btn-primary margin-botoes tamanho-botoes" id="trabalhos" (click)="abrirMeusTrabalhos()">
+            Meus trabalhos
           </button>
         </div>
       </div>
@@ -78,5 +78,9 @@
     <app-area-evaluator *ngIf="this.selectedButton == 'AreasConhecimento'">
 
     </app-area-evaluator>
+
+    <app-my-works *ngIf="this.selectedButton == 'MeusTrabalhos'">
+
+    </app-my-works>
   </div>
 </div>

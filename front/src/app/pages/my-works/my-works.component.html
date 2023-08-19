@@ -1,1 +1,19 @@
-<p>my-works works!</p>
+<div class="linha mb-3">
+  <h1>Meus Trabalhos</h1>
+  <div class="spacer"></div>
+  <button class="btn btn-primary" style="margin-bottom: 0.5rem;" [routerLink]="['/workAdd']">Adicionar Trabalho</button>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let trabalho of trabalhos">
+      <div class="card card-event mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ trabalho.titulo }}</h5>
+          <p class="card-text">{{ "Categoria:" + trabalho.categoria }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

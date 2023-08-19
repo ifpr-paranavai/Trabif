@@ -1,0 +1,19 @@
+.margin-header {
+  margin-top: 72px;
+  height: 100%;
+  width: 100%;
+}
+
+.linha {
+  display: flex;
+  flex-direction: row;
+}
+
+.espacamento-base {
+  padding: 24px;
+}
+
+.card-event {
+  background-color: #fafafa;
+  border: solid 1px #dadada;
+}

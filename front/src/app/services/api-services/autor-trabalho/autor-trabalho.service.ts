@@ -26,4 +26,8 @@ export class AutorTrabalhoService implements BaseService {
   delete(id: number): Observable<any> {
     return this.http.delete(this.baseUrl + '/' + id);
   }
+
+  getAutorTrabalhoByIdUsuarioAndIdEvento(idUsuario: number, idEvento: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + "/usuario/" + idUsuario + "/evento/" + idEvento);
+  }
 }

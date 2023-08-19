@@ -1,15 +1,19 @@
 package br.com.trabif.service;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.trabif.Constantes;
+import br.com.trabif.domain.Evento;
 import br.com.trabif.domain.Permissao;
 import br.com.trabif.domain.PermissaoUsuario;
 import br.com.trabif.domain.Usuario;
@@ -85,6 +89,25 @@ public class PermissaoUsuarioService {
 
 	public Page<PermissaoUsuarioDTO> findAllByIdUsuarioAndIdEvento(Long idUsuario, Long idEvento, Pageable page) {
 		Page<PermissaoUsuario> permissaoUsuarios = permissaoUsuarioRepository.findByUsuarioAndEvento(idUsuario, idEvento, page);
+		if (permissaoUsuarios == null || permissaoUsuarios.isEmpty()) {
+			PermissaoUsuario permissaoUsuario = new PermissaoUsuario();
+			
+			Evento evento = new Evento();
+			evento.setId(idEvento);
+			permissaoUsuario.setEvento(evento);
+			List<PermissaoUsuario> permissaoUsuariosList = new ArrayList();
+			try {
+				Usuario usuario = usuarioService.findById(idUsuario);
+				
+				permissaoUsuario.setUsuario(usuario);
+
+				permissaoUsuariosList.add(this.saveAutor(permissaoUsuario));
+			} catch (BadResourceException | ResourceAlreadyExistsException | ResourceNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			permissaoUsuarios = new PageImpl<>(permissaoUsuariosList);
+		}
 		return new PermissaoUsuarioDTO().converterListaPermissaoUsuarioDTO(permissaoUsuarios);
 	}
 
