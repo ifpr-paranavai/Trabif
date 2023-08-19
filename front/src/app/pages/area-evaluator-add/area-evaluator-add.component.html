@@ -7,7 +7,7 @@
       <form [formGroup]="form" (ngSubmit)="addArea()">
         <div class="form-group mb-3">
           <select formControlName="area" >
-            <option class="form-control" *ngFor="let area of areas" [ngValue]="area.id">{{area.descricao}}</option>
+            <option class="form-control" *ngFor="let area of areas" [ngValue]="area">{{area.descricao}}</option>
           </select>
         </div>
         <div class="linha center">

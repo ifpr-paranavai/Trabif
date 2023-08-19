@@ -38,16 +38,26 @@ export class AreaEvaluatorAddComponent implements OnInit {
 
   addArea(): void {
     this.sendObj.usuarioDTO = this.loginService.getLoggedUser!;
-    this.sendObj.areaDTO = this.form.value;
+    this.sendObj.areaDTO = this.form.value.area;
     if (this.sendObj.areaDTO?.descricao) {
       this.loading = true;
-      this.areaService.post(this.sendObj).subscribe((result) => {
+      var obj = {
+        area: this.sendObj.areaDTO,
+        usuario: this.sendObj.usuarioDTO
+      }
+      this.areaAvaliadorService.post(obj).subscribe({
+        next: (result) => {
         if (result) {
           this.mainService.goToMain();
           this.toastService.showSuccess("Avaliador tem uma nova área do conhecimento!");
         }
         this.loading = false;
-      });
+        },
+        error: (error) => {
+          this.toastService.showError('Ocorreu um erro inesperado ao finalizar o cadastro');
+          this.loading = false;
+        }
+    });
     }
   }
 
