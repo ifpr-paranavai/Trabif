@@ -1,1 +1,37 @@
-<p>work-add works!</p>
+<app-header></app-header>
+
+<div class="margin-header espacamento-base">
+  <div class="card card-event">
+    <div [formGroup]="form" class="card-body">
+      <h1 class="card-title">Submeter trabalho</h1>
+      <div class="form-group mb-3">
+        <label for="titulo">Título:</label>
+        <input type="text" class="form-control" id="titulo" formControlName="titulo">
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="titulo">Categoria:</label>
+        <select class="mb-3" formControlName="categoria" >
+          <option class="form-control" *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.descricao}}</option>
+        </select>
+      </div>
+
+      <div class="form-group mb-3">
+        <p-fileUpload name="myfile[]" (uploadHandler)="onUpload($event)" [customUpload]="true" [multiple]="false" accept="application/pdf" >
+        </p-fileUpload>
+      </div>
+
+      <div class="linha center">
+        <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="this.mainService.returnPreviousPage()">
+          Cancelar
+        </button>
+        <button (click)="addWork()" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+          Adicionar
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

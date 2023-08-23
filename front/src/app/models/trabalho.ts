@@ -5,7 +5,7 @@ import { Evento } from "./evento";
 export class Trabalho extends Auditoria {
   id?: number;
   titulo?: string;
-  categoria?: Categoria;
-  evento?: Evento;
+  categoriaDTO?: Categoria;
+  eventoDTO?: Evento;
   pdf?: Blob;
 }

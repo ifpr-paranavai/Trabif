@@ -35,6 +35,7 @@ import { MyWorksComponent } from './pages/my-works/my-works.component';
 import { EventWorksComponent } from './pages/event-works/event-works.component';
 import { WorkAddComponent } from './pages/work-add/work-add.component';
 import { EvaluateWorkComponent } from './pages/evaluate-work/evaluate-work.component';
+import { FileUploadModule } from 'primeng/fileupload';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { EvaluateWorkComponent } from './pages/evaluate-work/evaluate-work.compo
     ToastModule,
     ProgressSpinnerModule,
     TabMenuModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FileUploadModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
