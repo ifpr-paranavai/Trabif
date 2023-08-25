@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseResult, BaseResults, BaseService } from '../base/base.service';
@@ -17,8 +17,14 @@ export class AutorTrabalhoService implements BaseService {
   getById(id: number): Observable<BaseResult<AutorTabalho>> {
     return this.http.get<BaseResult<AutorTabalho>>(this.baseUrl + '/' + id);
   }
-  post(obj: AutorTabalho): Observable<BaseResult<AutorTabalho>> {
-    return this.http.post<BaseResult<AutorTabalho>>(this.baseUrl, obj);
+  post(obj: any): Observable<BaseResult<any>> {
+    return this.http.post<BaseResult<any>>(this.baseUrl, obj);
+  }
+  postWithFile(obj: any, file: File): Observable<any> {
+    let formData = new FormData();
+    formData.append('documento', file);
+    formData.append('autorTrabalho', JSON.stringify(obj));
+    return this.http.post<any>(this.baseUrl, formData);
   }
   put(id: number, obj: AutorTabalho): Observable<BaseResult<AutorTabalho>> {
     return this.http.put<BaseResult<AutorTabalho>>(this.baseUrl + '/' + id, obj);

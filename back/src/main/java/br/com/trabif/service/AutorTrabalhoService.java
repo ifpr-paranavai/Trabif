@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.trabif.domain.AutorTrabalho;
+import br.com.trabif.domain.Trabalho;
 import br.com.trabif.dto.AutorTrabalhoDTO;
 import br.com.trabif.exception.BadResourceException;
 import br.com.trabif.exception.ResourceAlreadyExistsException;
@@ -19,6 +20,9 @@ public class AutorTrabalhoService {
 	
 	@Autowired
 	private AutorTrabalhoRepository autorTrabalhoRepository;
+
+	@Autowired
+	private TrabalhoService trabalhoService;
 	
 	private boolean existsById(Long id) {
 		return autorTrabalhoRepository.existsById(id);
@@ -55,16 +59,24 @@ public class AutorTrabalhoService {
 	}
 	
 	public AutorTrabalho save(AutorTrabalho autorTrabalho) throws BadResourceException, ResourceAlreadyExistsException {
-		if (autorTrabalho.getUsuario() != null && autorTrabalho.getTrabalho() != null) {
-			if(existsById(autorTrabalho.getId())) {
-				throw new ResourceAlreadyExistsException("AutorTrabalho com id: " + autorTrabalho.getId() + " já existe.");
-			}			
-			autorTrabalho.setStatus('A');
-			autorTrabalho.setDataCadastro(Calendar.getInstance().getTime());
-			return autorTrabalhoRepository.save(autorTrabalho);
+		if (autorTrabalho.getTrabalho() != null) {
+			Trabalho trabalho = this.trabalhoService.save(autorTrabalho.getTrabalho());
+			autorTrabalho.setTrabalho(trabalho);
+			if (autorTrabalho.getUsuario() != null) {
+				if(existsById(autorTrabalho.getId())) {
+					throw new ResourceAlreadyExistsException("AutorTrabalho com id: " + autorTrabalho.getId() + " já existe.");
+				}			
+				autorTrabalho.setStatus('A');
+				autorTrabalho.setDataCadastro(Calendar.getInstance().getTime());
+				return autorTrabalhoRepository.save(autorTrabalho);
+			} else {
+				BadResourceException exe = new BadResourceException("Erro ao salvar autorTrabalho");
+				exe.addErrorMessage("AutorTrabalho esta vazio ou nulo");
+				throw exe;
+			}	
 		} else {
-			BadResourceException exe = new BadResourceException("Erro ao salvar autorTrabalho");
-			exe.addErrorMessage("AutorTrabalho esta vazio ou nulo");
+			BadResourceException exe = new BadResourceException("Erro ao salvar Trabalho");
+			exe.addErrorMessage("Trabalho esta vazio ou nulo");
 			throw exe;
 		}		
 	}

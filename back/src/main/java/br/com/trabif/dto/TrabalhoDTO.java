@@ -17,6 +17,8 @@ public class TrabalhoDTO extends AuditoriaDTO {
 	public TrabalhoDTO converter(Trabalho trabalho) {
 		TrabalhoDTO trabalhoDTO = new TrabalhoDTO();
 		BeanUtils.copyProperties(trabalho, trabalhoDTO);
+		this.categoriaDTO = new CategoriaDTO();
+		this.eventoDTO = new EventoDTO();
 		trabalhoDTO.setCategoriaDTO(categoriaDTO.converter(trabalho.getCategoria()));
 		trabalhoDTO.setEventoDTO(eventoDTO.converter(trabalho.getEvento()));
 		return trabalhoDTO;
