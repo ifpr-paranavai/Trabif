@@ -13,6 +13,7 @@ public class TrabalhoDTO extends AuditoriaDTO {
 	private CategoriaDTO categoriaDTO;
 	private EventoDTO eventoDTO;
 	private String resultado;
+	private byte[] pdf;
 	
 	public TrabalhoDTO converter(Trabalho trabalho) {
 		TrabalhoDTO trabalhoDTO = new TrabalhoDTO();

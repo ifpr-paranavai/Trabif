@@ -9,6 +9,10 @@ import { MainService } from 'src/app/services/pages-services/main/main.service';
 import { ToastService } from 'src/app/services/pages-services/toast/toast.service';
 import { FileUploadHandlerEvent } from 'primeng/fileupload';
 import { AutorTrabalhoService } from 'src/app/services/api-services/autor-trabalho/autor-trabalho.service';
+import { PermissaoUsuario } from 'src/app/models/permissao-usuario';
+import { PermissaoUsuarioService } from 'src/app/services/api-services/permissao-usuario/permissao-usuario.service';
+import { Usuario } from 'src/app/models/usuario';
+import { Evento } from 'src/app/models/evento';
 
 
 @Component({
@@ -23,10 +27,14 @@ export class WorkAddComponent implements OnInit {
   form: FormGroup = new FormGroup('');
   uploadedFile: File = new File([], '');
   loading = false;
+  permissaoUsuario: any = new PermissaoUsuario();
+  emailAutores: string[] = [];
+  autores: Usuario[] = [];
 
   constructor(
     private autorTrabalhoService: AutorTrabalhoService,
     private categoriaService: CategoriaService,
+    private permissaoUsuarioApiService: PermissaoUsuarioService,
     public mainService: MainService,
     private loginService: LoginService,
     private toastService: ToastService,
@@ -37,11 +45,13 @@ export class WorkAddComponent implements OnInit {
     this.form = this.formBuilde.group({
       categoria: [null],
       titulo: [null],
+      emailAutor: [null]
     });
     this.getCategorias();
+    this.autores.push(this.loginService.getLoggedUser!);
   }
 
-  addWork(): void {
+  validateDataToAddWork(): void {
     if (!this.uploadedFile.name || this.uploadedFile.size == 0) {
       this.toastService.showWarn('É necessário adicionar um arquivo e fazer seu upload!');
       return;
@@ -55,16 +65,24 @@ export class WorkAddComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.sendObj.usuario = this.loginService.getLoggedUser!;
     this.sendObj.trabalho = {}
     this.sendObj.trabalho.categoria = this.form.value.categoria;
     this.sendObj.trabalho.titulo = this.form.value.titulo;
     this.sendObj.trabalho.evento = this.mainService.getEvent;
 
+    if (this.autores) {
+      this.autores.forEach((autor) => {
+        this.addWork(autor);
+      })
+    }
+    this.mainService.goToMain();
+  }
+
+  addWork(usuario: Usuario): void {
+    this.sendObj.usuario = usuario;
     this.autorTrabalhoService.postWithFile(this.sendObj, this.uploadedFile).subscribe({
       next: (result: any) => {
       if (result) {
-        this.mainService.goToMain();
         this.toastService.showSuccess("Trabalho adicionado com sucesso!");
       }
       this.loading = false;
@@ -75,7 +93,36 @@ export class WorkAddComponent implements OnInit {
       }
 
     });
+  }
 
+  addEmailAuthor(): void {
+    let email = this.form.value.emailAutor;
+    this.emailAutores.push(email);
+    this.addAuthors();
+    this.form.value.emailAutor = [null];
+  }
+
+  addAuthors(): void {
+    if (this.emailAutores) {
+      this.loading = true;
+      this.permissaoUsuario.evento = new Evento();
+      this.permissaoUsuario.evento = this.mainService.getEvent;
+      this.permissaoUsuario.usuario = new Usuario();
+      this.emailAutores.forEach(email => {
+        this.permissaoUsuario.usuario.email = email;
+        this.addAuthor();
+      })
+    }
+  }
+
+  addAuthor(): void {
+    this.permissaoUsuarioApiService.postAuthor(this.permissaoUsuario).subscribe((result) => {
+      if (result.usuarioDTO) {
+        this.autores.push(result.usuarioDTO);
+        this.toastService.showSuccess("Autor adicionado com sucesso!");
+      }
+      this.loading = false;
+    });
   }
 
   getCategorias(): void {
@@ -92,6 +139,10 @@ export class WorkAddComponent implements OnInit {
       this.toastService.showSuccess('Upload realizado com sucesso!');
     }
 
+  }
+
+  createStringListOfAuthors() {
+    return this.autores.map(item => item.nome ?? item.email).join(', ');
   }
 
 }

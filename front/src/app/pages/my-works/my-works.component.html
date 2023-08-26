@@ -10,7 +10,12 @@
       <div class="card card-event mb-3">
         <div class="card-body">
           <h5 class="card-title">{{ trabalho.titulo }}</h5>
-          <p class="card-text">{{ "Categoria:" + trabalho.categoriaDTO?.descricao }}</p>
+          <div class="linha">
+            <p class="card-text">{{ "Categoria:" + trabalho.categoriaDTO?.descricao }}</p>
+            <div class="spacer"></div>
+            <button class="btn" (click)="downloadWork(trabalho)"><i class="fa-solid fa-download"></i></button>
+            <button class="btn" (click)="deleteAuthorWork(trabalho.id!)"><i class="fa fa-trash"></i></button>
+          </div>
         </div>
       </div>
     </div>

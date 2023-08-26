@@ -16,6 +16,17 @@
         </select>
       </div>
 
+      <div class="form-group mb-3 div-button">
+        <label for="emailAutor">Autores do trabalho:</label>
+        <p *ngFor="let autor of autores">{{ autor.nome ?? autor.email }} </p>
+        <label for="emailAutor">Digite um e-mail para adicionar um autor para o trabalho:</label>
+        <input type="text" class="form-control mb-3" id="emailAutor" formControlName="emailAutor">
+        <button (click)="addEmailAuthor()" class="btn btn-primary center">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+          Adicionar
+        </button>
+      </div>
+
       <div class="form-group mb-3">
         <p-fileUpload name="myfile[]" (uploadHandler)="onUpload($event)" [customUpload]="true" [multiple]="false" accept="application/pdf" >
         </p-fileUpload>
@@ -25,7 +36,7 @@
         <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="this.mainService.returnPreviousPage()">
           Cancelar
         </button>
-        <button (click)="addWork()" class="btn btn-primary">
+        <button (click)="validateDataToAddWork()" class="btn btn-primary">
           <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
           Adicionar
         </button>
