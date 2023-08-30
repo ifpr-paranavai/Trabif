@@ -36,6 +36,7 @@ import { EventWorksComponent } from './pages/event-works/event-works.component';
 import { WorkAddComponent } from './pages/work-add/work-add.component';
 import { EvaluateWorkComponent } from './pages/evaluate-work/evaluate-work.component';
 import { FileUploadModule } from 'primeng/fileupload';
+import { ChooseUserPermissionComponent } from './pages/choose-user-permission/choose-user-permission.component';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     EventWorksComponent,
     WorkAddComponent,
     EvaluateWorkComponent,
+    ChooseUserPermissionComponent,
   ],
   imports: [
     BrowserModule,

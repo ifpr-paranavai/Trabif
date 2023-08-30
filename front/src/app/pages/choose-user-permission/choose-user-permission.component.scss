@@ -1,0 +1,24 @@
+.card-event {
+  margin: auto;
+  align-items: center;
+  width: 32rem;
+  background-color: #fafafa;
+  border: solid 1px #dadada;
+}
+
+select {
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.2);
+  width: 100%;
+  padding: 13px 15px;
+}
+
+.linha {
+  display: flex;
+  flex-direction: row;
+}
+
+.center {
+  justify-content: center;
+}

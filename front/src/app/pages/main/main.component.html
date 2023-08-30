@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="margin-header linha">
-  <div class="coluna asside-acao" *ngFor="let permissaoUsuarioEvento of this.permissaoUsuarioService.userPermissionEvent">
+  <div class="coluna asside-acao">
     <ul *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Organizador'">
       <button id="avaliadores" [ngClass]="this.selectedButton == 'Avaliadores' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAvaliadores()">
         Avaliadores
@@ -33,7 +33,7 @@
   <div class="coluna todas-telas">
     <div *ngIf="this.selectedButton == 'Nenhum'">
       <h1 class="titulo-centralizado">Bem vindo a página do evento <div class="nome-evento"> {{this.permissaoUsuarioService.userPermissionEvent[0].eventoDTO?.nome}}</div></h1>
-      <div class="botoes-centralizado" *ngFor="let permissaoUsuarioEvento of this.permissaoUsuarioService.userPermissionEvent">
+      <div class="botoes-centralizado">
         <div *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Organizador'">
           <button class="btn btn-primary margin-botoes tamanho-botoes" id="avaliadores" (click)="abrirAvaliadores()">
             Avaliadores

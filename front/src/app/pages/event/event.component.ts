@@ -1,3 +1,4 @@
+import { ChooseUserPermissionService } from './../../services/pages-services/choose-user-permission/choose-user-permission.service';
 import { MainService } from './../../services/pages-services/main/main.service';
 import { UsuarioService } from './../../services/api-services/usuario/usuario.service';
 import { Usuario } from './../../models/usuario';
@@ -20,6 +21,7 @@ export class EventComponent implements OnInit {
     private eventoApiService: EventoService,
     private loginService: LoginService,
     private permissaoUsuarioService: PermissaoUsuarioService,
+    private chooseUserPermissionService: ChooseUserPermissionService,
     private mainService: MainService
   ) {}
 
@@ -37,7 +39,12 @@ export class EventComponent implements OnInit {
         this.permissaoUsuarioService.userPermissionEvent = result.content;
         localStorage.setItem('permissaoUsuario', JSON.stringify(result.content));
         localStorage.setItem('evento', JSON.stringify(this.permissaoUsuarioService.userPermissionEvent[0].eventoDTO));
-        this.mainService.goToMain();
+        if (this.permissaoUsuarioService.userPermissionEvent.length > 1) {
+          this.chooseUserPermissionService.goToChooseUserPermission();
+        } else {
+          localStorage.setItem('permissaoUsuarioEscolhida', JSON.stringify(this.permissaoUsuarioService.userPermissionEvent[0]));
+          this.mainService.goToMain();
+        }
       }
     });
   }

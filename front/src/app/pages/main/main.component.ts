@@ -1,3 +1,4 @@
+import { PermissaoUsuario } from 'src/app/models/permissao-usuario';
 import { EventService } from './../../services/pages-services/event/event.service';
 import { Component, OnInit } from '@angular/core';
 import { EventoService } from 'src/app/services/api-services/evento/evento.service';
@@ -33,12 +34,15 @@ export class MainComponent implements OnInit {
   ) {}
 
   selectedButton: SelectedButton = SelectedButton.Nenhum;
+  permissaoUsuarioEvento: PermissaoUsuario = new PermissaoUsuario();
 
   ngOnInit(): void {
     if (!this.permissaoUsuarioService.userPermissionEvent[0].id && !this.mainService.getUserPermission) {
       this.eventService.goToEvent();
     } else if (!this.permissaoUsuarioService.userPermissionEvent[0].id) {
       this.permissaoUsuarioService.userPermissionEvent = this.mainService.getUserPermission!;
+    } else {
+      this.permissaoUsuarioEvento = this.mainService.getChosenUserPermission ?? this.permissaoUsuarioService.userPermissionEvent[0];
     }
   }
 

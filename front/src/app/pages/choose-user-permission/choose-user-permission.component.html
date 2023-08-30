@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<div class="margin-header espacamento-base">
+  <div class="card card-event">
+    <div [formGroup]="form" class="card-body">
+      <h1 class="card-title">Selecionar permissão para acessar o evento</h1>
+
+      <div class="form-group mb-3">
+        <label for="titulo">Categoria:</label>
+        <select class="mb-3" formControlName="categoria" >
+          <option class="form-control" *ngFor="let permissao of permissoes" [ngValue]="permissao">{{permissao.permissaoDTO?.descricao}}</option>
+        </select>
+      </div>
+
+      <div class="linha center">
+        <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="this.mainService.returnPreviousPage()">
+          Cancelar
+        </button>
+        <button (click)="chooseUserPermission()" class="btn btn-primary">
+          Confirmar
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

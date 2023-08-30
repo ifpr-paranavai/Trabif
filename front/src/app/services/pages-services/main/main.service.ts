@@ -27,6 +27,12 @@ export class MainService implements BaseRouteService {
     return localStorage.getItem('permissaoUsuario') ?
       JSON.parse(localStorage.getItem('permissaoUsuario')!) as PermissaoUsuario[] : null;
   }
+
+  get getChosenUserPermission(): PermissaoUsuario | null {
+    return localStorage.getItem('permissaoUsuarioEscolhida') ?
+      JSON.parse(localStorage.getItem('permissaoUsuarioEscolhida')!) as PermissaoUsuario : null;
+  }
+
   get getEvent(): Evento | null {
     return localStorage.getItem('evento') ?
       JSON.parse(localStorage.getItem('evento')!) as Evento : null;
