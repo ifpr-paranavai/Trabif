@@ -21,6 +21,7 @@ import { AreaEvaluatorAddComponent } from './pages/area-evaluator-add/area-evalu
 import { MyWorksComponent } from './pages/my-works/my-works.component';
 import { WorkAddComponent } from './pages/work-add/work-add.component';
 import { ChooseUserPermissionComponent } from './pages/choose-user-permission/choose-user-permission.component';
+import { OrganizerAddComponent } from './pages/organizer-add/organizer-add.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -42,7 +43,8 @@ const routes: Routes = [
   {path: 'areaEvaluatorAdd', component: AreaEvaluatorAddComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'myWork', component: MyWorksComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'workAdd', component: WorkAddComponent, canActivate: [AuthenticatedUserGuard]},
-  {path: 'chooseUserPermission', component: ChooseUserPermissionComponent, canActivate: [AuthenticatedUserGuard]}
+  {path: 'chooseUserPermission', component: ChooseUserPermissionComponent, canActivate: [AuthenticatedUserGuard]},
+  {path: 'organizerAdd', component: OrganizerAddComponent, canActivate: [AuthenticatedUserGuard]}
 ];
 
 @NgModule({

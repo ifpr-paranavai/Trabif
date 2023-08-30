@@ -37,6 +37,8 @@ import { WorkAddComponent } from './pages/work-add/work-add.component';
 import { EvaluateWorkComponent } from './pages/evaluate-work/evaluate-work.component';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ChooseUserPermissionComponent } from './pages/choose-user-permission/choose-user-permission.component';
+import { OrganizerAddComponent } from './pages/organizer-add/organizer-add.component';
+import { OrganizerComponent } from './pages/organizer/organizer.component';
 
 
 @NgModule({
@@ -66,6 +68,8 @@ import { ChooseUserPermissionComponent } from './pages/choose-user-permission/ch
     WorkAddComponent,
     EvaluateWorkComponent,
     ChooseUserPermissionComponent,
+    OrganizerAddComponent,
+    OrganizerComponent,
   ],
   imports: [
     BrowserModule,

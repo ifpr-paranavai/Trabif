@@ -2,25 +2,28 @@
 <div class="margin-header linha">
   <div class="coluna asside-acao">
     <ul *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Organizador'">
+      <button id="areas" [ngClass]="this.selectedButton == 'Areas' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAreas()">
+        Áreas
+      </button>
       <button id="avaliadores" [ngClass]="this.selectedButton == 'Avaliadores' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAvaliadores()">
         Avaliadores
-      </button>
-      <button id="submissoes" [ngClass]="this.selectedButton == 'Submissoes' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirSubmissoes()">
-        Submissões
       </button>
       <button id="categorias" [ngClass]="this.selectedButton == 'Categorias' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirCategorias()">
         Categorias
       </button>
-      <button id="areas" [ngClass]="this.selectedButton == 'Areas' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAreas()">
-        Áreas
+      <button id="organizadores" [ngClass]="this.selectedButton == 'Organizadores' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirOrganizadores()">
+        Organizadores
+      </button>
+      <button id="submissoes" [ngClass]="this.selectedButton == 'Submissoes' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirSubmissoes()">
+        Submissões
       </button>
     </ul>
     <ul *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Avaliador'">
-      <button id="avaliar-trabalhos" [ngClass]="this.selectedButton == 'AvaliarTrabalhos' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAvaliarTrabalhos()">
-        Avaliar trabalhos
-      </button>
       <button id="avaliar-trabalhos" [ngClass]="this.selectedButton == 'AreasConhecimento' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAreasConhecimento()">
         Áreas do Conhecimento
+      </button>
+      <button id="avaliar-trabalhos" [ngClass]="this.selectedButton == 'AvaliarTrabalhos' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAvaliarTrabalhos()">
+        Avaliar trabalhos
       </button>
     </ul>
     <ul *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Autor'">
@@ -35,25 +38,28 @@
       <h1 class="titulo-centralizado">Bem vindo a página do evento <div class="nome-evento"> {{this.permissaoUsuarioService.userPermissionEvent[0].eventoDTO?.nome}}</div></h1>
       <div class="botoes-centralizado">
         <div *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Organizador'">
+          <button class="btn btn-primary margin-botoes tamanho-botoes" id="areas" (click)="abrirAreas()">
+            Áreas
+          </button>
           <button class="btn btn-primary margin-botoes tamanho-botoes" id="avaliadores" (click)="abrirAvaliadores()">
             Avaliadores
-          </button>
-          <button class="btn btn-primary margin-botoes tamanho-botoes" id="submissoes" (click)="abrirSubmissoes()">
-            Submissões
           </button>
           <button class="btn btn-primary margin-botoes tamanho-botoes" id="categorias" (click)="abrirCategorias()">
             Categorias
           </button>
-          <button class="btn btn-primary margin-botoes tamanho-botoes" id="areas" (click)="abrirAreas()">
-            Áreas
+          <button class="btn btn-primary margin-botoes tamanho-botoes" id="organizadores" (click)="abrirOrganizadores()">
+            Organizadores
+          </button>
+          <button class="btn btn-primary margin-botoes tamanho-botoes" id="submissoes" (click)="abrirSubmissoes()">
+            Submissões
           </button>
         </div>
         <div *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Avaliador'">
-          <button class="btn btn-primary margin-botoes tamanho-botoes" id="avaliar-trabalhos" (click)="abrirAvaliarTrabalhos()">
-            Avaliar trabalhos
-          </button>
           <button class="btn btn-primary margin-botoes tamanho-botoes" id="areas-conhecimento" (click)="abrirAreasConhecimento()">
             Áreas do Conhecimento
+          </button>
+          <button class="btn btn-primary margin-botoes tamanho-botoes" id="avaliar-trabalhos" (click)="abrirAvaliarTrabalhos()">
+            Avaliar trabalhos
           </button>
         </div>
         <div *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Autor'">
@@ -82,5 +88,9 @@
     <app-my-works *ngIf="this.selectedButton == 'MeusTrabalhos'">
 
     </app-my-works>
+
+    <app-organizer *ngIf="this.selectedButton == 'Organizadores'">
+
+    </app-organizer>
   </div>
 </div>

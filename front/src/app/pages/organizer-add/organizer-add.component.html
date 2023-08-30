@@ -1,0 +1,24 @@
+<app-header></app-header>
+
+<div class="margin-header espacamento-base">
+  <div class="card card-event">
+    <div class="card-body">
+      <h1 class="card-title">Adicionar Organizador</h1>
+      <div class="form-group mb-3">
+        <label for="email">Email do organizador:</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="sendObj.email">
+      </div>
+      <div class="linha center">
+        <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="this.mainService.returnPreviousPage()">
+          Cancelar
+        </button>
+        <button (click)="addOrganizer()" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+          Adicionar
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -1,24 +1,23 @@
-import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { BaseRouteService } from '../base-route/base-route.service';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ChooseUserPermissionService implements BaseRouteService {
+export class OrganizerAddService implements BaseRouteService {
 
   constructor(
     private router: Router,
     public location: Location
   ) { }
 
-  goToChooseUserPermission(): void {
-    this.router.navigate(['/chooseUserPermission']);
+  goToOrganizerAdd(): void {
+    this.router.navigate(['/organizerAdd']);
   }
 
   returnPreviousPage(): void {
     this.location.back();
   }
-
 }
