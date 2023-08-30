@@ -75,7 +75,6 @@ export class WorkAddComponent implements OnInit {
         this.addWork(autor);
       })
     }
-    this.mainService.goToMain();
   }
 
   addWork(usuario: Usuario): void {
@@ -84,6 +83,7 @@ export class WorkAddComponent implements OnInit {
       next: (result: any) => {
       if (result) {
         this.toastService.showSuccess("Trabalho adicionado com sucesso!");
+        this.mainService.goToMain();
       }
       this.loading = false;
     },
