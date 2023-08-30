@@ -1,0 +1,127 @@
+@startuml
+
+class Area {
+- id: long
+- descricao: String
+}
+
+class AreaAvaliador {
+- id: long
+- area: Area
+- usuario: Usuario
+}
+
+class AreaTrabalho {
+- id: long
+- area: Area
+- trabalho: Trabalho
+}
+
+class AutorTrabalho {
+- id: long
+- usuario: Usuario
+- trabalho: Trabalho
+}
+
+class Categoria {
+- id: long
+- descricao: String
+}
+
+class Email {
+- id: long
+- remetente: String
+- destinatario: String
+- titulo: String
+- mensagem: String
+}
+
+class EmailTemplate {
+- id: long
+- titulo: String
+- mensagem: String
+}
+
+class Evento {
+- id: long
+- nome: String
+- dataInicio: Date
+- dataFim: Date
+}
+
+class EventoEmailTemplate {
+- id: long
+- evento: Evento
+- emailTemplate: EmailTemplate
+}
+
+class Migration {
+- id: long
+- nomeArquivo: String
+- dataExecucao: Date
+}
+
+class Permissao {
+- id: long
+- descricao: String
+}
+
+class PermissaoUsuario {
+- id: long
+- evento: Evento
+- permissao: Permissao
+- usuario: Usuario
+}
+
+class ResultadoSubmissao {
+- id: long
+- resultado: int
+- confianca: int
+- comentarioAutor: String
+- comentarioOrganizador: String
+}
+
+class Trabalho {
+- id: long
+- titulo: String
+- categoria: Categoria
+- evento: Evento
+- resultado: String
+- pdf: byte[]
+}
+
+class TrabalhoAvaliador {
+- id: long
+- usuario: Usuario
+- trabalho: Trabalho
+- resultadoSubmissao: ResultadoSubmissao
+}
+
+class Usuario {
+- id: long
+- nome: String
+- cpf: String
+- email: String
+- codigoRecuperacaoSenha: String
+- senha: String
+- dataEnvioCodigo: Date
+}
+
+Area "1" -left- "*" AreaAvaliador
+Area "1" -- "*" AreaTrabalho
+Usuario "1" -down- "*" AreaAvaliador
+Usuario "1" -left- "*" AutorTrabalho
+Usuario "1" -down- "*" TrabalhoAvaliador
+Usuario "1" -up- "*" PermissaoUsuario
+Trabalho "1" -down- "*" AutorTrabalho
+Trabalho "1" -left- "*" AreaTrabalho
+Trabalho "*" -- "1" Categoria
+Trabalho "*" -- "1" Evento
+Trabalho "1" -right- "*" TrabalhoAvaliador
+Permissao "1" -right- "*" PermissaoUsuario
+Evento "1" -- "*" PermissaoUsuario
+Evento "1" -- "*" EventoEmailTemplate
+EmailTemplate "1" -- "*" EventoEmailTemplate
+ResultadoSubmissao "1" -left- "*" TrabalhoAvaliador
+
+@enduml
