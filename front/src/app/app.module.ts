@@ -39,6 +39,8 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ChooseUserPermissionComponent } from './pages/choose-user-permission/choose-user-permission.component';
 import { OrganizerAddComponent } from './pages/organizer-add/organizer-add.component';
 import { OrganizerComponent } from './pages/organizer/organizer.component';
+import { EmailTemplateComponent } from './pages/email-template/email-template.component';
+import { EmailTemplateAddComponent } from './pages/email-template-add/email-template-add.component';
 
 
 @NgModule({
@@ -70,6 +72,8 @@ import { OrganizerComponent } from './pages/organizer/organizer.component';
     ChooseUserPermissionComponent,
     OrganizerAddComponent,
     OrganizerComponent,
+    EmailTemplateComponent,
+    EmailTemplateAddComponent,
   ],
   imports: [
     BrowserModule,

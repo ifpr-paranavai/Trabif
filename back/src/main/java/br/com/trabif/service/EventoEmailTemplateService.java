@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import br.com.trabif.domain.EmailTemplate;
 import br.com.trabif.domain.EventoEmailTemplate;
 import br.com.trabif.dto.EventoEmailTemplateDTO;
 import br.com.trabif.exception.BadResourceException;
@@ -19,6 +20,9 @@ public class EventoEmailTemplateService {
 	
 	@Autowired
 	private EventoEmailTemplateRepository eventoEmailTemplateRepository;
+
+	@Autowired
+	private EmailTemplateService emailTemplateService;
 	
 	private boolean existsById(Long id) {
 		return eventoEmailTemplateRepository.existsById(id);
@@ -61,6 +65,24 @@ public class EventoEmailTemplateService {
 		} else {
 			BadResourceException exe = new BadResourceException("Erro ao salvar eventoEmailTemplate");
 			exe.addErrorMessage("EventoEmailTemplate esta vazio ou nulo");
+			throw exe;
+		}		
+	}
+
+	public EventoEmailTemplate saveTemplate(EventoEmailTemplate eventoEmailTemplate) throws BadResourceException, ResourceAlreadyExistsException {
+		if (eventoEmailTemplate.getEmailTemplate() != null) {
+			EmailTemplate emailTemplate = emailTemplateService.save(eventoEmailTemplate.getEmailTemplate());
+			if (emailTemplate != null) {
+				eventoEmailTemplate.setEmailTemplate(emailTemplate);
+				return save(eventoEmailTemplate);
+			} else {
+				BadResourceException exe = new BadResourceException("Erro ao salvar EmailTemplate");
+				exe.addErrorMessage("EventoEmailTemplate não possui template");
+				throw exe;
+			}
+		} else {
+			BadResourceException exe = new BadResourceException("Erro ao salvar eventoEmailTemplate");
+			exe.addErrorMessage("EventoEmailTemplate não possui template");
 			throw exe;
 		}		
 	}

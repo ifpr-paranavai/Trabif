@@ -123,6 +123,26 @@ public class EventoEmailTemplateController {
 		}
 	}
 
+	@Operation(summary = "Adicionar eventoEmailTemplate", description = "Adicionar novo eventoEmailTemplate informado no banco de dados", tags = {
+			"eventoEmailTemplate" })
+	@PostMapping(value = "/eventoEmailTemplate/template")
+	@CrossOrigin("http://localhost:4200")
+	public ResponseEntity<EventoEmailTemplateDTO> addEventoEmailTemplateNovoTemplate(@RequestBody EventoEmailTemplate eventoEmailTemplate)
+			throws URISyntaxException {
+		try {
+			EventoEmailTemplate novoEventoEmailTemplate = eventoEmailTemplateService.saveTemplate(eventoEmailTemplate);
+
+			return ResponseEntity.created(new URI("/api/eventoEmailTemplate" + novoEventoEmailTemplate.getId()))
+					.body(new EventoEmailTemplateDTO().converter(eventoEmailTemplate));
+		} catch (ResourceAlreadyExistsException ex) {
+			logger.error(ex.getMessage());
+			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+		} catch (BadResourceException ex) {
+			logger.error(ex.getMessage());
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}
+	}
+
 	@Operation(summary = "Alterar EventoEmailTemplate", description = "Alterar valores do eventoEmailTemplate com id selecionado", tags = {
 			"eventoEmailTemplate" })
 	@PutMapping(value = "/eventoEmailTemplate/{id}")

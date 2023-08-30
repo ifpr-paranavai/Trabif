@@ -22,6 +22,7 @@ import { MyWorksComponent } from './pages/my-works/my-works.component';
 import { WorkAddComponent } from './pages/work-add/work-add.component';
 import { ChooseUserPermissionComponent } from './pages/choose-user-permission/choose-user-permission.component';
 import { OrganizerAddComponent } from './pages/organizer-add/organizer-add.component';
+import { EmailTemplateAddComponent } from './pages/email-template-add/email-template-add.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -44,7 +45,8 @@ const routes: Routes = [
   {path: 'myWork', component: MyWorksComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'workAdd', component: WorkAddComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'chooseUserPermission', component: ChooseUserPermissionComponent, canActivate: [AuthenticatedUserGuard]},
-  {path: 'organizerAdd', component: OrganizerAddComponent, canActivate: [AuthenticatedUserGuard]}
+  {path: 'organizerAdd', component: OrganizerAddComponent, canActivate: [AuthenticatedUserGuard]},
+  {path: 'emailTemplateAdd', component: EmailTemplateAddComponent, canActivate: [AuthenticatedUserGuard]}
 ];
 
 @NgModule({

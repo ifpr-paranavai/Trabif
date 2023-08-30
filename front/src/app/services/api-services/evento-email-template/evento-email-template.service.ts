@@ -26,4 +26,11 @@ export class EventoEmailTemplateService implements BaseService {
   delete(id: number): Observable<any> {
     return this.http.delete(this.baseUrl + '/' + id);
   }
+
+  getByIdEvento(idEvento: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/evento/' + idEvento);
+  }
+  postNewTemplate(obj: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl + '/template/', obj);
+  }
 }

@@ -1,0 +1,18 @@
+<div class="linha mb-3">
+  <h1>Template de e-mail</h1>
+  <div class="spacer"></div>
+  <button class="btn btn-primary" style="margin-bottom: 0.5rem;" [routerLink]="['/emailTemplateAdd']">Adicionar Template de e-mail</button>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let emailTemplate of eventEmailTemplate">
+      <div class="card card-event mb-3">
+        <div class="card-body linha">
+          <h5 class="card-title">{{ emailTemplate.emailTemplateDTO?.titulo }}</h5>
+          <div class="spacer"></div>
+          <button class="btn" (click)="deleteEmailTemplate(emailTemplate.id!)"><i class="fa fa-trash"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
