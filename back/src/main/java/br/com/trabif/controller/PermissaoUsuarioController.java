@@ -188,7 +188,7 @@ public class PermissaoUsuarioController {
 			PermissaoUsuario novoPermissaoUsuario = permissaoUsuarioService.saveAutor(permissaoUsuario);
 
 			return ResponseEntity.created(new URI("/api/permissaoUsuario" + novoPermissaoUsuario.getId()))
-					.body(new PermissaoUsuarioDTO().converter(permissaoUsuario));
+					.body(new PermissaoUsuarioDTO().converter(novoPermissaoUsuario));
 		} catch (ResourceAlreadyExistsException ex) {
 			logger.error(ex.getMessage());
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
@@ -211,7 +211,7 @@ public class PermissaoUsuarioController {
 			PermissaoUsuario novoPermissaoUsuario = permissaoUsuarioService.saveOrganizador(permissaoUsuario);
 
 			return ResponseEntity.created(new URI("/api/permissaoUsuario" + novoPermissaoUsuario.getId()))
-					.body(new PermissaoUsuarioDTO().converter(permissaoUsuario));
+					.body(new PermissaoUsuarioDTO().converter(novoPermissaoUsuario));
 		} catch (ResourceAlreadyExistsException ex) {
 			logger.error(ex.getMessage());
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
@@ -234,7 +234,7 @@ public class PermissaoUsuarioController {
 			PermissaoUsuario novoPermissaoUsuario = permissaoUsuarioService.saveAvaliador(permissaoUsuario);
 
 			return ResponseEntity.created(new URI("/api/permissaoUsuario" + novoPermissaoUsuario.getId()))
-					.body(new PermissaoUsuarioDTO().converter(permissaoUsuario));
+					.body(new PermissaoUsuarioDTO().converter(novoPermissaoUsuario));
 		} catch (ResourceAlreadyExistsException ex) {
 			logger.error(ex.getMessage());
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();

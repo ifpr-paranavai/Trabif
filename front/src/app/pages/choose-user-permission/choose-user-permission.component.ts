@@ -20,7 +20,7 @@ export class ChooseUserPermissionComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilde.group({
-      permissao: this.permissoes[0]
+      permissao: [null]
     });
   }
 

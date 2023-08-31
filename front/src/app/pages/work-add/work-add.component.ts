@@ -82,7 +82,7 @@ export class WorkAddComponent implements OnInit {
     this.autorTrabalhoService.postWithFile(this.sendObj, this.uploadedFile).subscribe({
       next: (result: any) => {
       if (result) {
-        this.toastService.showSuccess("Trabalho adicionado com sucesso!");
+        this.toastService.showSuccess(`Trabalho do(a) autor(a) ${usuario.nome} adicionado com sucesso!`);
         this.mainService.goToMain();
       }
       this.loading = false;

@@ -42,6 +42,7 @@ export class MainComponent implements OnInit {
       this.eventService.goToEvent();
     } else if (!this.permissaoUsuarioService.userPermissionEvent[0].id) {
       this.permissaoUsuarioService.userPermissionEvent = this.mainService.getUserPermission!;
+      this.permissaoUsuarioEvento = this.mainService.getChosenUserPermission ?? this.permissaoUsuarioService.userPermissionEvent[0];
     } else {
       this.permissaoUsuarioEvento = this.mainService.getChosenUserPermission ?? this.permissaoUsuarioService.userPermissionEvent[0];
     }

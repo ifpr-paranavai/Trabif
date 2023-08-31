@@ -6,8 +6,8 @@
       <h1 class="card-title">Selecionar permissão para acessar o evento</h1>
 
       <div class="form-group mb-3">
-        <label for="titulo">Categoria:</label>
-        <select class="mb-3" formControlName="categoria" >
+        <label for="titulo">Permissao:</label>
+        <select class="mb-3" formControlName="permissao" >
           <option class="form-control" *ngFor="let permissao of permissoes" [ngValue]="permissao">{{permissao.permissaoDTO?.descricao}}</option>
         </select>
       </div>
@@ -16,7 +16,7 @@
         <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="this.mainService.returnPreviousPage()">
           Cancelar
         </button>
-        <button (click)="chooseUserPermission()" class="btn btn-primary">
+        <button type="submit" (click)="chooseUserPermission()" class="btn btn-primary">
           Confirmar
         </button>
       </div>

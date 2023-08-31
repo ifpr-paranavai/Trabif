@@ -160,6 +160,11 @@ public class PermissaoUsuarioService {
 
 			emailService.enviarEmailTemplate(permissaoUsuario.getUsuario().getEmail(), propriedades);
 		}
+		List<PermissaoUsuario> permissaoUsuario2;
+		permissaoUsuario2 = this.permissaoUsuarioRepository.findByPermissaoAndUsuarioAndEvento(autor.getId(), usuario.getId(), permissaoUsuario.getEvento().getId());
+		if (permissaoUsuario2 != null && permissaoUsuario2.size() > 0) {
+			return permissaoUsuario2.get(0);
+		}
 		permissaoUsuario.setUsuario(usuario);
 		permissaoUsuario.setPermissao(autor);
 		return this.save(permissaoUsuario);	
@@ -193,6 +198,11 @@ public class PermissaoUsuarioService {
 
 			emailService.enviarEmailTemplate(permissaoUsuario.getUsuario().getEmail(), propriedades);
 		}
+		List<PermissaoUsuario> permissaoUsuario2;
+		permissaoUsuario2 = this.permissaoUsuarioRepository.findByPermissaoAndUsuarioAndEvento(organizador.getId(), usuario.getId(), permissaoUsuario.getEvento().getId());
+		if (permissaoUsuario2 != null && permissaoUsuario2.size() > 0) {
+			return permissaoUsuario2.get(0);
+		}
 		permissaoUsuario.setUsuario(usuario);
 		permissaoUsuario.setPermissao(organizador);
 		return this.save(permissaoUsuario);		
@@ -225,6 +235,11 @@ public class PermissaoUsuarioService {
 			propriedades.put("site", Constantes.URL_FRONT + "/finalizar-cadastro/" + usuario.getId());
 
 			emailService.enviarEmailTemplate(permissaoUsuario.getUsuario().getEmail(), propriedades);
+		}
+		List<PermissaoUsuario> permissaoUsuario2;
+		permissaoUsuario2 = this.permissaoUsuarioRepository.findByPermissaoAndUsuarioAndEvento(avaliador.getId(), usuario.getId(), permissaoUsuario.getEvento().getId());
+		if (permissaoUsuario2 != null && permissaoUsuario2.size() > 0) {
+			return permissaoUsuario2.get(0);
 		}
 		permissaoUsuario.setUsuario(usuario);
 		permissaoUsuario.setPermissao(avaliador);

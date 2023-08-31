@@ -20,7 +20,7 @@
     </ul>
     <ul *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Avaliador'">
       <button id="avaliar-trabalhos" [ngClass]="this.selectedButton == 'AreasConhecimento' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAreasConhecimento()">
-        Áreas do Conhecimento
+        Áreas
       </button>
       <button id="avaliar-trabalhos" [ngClass]="this.selectedButton == 'AvaliarTrabalhos' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAvaliarTrabalhos()">
         Avaliar trabalhos
@@ -56,7 +56,7 @@
         </div>
         <div *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Avaliador'">
           <button class="btn btn-primary margin-botoes tamanho-botoes" id="areas-conhecimento" (click)="abrirAreasConhecimento()">
-            Áreas do Conhecimento
+            Áreas
           </button>
           <button class="btn btn-primary margin-botoes tamanho-botoes" id="avaliar-trabalhos" (click)="abrirAvaliarTrabalhos()">
             Avaliar trabalhos
