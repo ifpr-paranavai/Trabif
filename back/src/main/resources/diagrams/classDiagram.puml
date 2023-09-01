@@ -1,10 +1,9 @@
 @startuml
 
 note as N1
-  Todas as classes representadas herdam
-  da classe <b>Auditoria</b>, porém, para não
-  poluir o diagrama optou-se por não
-  representá-la.
+  Todas as classes representadas, exceto a classe
+  Migration, herdam da classe <b>Auditoria</b>, porém,
+  para não poluir o diagrama optou-se por não representá-la.
 end note
 
 class Area {
