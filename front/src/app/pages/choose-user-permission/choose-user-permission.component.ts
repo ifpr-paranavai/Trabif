@@ -24,8 +24,8 @@ export class ChooseUserPermissionComponent implements OnInit {
     });
   }
 
-  chooseUserPermission(): void {
-    localStorage.setItem('permissaoUsuarioEscolhida', JSON.stringify(this.form.value.permissao));
+  chooseUserPermission(permissao: PermissaoUsuario): void {
+    localStorage.setItem('permissaoUsuarioEscolhida', JSON.stringify(permissao));
     this.mainService.goToMain();
   }
 
