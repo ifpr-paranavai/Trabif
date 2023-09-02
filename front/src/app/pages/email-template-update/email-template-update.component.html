@@ -1,0 +1,42 @@
+<app-header></app-header>
+
+<div class="margin-header espacamento-base">
+  <div class="card card-event">
+    <div class="card-body">
+      <h1 class="card-title">Adicionar template de e-mail</h1>
+      <div class="form-group mb-3">
+        <label for="titulo">Título:</label>
+        <input type="titulo" class="form-control" id="titulo" [(ngModel)]="sendObj.titulo">
+      </div>
+      <div class="form-group mb-3">
+        <label for="mensagem">Mensagem:</label>
+        <p>Variáveis disponíveis <i class="fa fa-question-circle"
+          pTooltip="As variáveis vão funcionar como identificadores para as informações do usuário, do evento e do trabalho. As variaveis devem sempre estar entre [] (colchetes) para serem substituidas pelos valores correspondentes"
+          tooltipPosition="top" placeholder="Top"></i>:
+          [nomeUsuario]<i class="fa fa-question-circle"
+          pTooltip="Variável que representa o nome do autor do trabalho"
+          tooltipPosition="top" placeholder="Top"></i>, [emailUsuario]<i class="fa fa-question-circle"
+          pTooltip="Variável que representa o e-mail do autor do trabalho"
+          tooltipPosition="top" placeholder="Top"></i>, [nomeEvento]<i class="fa fa-question-circle"
+          pTooltip="Variável que representa o nome do evento de submissão do trabalho"
+          tooltipPosition="top" placeholder="Top"></i>, [tituloTrabalho]<i class="fa fa-question-circle"
+          pTooltip="Variável que representa o título do trabalho"
+          tooltipPosition="top" placeholder="Top"></i>, [resultadoFinalTrabalho]<i class="fa fa-question-circle"
+          pTooltip="Variável que representa o resultado final do trabalho do autor"
+          tooltipPosition="top" placeholder="Top"></i>.</p>
+         <textarea rows="5" cols="30" class="form-control" pInputTextarea id="mensagem" [(ngModel)]="sendObj.mensagem"></textarea>
+      </div>
+      <div class="linha center">
+        <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="this.mainService.returnPreviousPage()">
+          Cancelar
+        </button>
+        <button (click)="addEmailTemplate()" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+          Atualizar
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

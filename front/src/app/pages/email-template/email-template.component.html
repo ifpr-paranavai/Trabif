@@ -10,6 +10,7 @@
         <div class="card-body linha">
           <h5 class="card-title">{{ emailTemplate.emailTemplateDTO?.titulo }}</h5>
           <div class="spacer"></div>
+          <button class="btn" [routerLink]="['/emailTemplateUpdate']" [state]="emailTemplate"><i class="fa fa-pencil"></i></button>
           <button class="btn" (click)="deleteEmailTemplate(emailTemplate.id!)"><i class="fa fa-trash"></i></button>
         </div>
       </div>

@@ -1,0 +1,24 @@
+<app-header></app-header>
+
+<div class="margin-header espacamento-base">
+  <div class="card card-event">
+    <div class="card-body">
+      <h1 class="card-title">Adicionar Área do conhecimento</h1>
+      <div class="form-group mb-3">
+        <label for="text">Descrição:</label>
+        <input type="text" class="form-control" id="text" [(ngModel)]="sendObj.descricao">
+      </div>
+      <div class="linha center">
+        <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="this.mainService.returnPreviousPage()">
+          Cancelar
+        </button>
+        <button (click)="addArea()" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+          Atualizar
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -43,6 +43,9 @@ import { EmailTemplateComponent } from './pages/email-template/email-template.co
 import { EmailTemplateAddComponent } from './pages/email-template-add/email-template-add.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TooltipModule } from 'primeng/tooltip';
+import { AreaUpdateComponent } from './pages/area-update/area-update.component';
+import { CategoryUpdateComponent } from './pages/category-update/category-update.component';
+import { EmailTemplateUpdateComponent } from './pages/email-template-update/email-template-update.component';
 
 
 @NgModule({
@@ -76,6 +79,9 @@ import { TooltipModule } from 'primeng/tooltip';
     OrganizerComponent,
     EmailTemplateComponent,
     EmailTemplateAddComponent,
+    AreaUpdateComponent,
+    CategoryUpdateComponent,
+    EmailTemplateUpdateComponent,
   ],
   imports: [
     BrowserModule,

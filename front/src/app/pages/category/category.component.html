@@ -10,6 +10,7 @@
         <div class="card-body linha">
           <h5 class="card-title">{{ categoria.descricao }}</h5>
           <div class="spacer"></div>
+          <button class="btn" [routerLink]="['/categoryUpdate']" [state]="categoria"><i class="fa fa-pencil"></i></button>
           <button class="btn" (click)="deleteCategory(categoria.id!)"><i class="fa fa-trash"></i></button>
         </div>
       </div>

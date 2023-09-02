@@ -23,6 +23,9 @@ import { WorkAddComponent } from './pages/work-add/work-add.component';
 import { ChooseUserPermissionComponent } from './pages/choose-user-permission/choose-user-permission.component';
 import { OrganizerAddComponent } from './pages/organizer-add/organizer-add.component';
 import { EmailTemplateAddComponent } from './pages/email-template-add/email-template-add.component';
+import { AreaUpdateComponent } from './pages/area-update/area-update.component';
+import { CategoryUpdateComponent } from './pages/category-update/category-update.component';
+import { EmailTemplateUpdateComponent } from './pages/email-template-update/email-template-update.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -38,15 +41,18 @@ const routes: Routes = [
   {path: 'myEvent', component: MyEventComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'categrory', component: CategoryComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'categoryAdd', component: CategoryAddComponent, canActivate: [AuthenticatedUserGuard]},
+  {path: 'categoryUpdate', component: CategoryUpdateComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'area', component: AreaComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'areaAdd', component: AreaAddComponent, canActivate: [AuthenticatedUserGuard]},
+  {path: 'areaUpdate', component: AreaUpdateComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'areaEvaluator', component: AreaEvaluatorComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'areaEvaluatorAdd', component: AreaEvaluatorAddComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'myWork', component: MyWorksComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'workAdd', component: WorkAddComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'chooseUserPermission', component: ChooseUserPermissionComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'organizerAdd', component: OrganizerAddComponent, canActivate: [AuthenticatedUserGuard]},
-  {path: 'emailTemplateAdd', component: EmailTemplateAddComponent, canActivate: [AuthenticatedUserGuard]}
+  {path: 'emailTemplateAdd', component: EmailTemplateAddComponent, canActivate: [AuthenticatedUserGuard]},
+  {path: 'emailTemplateUpdate', component: EmailTemplateUpdateComponent, canActivate: [AuthenticatedUserGuard]}
 ];
 
 @NgModule({
