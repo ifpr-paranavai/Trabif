@@ -1,9 +1,12 @@
 @startuml
 
 note as N1
-  Todas as classes representadas, exceto a classe
-  Migration, herdam da classe <b>Auditoria</b>, porém,
-  para não poluir o diagrama optou-se por não representá-la.
+  Todas as classes representadas,
+   exceto a classe
+  Migration, herdam da classe 
+  <b>Auditoria</b>, porém,
+  para não poluir o diagrama
+   optou-se por não representá-la.
 end note
 
 class Area {
@@ -116,7 +119,7 @@ Trabalho "1" -left- "*" AreaTrabalho
 Trabalho "*" -- "1" Categoria
 Trabalho "*" -- "1" Evento
 Trabalho "1" -right- "*" TrabalhoAvaliador
-Permissao "1" -right- "*" PermissaoUsuario
+Permissao "1" -up- "*" PermissaoUsuario
 Evento "1" -- "*" PermissaoUsuario
 Evento "1" -- "*" EventoEmailTemplate
 EmailTemplate "1" -- "*" EventoEmailTemplate
