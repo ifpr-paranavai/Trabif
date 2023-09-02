@@ -1,5 +1,5 @@
 import { EventoEmailTemplateService } from './../../services/api-services/evento-email-template/evento-email-template.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EmailTemplate } from 'src/app/models/email-template';
 import { Evento } from 'src/app/models/evento';
 import { EventoEmailTemplate } from 'src/app/models/evento-email-template';
@@ -12,7 +12,7 @@ import { ToastService } from 'src/app/services/pages-services/toast/toast.servic
   templateUrl: './email-template-add.component.html',
   styleUrls: ['./email-template-add.component.scss']
 })
-export class EmailTemplateAddComponent {
+export class EmailTemplateAddComponent implements OnInit {
   eventoEmailTemplate: any = new EventoEmailTemplate();
   sendObj: any = new Object();
   loading = false;
@@ -23,13 +23,15 @@ export class EmailTemplateAddComponent {
     public mainService: MainService,
     private toastService: ToastService
   ) {}
+  ngOnInit(): void {
+    this.sendObj.emailTemplate = new EmailTemplate();
+  }
 
   addEmailTemplate(): void {
-    if (this.sendObj.mensagem) {
+    if (this.sendObj.emailTemplate.mensagem) {
       this.loading = true;
-      this.sendObj.emailTemplate = new EmailTemplate();
       this.sendObj.evento = new Evento();
-      this.sendObj.evento = this.permissaoUsuarioApiService.userPermissionEvent[0].eventoDTO;
+      this.sendObj.evento = this.mainService.getEvent;
       this.eventoEmailTemplateService.postNewTemplate(this.sendObj).subscribe((result) => {
         if (result) {
           this.mainService.goToMain();

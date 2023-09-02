@@ -7,35 +7,37 @@ note as N1
 end note
 
 class Area {
-- id: long
 - descricao: String
 }
 
 class AreaAvaliador {
-- id: long
 - area: Area
 - usuario: Usuario
 }
 
 class AreaTrabalho {
-- id: long
 - area: Area
 - trabalho: Trabalho
 }
 
 class AutorTrabalho {
-- id: long
 - usuario: Usuario
 - trabalho: Trabalho
 }
 
+class Auditoria {
+- usuarioCadastro: String
+- dataCadastro: Date
+- usuarioUltimaAlteracao: String
+- dataUltimaAlteracao: Date
+- status: char
+}
+
 class Categoria {
-- id: long
 - descricao: String
 }
 
 class Email {
-- id: long
 - remetente: String
 - destinatario: String
 - titulo: String
@@ -43,44 +45,37 @@ class Email {
 }
 
 class EmailTemplate {
-- id: long
 - titulo: String
 - mensagem: String
 }
 
 class Evento {
-- id: long
 - nome: String
 - dataInicio: Date
 - dataFim: Date
 }
 
 class EventoEmailTemplate {
-- id: long
 - evento: Evento
 - emailTemplate: EmailTemplate
 }
 
 class Migration {
-- id: long
 - nomeArquivo: String
 - dataExecucao: Date
 }
 
 class Permissao {
-- id: long
 - descricao: String
 }
 
 class PermissaoUsuario {
-- id: long
 - evento: Evento
 - permissao: Permissao
 - usuario: Usuario
 }
 
 class ResultadoSubmissao {
-- id: long
 - resultado: int
 - confianca: int
 - comentarioAutor: String
@@ -88,7 +83,6 @@ class ResultadoSubmissao {
 }
 
 class Trabalho {
-- id: long
 - titulo: String
 - categoria: Categoria
 - evento: Evento
@@ -97,14 +91,12 @@ class Trabalho {
 }
 
 class TrabalhoAvaliador {
-- id: long
 - usuario: Usuario
 - trabalho: Trabalho
 - resultadoSubmissao: ResultadoSubmissao
 }
 
 class Usuario {
-- id: long
 - nome: String
 - cpf: String
 - email: String

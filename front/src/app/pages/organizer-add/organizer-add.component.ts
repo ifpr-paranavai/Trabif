@@ -28,7 +28,7 @@ export class OrganizerAddComponent {
       this.permissaoUsuario.usuario = new Usuario();
       this.permissaoUsuario.usuario.email = this.sendObj.email;
       this.permissaoUsuario.evento = new Evento();
-      this.permissaoUsuario.evento = this.permissaoUsuarioApiService.userPermissionEvent[0].eventoDTO;
+      this.permissaoUsuario.evento = this.mainService.getEvent;
       this.permissaoUsuarioApiService.postOrganizer(this.permissaoUsuario).subscribe((result) => {
         if (result) {
           this.mainService.goToMain();

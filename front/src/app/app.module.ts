@@ -41,6 +41,8 @@ import { OrganizerAddComponent } from './pages/organizer-add/organizer-add.compo
 import { OrganizerComponent } from './pages/organizer/organizer.component';
 import { EmailTemplateComponent } from './pages/email-template/email-template.component';
 import { EmailTemplateAddComponent } from './pages/email-template-add/email-template-add.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 @NgModule({
@@ -85,7 +87,9 @@ import { EmailTemplateAddComponent } from './pages/email-template-add/email-temp
     ProgressSpinnerModule,
     TabMenuModule,
     ReactiveFormsModule,
-    FileUploadModule
+    FileUploadModule,
+    InputTextareaModule,
+    TooltipModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

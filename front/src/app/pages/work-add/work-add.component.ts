@@ -99,6 +99,8 @@ export class WorkAddComponent implements OnInit {
     let email = this.form.value.emailAutor;
     this.emailAutores.push(email);
     this.addAuthors();
+    this.emailAutores = [];
+    (document.getElementById('emailAutor') as HTMLInputElement)!.value = '';
     this.form.value.emailAutor = [null];
   }
 

@@ -133,7 +133,7 @@ public class EventoEmailTemplateController {
 			EventoEmailTemplate novoEventoEmailTemplate = eventoEmailTemplateService.saveTemplate(eventoEmailTemplate);
 
 			return ResponseEntity.created(new URI("/api/eventoEmailTemplate" + novoEventoEmailTemplate.getId()))
-					.body(new EventoEmailTemplateDTO().converter(eventoEmailTemplate));
+					.body(new EventoEmailTemplateDTO().converter(novoEventoEmailTemplate));
 		} catch (ResourceAlreadyExistsException ex) {
 			logger.error(ex.getMessage());
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();

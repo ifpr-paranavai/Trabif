@@ -17,6 +17,9 @@
       <button id="submissoes" [ngClass]="this.selectedButton == 'Submissoes' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirSubmissoes()">
         Submissões
       </button>
+      <button id="submissoes" [ngClass]="this.selectedButton == 'TemplateEmail' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirTemplateEmail()">
+        Template de e-mail
+      </button>
     </ul>
     <ul *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Avaliador'">
       <button id="avaliar-trabalhos" [ngClass]="this.selectedButton == 'AreasConhecimento' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAreasConhecimento()">
@@ -52,6 +55,9 @@
           </button>
           <button class="btn btn-primary margin-botoes tamanho-botoes" id="submissoes" (click)="abrirSubmissoes()">
             Submissões
+          </button>
+          <button class="btn btn-primary margin-botoes tamanho-botoes" id="submissoes" (click)="abrirTemplateEmail()">
+            Template de e-mail
           </button>
         </div>
         <div *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Avaliador'">
@@ -92,5 +98,9 @@
     <app-organizer *ngIf="this.selectedButton == 'Organizadores'">
 
     </app-organizer>
+
+    <app-email-template  *ngIf="this.selectedButton == 'TemplateEmail'">
+
+    </app-email-template>
   </div>
 </div>
