@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="margin-header linha">
+<div class="margin-header linha esconder-scroll">
   <div class="coluna asside-acao">
     <ul *ngIf="permissaoUsuarioEvento.permissaoDTO!.descricao == 'Organizador'">
       <button id="areas" [ngClass]="this.selectedButton == 'Areas' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirAreas()">
@@ -75,34 +75,35 @@
         </div>
       </div>
     </div>
-    <app-evaluator *ngIf="this.selectedButton == 'Avaliadores'">
+    <app-evaluator class="mostrar-scroll" *ngIf="this.selectedButton == 'Avaliadores'">
 
     </app-evaluator>
 
-    <app-category *ngIf="this.selectedButton == 'Categorias'">
+    <app-category class="mostrar-scroll" *ngIf="this.selectedButton == 'Categorias'">
 
     </app-category>
 
-    <app-area *ngIf="this.selectedButton == 'Areas'">
+    <app-area class="mostrar-scroll" *ngIf="this.selectedButton == 'Areas'">
 
     </app-area>
 
-    <app-area-evaluator *ngIf="this.selectedButton == 'AreasConhecimento'">
+    <app-area-evaluator class="mostrar-scroll" *ngIf="this.selectedButton == 'AreasConhecimento'">
 
     </app-area-evaluator>
 
-    <app-my-works *ngIf="this.selectedButton == 'MeusTrabalhos'">
+    <app-my-works class="mostrar-scroll" *ngIf="this.selectedButton == 'MeusTrabalhos'">
 
     </app-my-works>
 
-    <app-organizer *ngIf="this.selectedButton == 'Organizadores'">
+    <app-organizer class="mostrar-scroll" *ngIf="this.selectedButton == 'Organizadores'">
 
     </app-organizer>
 
-    <app-email-template  *ngIf="this.selectedButton == 'TemplateEmail'">
+    <app-email-template class="mostrar-scroll"  *ngIf="this.selectedButton == 'TemplateEmail'">
 
     </app-email-template>
-    <app-organizer-work *ngIf="this.selectedButton == 'Submissoes'">
+
+    <app-organizer-work class="mostrar-scroll" *ngIf="this.selectedButton == 'Submissoes'">
 
     </app-organizer-work>
   </div>
