@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -23,7 +24,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import br.com.trabif.domain.AutorTrabalho;
 import br.com.trabif.domain.Trabalho;
+import br.com.trabif.dto.AutorTrabalhoConversorDTO;
+import br.com.trabif.dto.AutorTrabalhoDTO;
+import br.com.trabif.dto.TrabalhoConversorDTO;
 import br.com.trabif.dto.TrabalhoDTO;
 import br.com.trabif.exception.BadResourceException;
 import br.com.trabif.exception.ResourceAlreadyExistsException;
@@ -111,14 +116,36 @@ public class TrabalhoController {
 		return ResponseEntity.ok(trabalhos);
 	}
 	
-	@Operation(summary = "Adicionar trabalho", description = "Adicionar novo trabalho informado no banco de dados", tags = {"trabalho"})
+	// @Operation(summary = "Adicionar trabalho", description = "Adicionar novo trabalho informado no banco de dados", tags = {"trabalho"})
+	// @PostMapping(value = "/trabalho")
+	// @CrossOrigin("http://localhost:4200")
+	// public ResponseEntity<TrabalhoDTO> addTrabalho(@RequestBody Trabalho trabalho) throws URISyntaxException {
+	// 	try {
+	// 		Trabalho novoTrabalho = trabalhoService.save(trabalho);
+			
+	// 		return ResponseEntity.created(new URI("/api/trabalho" + novoTrabalho.getId())).body(new TrabalhoDTO().converter(trabalho));
+	// 	} catch (ResourceAlreadyExistsException ex) {
+	// 		logger.error(ex.getMessage());
+	// 		return ResponseEntity.status(HttpStatus.CONFLICT).build();
+	// 	} catch (BadResourceException ex) {
+	// 		logger.error(ex.getMessage());
+	// 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+	// 	}
+	// }
+
+	@Operation(summary = "Adicionar autorTrabalho", description = "Adicionar novo autorTrabalho informado no banco de dados", tags = {
+			"trabalho" })
 	@PostMapping(value = "/trabalho")
 	@CrossOrigin("http://localhost:4200")
-	public ResponseEntity<TrabalhoDTO> addTrabalho(@RequestBody Trabalho trabalho) throws URISyntaxException {
+	public ResponseEntity<TrabalhoDTO> addTrabalho(@ModelAttribute TrabalhoConversorDTO trabalho)
+			throws URISyntaxException {
 		try {
-			Trabalho novoTrabalho = trabalhoService.save(trabalho);
-			
-			return ResponseEntity.created(new URI("/api/trabalho" + novoTrabalho.getId())).body(new TrabalhoDTO().converter(trabalho));
+			Trabalho trabalho2 = new Trabalho();
+			trabalho2 = trabalho.convertObj(); 
+			Trabalho novoTrabalho = trabalhoService.save(trabalho2);
+
+			return ResponseEntity.created(new URI("/api/trabalho" + novoTrabalho.getId()))
+					.body(new TrabalhoDTO().converter(novoTrabalho));
 		} catch (ResourceAlreadyExistsException ex) {
 			logger.error(ex.getMessage());
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();

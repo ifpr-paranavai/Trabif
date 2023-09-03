@@ -58,9 +58,9 @@ public class AutorTrabalhoService {
 		return new AutorTrabalhoDTO().converterListaAutorTrabalhoDTO(autorTrabalhos);
 	}
 	
-	public AutorTrabalho save(AutorTrabalho autorTrabalho) throws BadResourceException, ResourceAlreadyExistsException {
+	public AutorTrabalho save(AutorTrabalho autorTrabalho) throws BadResourceException, ResourceAlreadyExistsException, ResourceNotFoundException {
 		if (autorTrabalho.getTrabalho() != null) {
-			Trabalho trabalho = this.trabalhoService.save(autorTrabalho.getTrabalho());
+			Trabalho trabalho = this.trabalhoService.findById(autorTrabalho.getTrabalho().getId());
 			autorTrabalho.setTrabalho(trabalho);
 			if (autorTrabalho.getUsuario() != null) {
 				if(existsById(autorTrabalho.getId())) {

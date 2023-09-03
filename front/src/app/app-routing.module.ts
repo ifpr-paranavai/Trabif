@@ -26,6 +26,7 @@ import { EmailTemplateAddComponent } from './pages/email-template-add/email-temp
 import { AreaUpdateComponent } from './pages/area-update/area-update.component';
 import { CategoryUpdateComponent } from './pages/category-update/category-update.component';
 import { EmailTemplateUpdateComponent } from './pages/email-template-update/email-template-update.component';
+import { OrganizerWorkComponent } from './pages/organizer-work/organizer-work.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -52,7 +53,8 @@ const routes: Routes = [
   {path: 'chooseUserPermission', component: ChooseUserPermissionComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'organizerAdd', component: OrganizerAddComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'emailTemplateAdd', component: EmailTemplateAddComponent, canActivate: [AuthenticatedUserGuard]},
-  {path: 'emailTemplateUpdate', component: EmailTemplateUpdateComponent, canActivate: [AuthenticatedUserGuard]}
+  {path: 'emailTemplateUpdate', component: EmailTemplateUpdateComponent, canActivate: [AuthenticatedUserGuard]},
+  {path: 'organizerWork', component: OrganizerWorkComponent, canActivate: [AuthenticatedUserGuard]}
 ];
 
 @NgModule({

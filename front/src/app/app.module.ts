@@ -46,6 +46,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { AreaUpdateComponent } from './pages/area-update/area-update.component';
 import { CategoryUpdateComponent } from './pages/category-update/category-update.component';
 import { EmailTemplateUpdateComponent } from './pages/email-template-update/email-template-update.component';
+import { OrganizerWorkComponent } from './pages/organizer-work/organizer-work.component';
 
 
 @NgModule({
@@ -82,6 +83,7 @@ import { EmailTemplateUpdateComponent } from './pages/email-template-update/emai
     AreaUpdateComponent,
     CategoryUpdateComponent,
     EmailTemplateUpdateComponent,
+    OrganizerWorkComponent,
   ],
   imports: [
     BrowserModule,

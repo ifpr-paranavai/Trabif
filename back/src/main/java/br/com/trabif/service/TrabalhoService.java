@@ -70,8 +70,6 @@ public class TrabalhoService {
 			exe.addErrorMessage("Trabalho esta vazio ou nulo");
 			throw exe;
 		}
-		
-		
 	}
 	
 	public void update(Trabalho trabalho) throws BadResourceException, ResourceNotFoundException {

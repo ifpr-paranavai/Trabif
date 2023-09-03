@@ -35,6 +35,7 @@ export class WorkAddComponent implements OnInit {
     private autorTrabalhoService: AutorTrabalhoService,
     private categoriaService: CategoriaService,
     private permissaoUsuarioApiService: PermissaoUsuarioService,
+    private trabalhoService: TrabalhoService,
     public mainService: MainService,
     private loginService: LoginService,
     private toastService: ToastService,
@@ -70,11 +71,26 @@ export class WorkAddComponent implements OnInit {
     this.sendObj.trabalho.titulo = this.form.value.titulo;
     this.sendObj.trabalho.evento = this.mainService.getEvent;
 
-    if (this.autores) {
-      this.autores.forEach((autor) => {
-        this.addWork(autor);
-      })
-    }
+    this.trabalhoService.postWithFile(this.sendObj.trabalho, this.uploadedFile).subscribe({
+      next: (result: any) => {
+      if (result) {
+        this.sendObj.trabalho.id = result.id;
+        if (this.autores) {
+          this.autores.forEach((autor) => {
+            this.addWork(autor);
+          });
+        }
+      }
+      this.loading = false;
+    },
+      error: (error: any) => {
+        this.toastService.showError('Ocorreu um erro inesperado ao salvar o trabalho');
+        this.loading = false;
+      }
+
+    });
+
+
   }
 
   addWork(usuario: Usuario): void {

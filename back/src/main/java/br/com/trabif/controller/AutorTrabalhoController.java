@@ -140,6 +140,9 @@ public class AutorTrabalhoController {
 		} catch (BadResourceException ex) {
 			logger.error(ex.getMessage());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (ResourceNotFoundException ex) {
+			logger.error(ex.getMessage());
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 	}
 
