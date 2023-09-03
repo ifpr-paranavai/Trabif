@@ -7,7 +7,7 @@
 
       <div class="form-group mb-3">
         <div class="linha center">
-          <button *ngFor="let permissao of permissoes" type="button" class="btn btn-primary margin-botoes" (click)="chooseUserPermission(permissao)">
+          <button *ngFor="let permissao of permissoes" type="button" class="btn btn-primary margin-botoes tamanho-botoes" (click)="chooseUserPermission(permissao)">
             {{permissao.permissaoDTO?.descricao}}
           </button>
         </div>
