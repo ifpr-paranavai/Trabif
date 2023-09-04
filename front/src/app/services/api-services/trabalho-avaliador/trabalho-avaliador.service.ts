@@ -26,4 +26,8 @@ export class TrabalhoAvaliadorService implements BaseService {
   delete(id: number): Observable<any> {
     return this.http.delete(this.baseUrl + '/' + id);
   }
+
+  getAllByIdTrabalho(idTrabalho: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + "/trabalho/" + idTrabalho);
+  }
 }

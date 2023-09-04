@@ -5,11 +5,24 @@
   <div class="row">
     <div class="col-md-12" *ngFor="let item of items">
       <div class="card card-event mb-3">
-        <div class="card-body linha">
-          <h5 class="card-title">{{ item.trabalho.titulo }}</h5>
+        <div (click)="expandItem(item)" class="card-body linha">
+          <h5 class="card-title">{{ item.trabalho.titulo }}<i class="fa fa-question-circle"
+            pTooltip="Clique no card para ver o resultado segundo os avaliadores"
+            tooltipPosition="top" placeholder="Top"></i>
+          </h5>
           <div class="spacer"></div>
-          <button class="btn" ><i class="fa fa-trash"></i></button>
+          <button class="btn"><i class="fa fa-trash"></i></button>
+          <div class="spacer"></div>
+          <button class="btn btn-primary" >Aprovar</button>
+          <button class="btn btn-secondary">Rejeitar</button>
         </div>
+        <ul *ngIf="item.expanded" class="list-group list-group-flush">
+          <span *ngIf="item.loading" class="spinner-border spinner-border-sm"></span>
+          <li *ngFor="let trabalhoAvaliador of item.trabalhoAvaliador" class="list-group-item">
+            Avaliador: {{ trabalhoAvaliador.usuarioDTO?.nome }}    Resultado: {{ trabalhoAvaliador.resultadoSubmissaoDTO?.resultado }}    Confiança: {{ trabalhoAvaliador.resultadoSubmissaoDTO?.confianca }}
+            Comentário: {{ trabalhoAvaliador.resultadoSubmissaoDTO?.comentarioOrganizador }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
