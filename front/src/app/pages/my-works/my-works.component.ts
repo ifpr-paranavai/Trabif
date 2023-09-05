@@ -1,3 +1,4 @@
+import { WorksService } from './../../services/pages-services/works/works.service';
 import { AutorTrabalho } from 'src/app/models/autor-trabalho';
 import { AutorTrabalhoService } from './../../services/api-services/autor-trabalho/autor-trabalho.service';
 import { Component, OnInit } from '@angular/core';
@@ -22,6 +23,7 @@ export class MyWorksComponent implements OnInit {
     private autorTrabalhoService: AutorTrabalhoService,
     private trabalhoService: TrabalhoService,
     private mainService: MainService,
+    private worksService: WorksService,
     private toastService: ToastService
   ) {}
 
@@ -37,7 +39,7 @@ export class MyWorksComponent implements OnInit {
   }
 
   downloadWork(trabalho: Trabalho): void {
-    let blob = this.b64toBlob(trabalho.pdf!, 'application/pdf');
+    let blob = this.worksService.b64toBlob(trabalho.pdf!, 'application/pdf');
     let url = window.URL.createObjectURL(blob);
     let link = document.createElement('a');
     link.href = url;
@@ -69,24 +71,6 @@ export class MyWorksComponent implements OnInit {
     }
   }
 
-  b64toBlob(b64Data:any, contentType:any) {
-    const sliceSize = 512;
-    const byteCharacters = atob(b64Data);
-    const byteArrays = [];
 
-    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-      const slice = byteCharacters.slice(offset, offset + sliceSize);
-
-      const byteNumbers = new Array(slice.length);
-      for (let i = 0; i < slice.length; i += 1) {
-        byteNumbers[i] = slice.charCodeAt(i);
-      }
-
-      const byteArray = new Uint8Array(byteNumbers);
-      byteArrays.push(byteArray);
-    }
-
-    return new Blob(byteArrays, { type: contentType });
-  }
 
 }

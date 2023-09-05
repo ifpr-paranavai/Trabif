@@ -5,14 +5,14 @@
   <div class="row">
     <div class="col-md-12" *ngFor="let item of items">
       <div class="card card-event mb-3">
-        <div (click)="expandItem(item)" class="card-body linha">
-          <h5 class="card-title">{{ item.trabalho.titulo }}<i class="fa fa-question-circle"
+        <div class="card-body linha">
+          <h5 (click)="expandItem(item)" class="card-title">{{ item.trabalho.titulo }} <i class="fa fa-question-circle"
             pTooltip="Clique no card para ver o resultado segundo os avaliadores"
             tooltipPosition="top" placeholder="Top"></i>
           </h5>
-          <div class="spacer"></div>
-          <button class="btn"><i class="fa fa-trash"></i></button>
-          <div class="spacer"></div>
+          <div (click)="expandItem(item)" class="spacer"></div>
+          <button (click)="downloadWork(item.trabalho)" class="btn"><i class="fa-solid fa-download"></i></button>
+          <div (click)="expandItem(item)" class="spacer"></div>
           <button class="btn btn-primary" >Aprovar</button>
           <button class="btn btn-secondary">Rejeitar</button>
         </div>
@@ -21,6 +21,9 @@
           <li *ngFor="let trabalhoAvaliador of item.trabalhoAvaliador" class="list-group-item">
             Avaliador: {{ trabalhoAvaliador.usuarioDTO?.nome }}    Resultado: {{ trabalhoAvaliador.resultadoSubmissaoDTO?.resultado }}    Confiança: {{ trabalhoAvaliador.resultadoSubmissaoDTO?.confianca }}
             Comentário: {{ trabalhoAvaliador.resultadoSubmissaoDTO?.comentarioOrganizador }}
+          </li>
+          <li class="list-group-item">
+            <button class="btn btn-primary" [routerLink]="['/defineEvaluator']" [state]="item.trabalho">Definir avaliador</button>
           </li>
         </ul>
       </div>

@@ -5,6 +5,7 @@ import { MainService } from '../../services/pages-services/main/main.service';
 import { TrabalhoService } from '../../services/api-services/trabalho/trabalho.service';
 import { Component, OnInit } from '@angular/core';
 import { Trabalho } from 'src/app/models/trabalho';
+import { WorksService } from 'src/app/services/pages-services/works/works.service';
 
 interface ItemToShow {
   trabalho: Trabalho;
@@ -23,6 +24,7 @@ export class OrganizerWorkComponent implements OnInit {
     private mainService: MainService,
     private trabalhoService: TrabalhoService,
     private trabalhoAvaliadorService: TrabalhoAvaliadorService,
+    private worksService: WorksService,
     private toastService: ToastService
   ) { }
 
@@ -54,7 +56,7 @@ export class OrganizerWorkComponent implements OnInit {
   expandItem(item: ItemToShow) {
     item.expanded = !item.expanded;
     item.loading = true;
-    if (item.expanded) {
+    if (item.expanded && item.trabalhoAvaliador.length == 0) {
       this.getTrabalhosAvaliador(item);
     }
   }
@@ -62,11 +64,22 @@ export class OrganizerWorkComponent implements OnInit {
   getTrabalhosAvaliador(item: ItemToShow) {
 
     this.trabalhoAvaliadorService.getAllByIdTrabalho(item.trabalho.id!).subscribe((result) => {
-      if (result) {
-        item.trabalhoAvaliador = result;
+      if (result.content) {
+        item.trabalhoAvaliador = result.content;
       }
       item.loading = false;
     });
+  }
+
+  downloadWork(trabalho: Trabalho): void {
+    let blob = this.worksService.b64toBlob(trabalho.pdf!, 'application/pdf');
+    let url = window.URL.createObjectURL(blob);
+    let link = document.createElement('a');
+    link.href = url;
+    link.download = trabalho.titulo!;
+    link.click();
+    window.URL.revokeObjectURL(url);
+    link.remove();
   }
 
 }

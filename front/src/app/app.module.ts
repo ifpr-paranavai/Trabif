@@ -47,6 +47,7 @@ import { AreaUpdateComponent } from './pages/area-update/area-update.component';
 import { CategoryUpdateComponent } from './pages/category-update/category-update.component';
 import { EmailTemplateUpdateComponent } from './pages/email-template-update/email-template-update.component';
 import { OrganizerWorkComponent } from './pages/organizer-work/organizer-work.component';
+import { DefineEvaluatorComponent } from './pages/define-evaluator/define-evaluator.component';
 
 
 @NgModule({
@@ -84,6 +85,7 @@ import { OrganizerWorkComponent } from './pages/organizer-work/organizer-work.co
     CategoryUpdateComponent,
     EmailTemplateUpdateComponent,
     OrganizerWorkComponent,
+    DefineEvaluatorComponent,
   ],
   imports: [
     BrowserModule,
