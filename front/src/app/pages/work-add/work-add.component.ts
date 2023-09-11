@@ -1,3 +1,4 @@
+import { AreaTrabalho } from './../../models/area-trabalho';
 import { CategoriaService } from './../../services/api-services/categoria/categoria.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -13,6 +14,9 @@ import { PermissaoUsuario } from 'src/app/models/permissao-usuario';
 import { PermissaoUsuarioService } from 'src/app/services/api-services/permissao-usuario/permissao-usuario.service';
 import { Usuario } from 'src/app/models/usuario';
 import { Evento } from 'src/app/models/evento';
+import { Area } from 'src/app/models/area';
+import { AreaService } from 'src/app/services/api-services/area/area.service';
+import { AreaTrabalhoService } from 'src/app/services/api-services/area-trabalho/area-trabalho.service';
 
 
 @Component({
@@ -30,10 +34,13 @@ export class WorkAddComponent implements OnInit {
   permissaoUsuario: any = new PermissaoUsuario();
   emailAutores: string[] = [];
   autores: Usuario[] = [];
+  areas: Area[] = [];
 
   constructor(
     private autorTrabalhoService: AutorTrabalhoService,
     private categoriaService: CategoriaService,
+    private areaService: AreaService,
+    private areaTrabalhoService: AreaTrabalhoService,
     private permissaoUsuarioApiService: PermissaoUsuarioService,
     private trabalhoService: TrabalhoService,
     public mainService: MainService,
@@ -46,9 +53,11 @@ export class WorkAddComponent implements OnInit {
     this.form = this.formBuilde.group({
       categoria: [null],
       titulo: [null],
-      emailAutor: [null]
+      emailAutor: [null],
+      area: [null]
     });
     this.getCategorias();
+    this.getAreas();
     this.autores.push(this.loginService.getLoggedUser!);
   }
 
@@ -99,6 +108,7 @@ export class WorkAddComponent implements OnInit {
       next: (result: any) => {
       if (result) {
         this.toastService.showSuccess(`Trabalho do(a) autor(a) ${usuario.nome} adicionado com sucesso!`);
+        this.saveAreaTrabalho(result.trabalhoDTO);
         this.mainService.goToMain();
       }
       this.loading = false;
@@ -161,6 +171,25 @@ export class WorkAddComponent implements OnInit {
 
   createStringListOfAuthors() {
     return this.autores.map(item => item.nome ?? item.email).join(', ');
+  }
+
+  getAreas(): void {
+    this.areaService.getAll().subscribe((result) => {
+      if (result.content) {
+        this.areas = result.content;
+      }
+    });
+  }
+
+  saveAreaTrabalho(trabalho: Trabalho): void {
+    let areaTrabalho: any = new Object();
+    areaTrabalho.area = this.form.value.area;
+    areaTrabalho.trabalho = trabalho;
+    this.areaTrabalhoService.post(areaTrabalho).subscribe((result) => {
+      if (result) {
+        this.toastService.showSuccess('Área do Trabalho adicionado com sucesso!');
+      }
+    });
   }
 
 }

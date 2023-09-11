@@ -128,7 +128,7 @@ public class TrabalhoAvaliadorController {
 			TrabalhoAvaliador novoTrabalhoAvaliador = trabalhoAvaliadorService.save(trabalhoAvaliador);
 
 			return ResponseEntity.created(new URI("/api/trabalhoAvaliador" + novoTrabalhoAvaliador.getId()))
-					.body(new TrabalhoAvaliadorDTO().converter(trabalhoAvaliador));
+					.body(new TrabalhoAvaliadorDTO().converter(novoTrabalhoAvaliador));
 		} catch (ResourceAlreadyExistsException ex) {
 			logger.error(ex.getMessage());
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();

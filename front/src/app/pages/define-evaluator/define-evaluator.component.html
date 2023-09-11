@@ -3,7 +3,7 @@
 <div class="margin-header espacamento-base">
   <div class="card card-event">
     <div class="card-body">
-      <h1 class="card-title">Adicionar Categoria</h1>
+      <h1 class="card-title">Definir avaliador</h1>
       <div class="form-group mb-3">
         <label for="text">Título do trabalho:</label>
         <label class="form-control" id="titulo">{{trabalho.titulo}}</label>
@@ -16,13 +16,21 @@
         <label for="text">Área de conhecimento do trabalho:</label>
         <label *ngFor="let areaTrabalho of areaTrabalhos" class="form-control" id="area">{{ areaTrabalho.areaDTO!.descricao }}</label>
       </div>
+      <div class="form-group mb-3">
+        <label for="text">Avaliadores:</label>
+        <button *ngFor="let avaliador of avaliadores" (click)="addAvaliador(avaliador.usuarioDTO!)" class="form-control botao-avaliador btn-primary" id="avaliador">{{ avaliador.usuarioDTO?.nome }}</button>
+      </div>
+      <div class="form-group mb-3">
+        <label for="text">Avaliadores selecionados:</label>
+        <label *ngFor="let chooseAvaliador of chooseAvaliadores" class="form-control botao-avaliador label-avaliador" id="avaliador">{{ chooseAvaliador.nome }}</label>
+      </div>
       <div class="linha center">
         <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="this.mainService.returnPreviousPage()">
           Cancelar
         </button>
-        <button (click)="addCategory()" class="btn btn-primary">
+        <button (click)="saveTrabalhoAvaliador()" class="btn btn-primary">
           <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
-          Atualizar
+          Definir avaliadores
         </button>
       </div>
 

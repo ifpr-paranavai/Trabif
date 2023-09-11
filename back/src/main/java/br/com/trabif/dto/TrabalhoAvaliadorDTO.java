@@ -21,7 +21,9 @@ public class TrabalhoAvaliadorDTO extends AuditoriaDTO {
 		this.resultadoSubmissaoDTO = new ResultadoSubmissaoDTO();
 		trabalhoAvaliadorDTO.setTrabalhoDTO(trabalhoDTO.converter(trabalhoAvaliador.getTrabalho()));
 		trabalhoAvaliadorDTO.setUsuarioDTO(usuarioDTO.converter(trabalhoAvaliador.getUsuario()));
-		trabalhoAvaliadorDTO.setResultadoSubmissaoDTO(resultadoSubmissaoDTO.converter(trabalhoAvaliador.getResultadoSubmissao()));
+		if (trabalhoAvaliador.getResultadoSubmissao() != null) {
+			trabalhoAvaliadorDTO.setResultadoSubmissaoDTO(resultadoSubmissaoDTO.converter(trabalhoAvaliador.getResultadoSubmissao()));
+		}
 		return trabalhoAvaliadorDTO;
 	}
 	

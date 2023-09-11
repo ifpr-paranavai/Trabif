@@ -16,6 +16,13 @@
         </select>
       </div>
 
+      <div class="form-group mb-3">
+        <label for="titulo">Área do conhecimento:</label>
+        <select class="mb-3" formControlName="area" >
+          <option class="form-control" *ngFor="let area of areas" [ngValue]="area">{{area.descricao}}</option>
+        </select>
+      </div>
+
       <div class="form-group mb-3 div-button">
         <label for="emailAutor">Autores do trabalho:</label>
         <p *ngFor="let autor of autores">{{ autor.nome ?? autor.email }} </p>
