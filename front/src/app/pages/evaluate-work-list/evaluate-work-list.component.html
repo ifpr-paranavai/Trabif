@@ -1,0 +1,16 @@
+<div class="linha mb-3">
+  <h1>Avaliar trabalhos</h1>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let trabalhoAvaliador of trabalhoAvaliadores">
+      <div class="card card-event mb-3">
+        <div class="card-body linha">
+          <h5 class="card-title">{{ trabalhoAvaliador.trabalhoDTO?.titulo }}</h5>
+          <div class="spacer"></div>
+          <button class="btn" [routerLink]="['/evaluateWork']" [state]="trabalhoAvaliador"><i class="fa fa-clipboard"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

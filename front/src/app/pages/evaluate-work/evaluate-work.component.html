@@ -1,1 +1,66 @@
-<p>evaluate-work works!</p>
+<app-header></app-header>
+
+<div class="margin-header espacamento-base">
+  <div class="card card-event">
+    <div class="card-body">
+      <h1 class="card-title">Avaliar trabalho</h1>
+      <div class="form-group mb-3">
+        <label for="text">Título do trabalho:</label>
+        <label class="form-control" id="titulo">{{trabalhoAvaliador.trabalhoDTO?.titulo}}</label>
+      </div>
+      <div class="form-group mb-3">
+        <label for="text">Categoria do trabalho:</label>
+        <label class="form-control" id="categoria">{{trabalhoAvaliador.trabalhoDTO?.categoriaDTO!.descricao}}</label>
+      </div>
+      <div class="display-flex center">
+        <label for="text">Baixar trabalho:</label>
+        <div class="spacer"></div>
+        <button (click)="downloadWork(trabalhoAvaliador.trabalhoDTO!)" class="btn"><i class="fa-solid fa-download"></i></button>
+      </div>
+      <div class="form-group mb-3">
+        <label for="text">Nota:</label>
+        <div class="display-flex center">
+          <button *ngFor="let gradeValue of [1,2,3,4,5]" (click)="defineGrade(gradeValue)"
+          class="botao-avaliador btn btn-primary tamanho-botoes" id="nota">
+          {{gradeValue}}
+        </button>
+        </div>
+
+        <label for="text">Nota escolhida: {{trabalhoAvaliador.resultadoSubmissaoDTO?.resultado}}</label>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="text">Sua confiança para a nota dada:</label>
+        <div class="display-flex center">
+          <button *ngFor="let confidenceValue of [1,2,3,4,5]" (click)="defineConfidence(confidenceValue)"
+            class="botao-avaliador btn btn-primary tamanho-botoes" id="confianca">
+            {{confidenceValue}}
+          </button>
+        </div>
+        <label for="text">Confiança escolhida: {{trabalhoAvaliador.resultadoSubmissaoDTO?.confianca}}</label>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="text">Comentário para o autor do trabalho:</label>
+        <textarea rows="5" cols="30" class="form-control" pInputTextarea id="comentarioAutor" [(ngModel)]="trabalhoAvaliador.resultadoSubmissaoDTO!.comentarioAutor"></textarea>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="text">Comentário para o organizador do evento:</label>
+        <textarea rows="5" cols="30" class="form-control" pInputTextarea id="comentarioOrganizador" [(ngModel)]="trabalhoAvaliador.resultadoSubmissaoDTO!.comentarioOrganizador"></textarea>
+      </div>
+
+      <div class="linha center">
+        <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="this.mainService.returnPreviousPage()">
+          Cancelar
+        </button>
+        <button (click)="saveTrabalhoAvaliador()" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+          Salvar avaliação
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

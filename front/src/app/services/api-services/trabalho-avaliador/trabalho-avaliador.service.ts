@@ -30,4 +30,7 @@ export class TrabalhoAvaliadorService implements BaseService {
   getAllByIdTrabalho(idTrabalho: number): Observable<any> {
     return this.http.get<any>(this.baseUrl + "/trabalho/" + idTrabalho);
   }
+  getAllByIdAvaliador(idAvaliador: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + "/avaliador/" + idAvaliador);
+  }
 }

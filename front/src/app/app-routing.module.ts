@@ -28,6 +28,7 @@ import { CategoryUpdateComponent } from './pages/category-update/category-update
 import { EmailTemplateUpdateComponent } from './pages/email-template-update/email-template-update.component';
 import { OrganizerWorkComponent } from './pages/organizer-work/organizer-work.component';
 import { DefineEvaluatorComponent } from './pages/define-evaluator/define-evaluator.component';
+import { EvaluateWorkComponent } from './pages/evaluate-work/evaluate-work.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -57,6 +58,7 @@ const routes: Routes = [
   {path: 'emailTemplateUpdate', component: EmailTemplateUpdateComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'organizerWork', component: OrganizerWorkComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'defineEvaluator', component: DefineEvaluatorComponent, canActivate: [AuthenticatedUserGuard]},
+  {path: 'evaluateWork', component: EvaluateWorkComponent, canActivate: [AuthenticatedUserGuard]},
 ];
 
 @NgModule({

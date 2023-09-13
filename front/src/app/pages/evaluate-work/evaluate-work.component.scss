@@ -1,0 +1,45 @@
+.card-event {
+  margin: auto;
+  align-items: center;
+  width: 32rem;
+  background-color: #fafafa;
+  border: solid 1px #dadada;
+}
+
+.linha {
+  display: flex;
+  flex-direction: row;
+}
+
+.center {
+  justify-content: center;
+}
+
+.margin-botoes {
+  margin: auto;
+}
+
+.tamanho-botoes {
+  width: 45px;
+}
+
+.botao-avaliador {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.label-avaliador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.margin-zero {
+  margin: 0;
+}
+
+.display-flex {
+  display: flex;
+}
