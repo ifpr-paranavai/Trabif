@@ -58,6 +58,8 @@ export class OrganizerWorkComponent implements OnInit {
     item.loading = true;
     if (item.expanded && item.trabalhoAvaliador.length == 0) {
       this.getTrabalhosAvaliador(item);
+    } else {
+      item.loading = false;
     }
   }
 

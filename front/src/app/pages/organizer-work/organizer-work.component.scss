@@ -12,4 +12,15 @@ h5 {
   margin-bottom: 0;
   align-items: center;
   display: flex;
+  width: 10rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.margin-botoes {
+  margin-right: 12px;
+}
+
+.tamanho-botoes {
+  height: 2.5rem;
 }
