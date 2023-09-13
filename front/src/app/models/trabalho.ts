@@ -8,4 +8,5 @@ export class Trabalho extends Auditoria {
   categoriaDTO?: Categoria;
   eventoDTO?: Evento;
   pdf?: Blob;
+  resultado?: string;
 }

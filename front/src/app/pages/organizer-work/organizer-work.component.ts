@@ -53,6 +53,28 @@ export class OrganizerWorkComponent implements OnInit {
     })
   }
 
+  aproveWork(item: Trabalho) {
+    let sendObj: any = new Object();
+    sendObj.id = item.id;
+    sendObj.titulo = item.titulo;
+    sendObj.resultado = "Aprovado";
+
+    this.trabalhoService.put(item.id!, sendObj).subscribe((result) => {
+      this.toastService.showSuccess('Trabalho aprovado com sucesso!');
+    })
+  }
+
+  reproveWork(item: Trabalho) {
+    let sendObj: any = new Object();
+    sendObj.id = item.id;
+    sendObj.titulo = item.titulo;
+    sendObj.resultado = "Reprovado";
+
+    this.trabalhoService.put(item.id!, sendObj).subscribe((result) => {
+      this.toastService.showSuccess('Trabalho reprovado com sucesso!');
+    })
+  }
+
   expandItem(item: ItemToShow) {
     item.expanded = !item.expanded;
     item.loading = true;
