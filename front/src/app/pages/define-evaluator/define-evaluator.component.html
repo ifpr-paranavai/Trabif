@@ -18,7 +18,10 @@
       </div>
       <div class="form-group mb-3">
         <label for="text">Avaliadores:</label>
-        <button *ngFor="let avaliador of avaliadores" (click)="addAvaliador(avaliador.usuarioDTO!)" class="form-control botao-avaliador btn-primary" id="avaliador">{{ avaliador.usuarioDTO?.nome }}</button>
+        <button *ngFor="let avaliador of avaliadores" (click)="addAvaliador(avaliador.usuarioDTO!)" class="form-control botao-avaliador btn-primary" id="avaliador">
+          {{ avaliador.usuarioDTO?.nome }}
+          <ng-container *ngFor="let areaAvaliador of areaAvaliadores"><p class="margin-zero" *ngIf="avaliador.usuarioDTO?.id == areaAvaliador.usuarioDTO?.id"> {{ areaAvaliador.areaDTO?.descricao }} </p></ng-container>
+        </button>
       </div>
       <div class="form-group mb-3">
         <label for="text">Avaliadores selecionados:</label>

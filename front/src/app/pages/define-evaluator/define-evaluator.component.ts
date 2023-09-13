@@ -31,7 +31,7 @@ export class DefineEvaluatorComponent implements OnInit {
 
   trabalho: Trabalho = new Trabalho();
   areaTrabalhos: AreaTrabalho[] = [];
-  areaAvaliadors: AreaAvaliador[] = [];
+  areaAvaliadores: AreaAvaliador[] = [];
   avaliadores: PermissaoUsuario[] = [];
   chooseAvaliadores: Usuario[] = [];
   loading: boolean = false;
@@ -56,7 +56,7 @@ export class DefineEvaluatorComponent implements OnInit {
       });
     this.areaAvaliadorService.getAll().subscribe((result) => {
       if (result.content) {
-        this.areaAvaliadors = result.content;
+        this.areaAvaliadores = result.content;
       }
     });
     this.getPermissaoUsuario();
