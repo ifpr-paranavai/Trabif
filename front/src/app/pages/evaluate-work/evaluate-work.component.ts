@@ -52,12 +52,21 @@ export class EvaluateWorkComponent {
   }
 
   saveTrabalhoAvaliador() {
-    this.trabalhoAvaliadorService.put(this.trabalhoAvaliador.id!, this.trabalhoAvaliador).subscribe((result) => {
-      if (result) {
-        this.mainService.goToMain();
-        this.toastService.showSuccess('Avaliador(es) definidos com sucesso!');
-      }
-    })
+    let sendObj: any = new Object();
+    sendObj.id = this.trabalhoAvaliador.id;
+    sendObj.trabalho = this.trabalhoAvaliador.trabalhoDTO;
+    sendObj.resultadoSubmissao = this.trabalhoAvaliador.resultadoSubmissaoDTO;
+    sendObj.usuario = this.trabalhoAvaliador.usuarioDTO;
+    this.trabalhoAvaliadorService.put(this.trabalhoAvaliador.id!, sendObj).subscribe(
+      {
+        next: (result) => {
+          this.mainService.goToMain();
+          this.toastService.showSuccess('Trabalho avaliado com sucesso!');
+        },
+        error: (error) => {
+          this.toastService.showError('Ocorreu um erro inesperado ao finalizar o cadastro');
+        }
+      });
   }
 
   downloadWork(trabalho: Trabalho): void {

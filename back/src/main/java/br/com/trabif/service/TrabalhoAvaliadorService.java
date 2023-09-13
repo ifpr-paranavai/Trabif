@@ -20,6 +20,9 @@ public class TrabalhoAvaliadorService {
 	
 	@Autowired
 	private TrabalhoAvaliadorRepository trabalhoAvaliadorRepository;
+
+	@Autowired
+	private ResultadoSubmissaoService resultadoSubmissaoService;
 	
 	private boolean existsById(Long id) {
 		return trabalhoAvaliadorRepository.existsById(id);
@@ -75,6 +78,15 @@ public class TrabalhoAvaliadorService {
 	}
 	
 	public void update(TrabalhoAvaliador trabalhoAvaliador) throws BadResourceException, ResourceNotFoundException {
+		if (trabalhoAvaliador.getResultadoSubmissao() != null && trabalhoAvaliador.getResultadoSubmissao().getId() <= 0) {
+			try {
+				trabalhoAvaliador.setResultadoSubmissao((this.resultadoSubmissaoService.save(trabalhoAvaliador.getResultadoSubmissao())));
+			} catch (Exception e) {
+				BadResourceException exe = new BadResourceException("Erro ao salvar trabalhoAvaliador");
+				exe.addErrorMessage("TrabalhoAvaliador esta vazio ou nulo");
+				throw exe;
+			}
+		}
 		if (trabalhoAvaliador.getTrabalho() != null && trabalhoAvaliador.getUsuario() != null) {
 			if (!existsById(trabalhoAvaliador.getId())) {
 				throw new ResourceNotFoundException("TrabalhoAvaliador não encontrado com o id: " + trabalhoAvaliador.getId());
