@@ -1,6 +1,7 @@
 package br.com.trabif.service;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -55,6 +56,10 @@ public class TrabalhoAvaliadorService {
 	}
 	
 	public TrabalhoAvaliador save(TrabalhoAvaliador trabalhoAvaliador) throws BadResourceException, ResourceAlreadyExistsException {
+		List<TrabalhoAvaliador> trabalhoAvaliadorList = this.trabalhoAvaliadorRepository.findByTrabalhoAndUsuario(trabalhoAvaliador.getTrabalho().getId(), trabalhoAvaliador.getUsuario().getId());
+		if (trabalhoAvaliadorList != null && trabalhoAvaliadorList.size() > 0) {
+			return trabalhoAvaliadorList.get(0);
+		}
 		if (trabalhoAvaliador.getTrabalho() != null && trabalhoAvaliador.getUsuario() != null) {
 			if(existsById(trabalhoAvaliador.getId())) {
 				throw new ResourceAlreadyExistsException("TrabalhoAvaliador com id: " + trabalhoAvaliador.getId() + " já existe.");
