@@ -58,6 +58,8 @@ export class OrganizerWorkComponent implements OnInit {
     sendObj.id = item.id;
     sendObj.titulo = item.titulo;
     sendObj.resultado = "Aprovado";
+    sendObj.evento = item.eventoDTO;
+    sendObj.categoria = item.categoriaDTO;
 
     this.trabalhoService.put(item.id!, sendObj).subscribe((result) => {
       this.toastService.showSuccess('Trabalho aprovado com sucesso!');
@@ -69,6 +71,8 @@ export class OrganizerWorkComponent implements OnInit {
     sendObj.id = item.id;
     sendObj.titulo = item.titulo;
     sendObj.resultado = "Reprovado";
+    sendObj.evento = item.eventoDTO;
+    sendObj.categoria = item.categoriaDTO;
 
     this.trabalhoService.put(item.id!, sendObj).subscribe((result) => {
       this.toastService.showSuccess('Trabalho reprovado com sucesso!');

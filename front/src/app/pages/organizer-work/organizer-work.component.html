@@ -13,8 +13,8 @@
           <div (click)="expandItem(item)" class="spacer"></div>
           <button (click)="downloadWork(item.trabalho)" class="btn"><i class="fa-solid fa-download"></i></button>
           <div (click)="expandItem(item)" class="spacer"></div>
-          <button class="btn btn-primary margin-botoes tamanho-botoes" >Aprovar</button>
-          <button class="btn btn-secondary tamanho-botoes">Reprovar</button>
+          <button class="btn btn-primary margin-botoes tamanho-botoes" (click)="aproveWork(item.trabalho)">Aprovar</button>
+          <button class="btn btn-secondary tamanho-botoes" (click)="reproveWork(item.trabalho)">Reprovar</button>
         </div>
         <ul *ngIf="item.expanded" class="list-group list-group-flush">
           <span *ngIf="item.loading" class="spinner-border spinner-border-sm"></span>
