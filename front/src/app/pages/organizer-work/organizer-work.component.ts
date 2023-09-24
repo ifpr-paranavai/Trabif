@@ -6,6 +6,7 @@ import { TrabalhoService } from '../../services/api-services/trabalho/trabalho.s
 import { Component, OnInit } from '@angular/core';
 import { Trabalho } from 'src/app/models/trabalho';
 import { WorksService } from 'src/app/services/pages-services/works/works.service';
+import { async } from 'rxjs';
 
 interface ItemToShow {
   trabalho: Trabalho;
@@ -97,6 +98,12 @@ export class OrganizerWorkComponent implements OnInit {
       }
       item.loading = false;
     });
+  }
+
+  downloadAllWorks() {
+    this.trabalhos.forEach(async (trabalho) => {
+      await this.downloadWork(trabalho);
+    })
   }
 
   downloadWork(trabalho: Trabalho): void {

@@ -3,6 +3,10 @@
 </div>
 <div class="container">
   <div class="row">
+    <div class="linha">
+      <div class="spacer"></div>
+      <button (click)="downloadAllWorks()" class="btn"><i class="fa-solid fa-download" pTooltip="Baixar todas as submissões" tooltipPosition="top" placeholder="Top"></i></button>
+    </div>
     <div class="col-md-12" *ngFor="let item of items">
       <div class="card card-event mb-3">
         <div class="card-body linha">
@@ -12,9 +16,10 @@
           </h5>
           <div (click)="expandItem(item)" class="spacer"></div>
           <button (click)="downloadWork(item.trabalho)" class="btn"><i class="fa-solid fa-download"></i></button>
-          <div (click)="expandItem(item)" class="spacer"></div>
-          <button class="btn btn-primary margin-botoes tamanho-botoes" (click)="aproveWork(item.trabalho)">Aprovar</button>
-          <button class="btn btn-secondary tamanho-botoes" (click)="reproveWork(item.trabalho)">Reprovar</button>
+          <button *ngIf="item.trabalho.resultado != 'Aprovado'" class="btn btn-primary margin-botoes tamanho-botoes" (click)="aproveWork(item.trabalho)">Aprovar</button>
+          <button *ngIf="item.trabalho.resultado == 'Aprovado'" class="btn"><i class="fa-solid fa-circle-check"  pTooltip="Trabalho aprovado" tooltipPosition="top" placeholder="Top"></i></button>
+          <button *ngIf="item.trabalho.resultado != 'Reprovado'" class="btn btn-secondary tamanho-botoes" (click)="reproveWork(item.trabalho)">Reprovar</button>
+          <button *ngIf="item.trabalho.resultado == 'Reprovado'" class="btn"><i class="fa-solid fa-circle-xmark"  pTooltip="Trabalho reprovado" tooltipPosition="top" placeholder="Top"></i></button>
         </div>
         <ul *ngIf="item.expanded" class="list-group list-group-flush">
           <span *ngIf="item.loading" class="spinner-border spinner-border-sm"></span>
