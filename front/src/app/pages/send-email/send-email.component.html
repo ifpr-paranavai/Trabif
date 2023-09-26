@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<div class="margin-header espacamento-base">
+  <div class="card card-event">
+    <div class="card-body">
+      <h1 class="card-title">Escolha o template de e-mail para o enviar ao autor</h1>
+      <form [formGroup]="form">
+        <div class="form-group mb-3">
+          <select formControlName="template" >
+            <option class="form-control" *ngFor="let template of emailTemplates" [ngValue]="template">{{template.titulo}}</option>
+          </select>
+        </div>
+        <div class="linha center">
+          <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="this.mainService.returnPreviousPage()">
+            Cancelar
+          </button>
+          <button (click)="sendEmail()" type="submit" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+            Enviar
+          </button>
+        </div>
+      </form>
+
+
+    </div>
+
+  </div>
+</div>

@@ -29,6 +29,7 @@ import { EmailTemplateUpdateComponent } from './pages/email-template-update/emai
 import { OrganizerWorkComponent } from './pages/organizer-work/organizer-work.component';
 import { DefineEvaluatorComponent } from './pages/define-evaluator/define-evaluator.component';
 import { EvaluateWorkComponent } from './pages/evaluate-work/evaluate-work.component';
+import { SendEmailComponent } from './pages/send-email/send-email.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -59,6 +60,7 @@ const routes: Routes = [
   {path: 'organizerWork', component: OrganizerWorkComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'defineEvaluator', component: DefineEvaluatorComponent, canActivate: [AuthenticatedUserGuard]},
   {path: 'evaluateWork', component: EvaluateWorkComponent, canActivate: [AuthenticatedUserGuard]},
+  {path: 'sendEmail', component: SendEmailComponent, canActivate: [AuthenticatedUserGuard]},
 ];
 
 @NgModule({

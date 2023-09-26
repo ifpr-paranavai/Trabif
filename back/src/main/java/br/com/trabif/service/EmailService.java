@@ -1,5 +1,6 @@
 package br.com.trabif.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.mail.MessagingException;
@@ -13,6 +14,9 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
+import br.com.trabif.domain.EventoEmailTemplate;
+import br.com.trabif.dto.EmailTemplateDTO;
+import br.com.trabif.dto.EventoEmailTemplateDTO;
 import freemarker.template.Configuration;
 
 @Service
@@ -77,5 +81,50 @@ public class EmailService {
 			e.printStackTrace();
 		}
 		return emailString;
+	}
+
+	public void tratarEmail(String email, Map<String, Object> map) {
+		if (email == null || email.isEmpty()) {
+			throw new IllegalArgumentException("Email não pode ser nulo ou vazio");
+		}
+
+		Map<String, String> propriedades = new HashMap<>();
+
+		String mensagemString = "mensagem";
+		if(map.get(mensagemString) != null) {
+			propriedades.put(mensagemString, (String) map.get(mensagemString));
+			map.remove(mensagemString);
+		}
+
+		propriedades.put("emailUsuario", email);
+		
+		String nomeEventoString = "nomeEvento";
+		if(map.get(nomeEventoString) != null) {
+			propriedades.put(nomeEventoString, (String) map.get(nomeEventoString));
+			map.remove(nomeEventoString);
+		}
+
+		propriedades.put("titulo", "Resultado Final do Trabalho do evento " + propriedades.get(nomeEventoString));
+
+		String nomeUsuarioString = "nomeUsuario";
+		if(map.get(nomeUsuarioString) != null) {
+			propriedades.put(nomeUsuarioString, (String) map.get(nomeUsuarioString));
+			map.remove(nomeUsuarioString);
+		}
+		
+		String tituloTrabalhoString = "tituloTrabalho";
+		if(map.get(tituloTrabalhoString) != null) {
+			propriedades.put(tituloTrabalhoString, (String) map.get(tituloTrabalhoString));
+			map.remove(tituloTrabalhoString);
+		}
+
+		String resultadoFinalTrabalhoString = "resultadoFinalTrabalho";
+		if(map.get(resultadoFinalTrabalhoString) != null) {
+			propriedades.put(resultadoFinalTrabalhoString, (String) map.get(resultadoFinalTrabalhoString));
+			map.remove(resultadoFinalTrabalhoString);
+		}
+
+		this.enviarEmailTemplate(email, propriedades);
+		return;
 	}
 }

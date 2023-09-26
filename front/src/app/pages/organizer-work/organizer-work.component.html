@@ -15,11 +15,12 @@
             tooltipPosition="top" placeholder="Top"></i>
           </h5>
           <div (click)="expandItem(item)" class="spacer"></div>
+          <button class="btn" [routerLink]="['/sendEmail']" [state]="item.trabalho"><i class="fa-solid fa-envelope"></i></button>
           <button (click)="downloadWork(item.trabalho)" class="btn"><i class="fa-solid fa-download"></i></button>
           <button *ngIf="item.trabalho.resultado != 'Aprovado'" class="btn btn-primary margin-botoes tamanho-botoes" (click)="aproveWork(item.trabalho)">Aprovar</button>
-          <button *ngIf="item.trabalho.resultado == 'Aprovado'" class="btn"><i class="fa-solid fa-circle-check"  pTooltip="Trabalho aprovado" tooltipPosition="top" placeholder="Top"></i></button>
+          <button *ngIf="item.trabalho.resultado == 'Aprovado'" class="btn margin-resultado"><i class="fa-solid fa-circle-check"  pTooltip="Trabalho aprovado" tooltipPosition="top" placeholder="Top"></i></button>
           <button *ngIf="item.trabalho.resultado != 'Reprovado'" class="btn btn-secondary tamanho-botoes" (click)="reproveWork(item.trabalho)">Reprovar</button>
-          <button *ngIf="item.trabalho.resultado == 'Reprovado'" class="btn"><i class="fa-solid fa-circle-xmark"  pTooltip="Trabalho reprovado" tooltipPosition="top" placeholder="Top"></i></button>
+          <button *ngIf="item.trabalho.resultado == 'Reprovado'" class="btn margin-resultado"><i class="fa-solid fa-circle-xmark"  pTooltip="Trabalho reprovado" tooltipPosition="top" placeholder="Top"></i></button>
         </div>
         <ul *ngIf="item.expanded" class="list-group list-group-flush">
           <span *ngIf="item.loading" class="spinner-border spinner-border-sm"></span>

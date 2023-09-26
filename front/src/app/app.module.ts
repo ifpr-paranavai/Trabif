@@ -49,6 +49,7 @@ import { EmailTemplateUpdateComponent } from './pages/email-template-update/emai
 import { OrganizerWorkComponent } from './pages/organizer-work/organizer-work.component';
 import { DefineEvaluatorComponent } from './pages/define-evaluator/define-evaluator.component';
 import { EvaluateWorkListComponent } from './pages/evaluate-work-list/evaluate-work-list.component';
+import { SendEmailComponent } from './pages/send-email/send-email.component';
 
 
 @NgModule({
@@ -88,6 +89,7 @@ import { EvaluateWorkListComponent } from './pages/evaluate-work-list/evaluate-w
     OrganizerWorkComponent,
     DefineEvaluatorComponent,
     EvaluateWorkListComponent,
+    SendEmailComponent,
   ],
   imports: [
     BrowserModule,

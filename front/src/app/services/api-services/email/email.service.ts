@@ -26,4 +26,8 @@ export class EmailService implements BaseService {
   delete(id: number): Observable<any> {
     return this.http.delete(this.baseUrl + '/' + id);
   }
+
+  sendEmail(email: string, obj: any): Observable<any> {
+    return this.http.post(this.baseUrl + '/' + email, obj);
+  }
 }
