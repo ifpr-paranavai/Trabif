@@ -13,6 +13,8 @@
           <div class="linha">
             <p class="card-text">{{ "Categoria:" + trabalho.categoriaDTO?.descricao }}</p>
             <div class="spacer"></div>
+            <button *ngIf="trabalho.resultado == 'Aprovado'" class="btn margin-resultado"><i class="fa-solid fa-circle-check"  pTooltip="Trabalho aprovado" tooltipPosition="top" placeholder="Top"></i></button>
+            <button *ngIf="trabalho.resultado == 'Reprovado'" class="btn margin-resultado"><i class="fa-solid fa-circle-xmark"  pTooltip="Trabalho reprovado" tooltipPosition="top" placeholder="Top"></i></button>
             <button class="btn" (click)="downloadWork(trabalho)"><i class="fa-solid fa-download"></i></button>
             <button class="btn" (click)="deleteAuthorWork(trabalho.id!)"><i class="fa fa-trash"></i></button>
           </div>
