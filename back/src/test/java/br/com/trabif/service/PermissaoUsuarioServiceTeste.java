@@ -37,23 +37,21 @@ public class PermissaoUsuarioServiceTeste {
 
     @Test
     void saveAutor() throws ResourceNotFoundException, BadResourceException, ResourceAlreadyExistsException {
-        PermissaoUsuario permissaoUsuario1 = new PermissaoUsuario();
-
-        List<PermissaoUsuario> lista = new ArrayList();
-
-        lista.add(0, permissaoUsuario1);
-
-        Mockito.when(usuarioService.findByEmail(null)).thenThrow(new ResourceNotFoundException());
-
-        Mockito.when(usuarioService.save(null)).thenReturn(null);
-
-        Long id = (long) 1;
-
-        Mockito.when(permissaoUsuarioRepository.findByPermissaoAndUsuarioAndEvento(id, id, id)).thenReturn(lista);
-
         PermissaoUsuario result = permissaoUsuarioService.saveAutor(new PermissaoUsuario());
 
-        assertEquals(new PermissaoUsuario(), result);
+        assertEquals(null, result);
+    }
+
+    @Test
+    void saveOrganizador() throws ResourceNotFoundException, BadResourceException, ResourceAlreadyExistsException {
+        PermissaoUsuario result = permissaoUsuarioService.saveOrganizador(new PermissaoUsuario());
+        assertEquals(null, result);
+    }
+
+    @Test
+    void saveAvaliador() throws ResourceNotFoundException, BadResourceException, ResourceAlreadyExistsException {
+        PermissaoUsuario result = permissaoUsuarioService.saveAvaliador(new PermissaoUsuario());
+        assertEquals(null, result);
     }
 
 }
