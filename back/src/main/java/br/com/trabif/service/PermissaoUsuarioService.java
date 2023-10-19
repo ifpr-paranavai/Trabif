@@ -140,8 +140,8 @@ public class PermissaoUsuarioService {
 		} catch (ResourceNotFoundException e) {
 			usuario = usuarioService.save(permissaoUsuario.getUsuario());
 		}
-		if (usuario == null) {
-			Usuario usuarioAux = new Usuario();
+		if (usuario == null) { //D
+			Usuario usuarioAux = new Usuario();//E
 			String email = permissaoUsuario.getUsuario().getEmail();
 			int pos = email.indexOf("@");
 
@@ -160,7 +160,7 @@ public class PermissaoUsuarioService {
 
 			emailService.enviarEmailTemplate(permissaoUsuario.getUsuario().getEmail(), propriedades);
 		}
-		List<PermissaoUsuario> permissaoUsuario2;
+		List<PermissaoUsuario> permissaoUsuario2;//F
 		permissaoUsuario2 = this.permissaoUsuarioRepository.findByPermissaoAndUsuarioAndEvento(autor.getId(), usuario.getId(), permissaoUsuario.getEvento().getId());
 		if (permissaoUsuario2 != null && permissaoUsuario2.size() > 0) {
 			return permissaoUsuario2.get(0);

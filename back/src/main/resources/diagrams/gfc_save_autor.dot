@@ -1,0 +1,16 @@
+digraph Autor {
+    A -> B
+    A -> C
+    B -> D
+    C -> D
+
+    D -> E
+    D -> F
+    E -> F
+
+    F -> G
+    F -> H
+    G -> I
+
+    H -> I
+}
