@@ -260,15 +260,35 @@ public class PermissaoUsuarioService {
 		}
 	}
 	
-	public void deleteById(Long id) throws ResourceNotFoundException {
+	public void deleteById(Long id) throws ResourceNotFoundException, BadResourceException {
 		if(!existsById(id)) {
 			throw new ResourceNotFoundException("PermissaoUsuario não encontrado com o id: " + id);
 		} else {
-			permissaoUsuarioRepository.deleteById(id);
+			if (!this.validateDeleteOrganizador(id)) {
+				BadResourceException exe = new BadResourceException("Erro ao salvar permissaoUsuario");
+				exe.addErrorMessage("Não é permitido excluir o único organizador do evento");
+				throw exe;
+			} else {
+				permissaoUsuarioRepository.deleteById(id);
+			}
 		}
 	
 	}  public Long count() {
 		return permissaoUsuarioRepository.count();
 	}
 	
+	public boolean validateDeleteOrganizador(Long id) throws ResourceNotFoundException {
+		PermissaoUsuario permissaoUsuario = permissaoUsuarioRepository.findById(id).orElse(null);
+		if (permissaoUsuario == null) {
+			throw new ResourceNotFoundException("PermissaoUsuario não encontrado com o id: " + id);
+		}
+		if (permissaoUsuario.getPermissao().getId() == 2) {
+			List<PermissaoUsuario> permissaoUsuarioList = permissaoUsuarioRepository.findByPermissaoAndEventoList(permissaoUsuario.getPermissao().getId(), permissaoUsuario.getEvento().getId());
+			if (permissaoUsuarioList.size() == 1) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 }

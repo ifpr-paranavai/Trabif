@@ -21,10 +21,15 @@ export class OrganizerComponent {
   }
 
   deleteUserPermission(id: number): void {
-    this.permissaoUsuarioApiService.delete(id).subscribe((result) => {
-      if (!result) {
-        this.toastService.showSuccess("Organizador removido com sucesso!");
-        this.getUserPermissions();
+    this.permissaoUsuarioApiService.delete(id).subscribe({
+      next: (result) => {
+        if (!result) {
+          this.toastService.showSuccess("Organizador removido com sucesso!");
+          this.getUserPermissions();
+        }
+      },
+      error: (error) => {
+        this.toastService.showError(error.error.message);
       }
     });
   }

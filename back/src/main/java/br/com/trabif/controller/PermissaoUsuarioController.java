@@ -279,6 +279,16 @@ public class PermissaoUsuarioController {
 			logger.error(ex.getMessage());
 			throw new ResponseStatusException(
 					HttpStatus.NOT_FOUND, ex.getMessage(), ex);
+		} catch (BadResourceException ex) {
+			if (ex.getErrorMessages().size() > 0) {
+				logger.error(ex.getErrorMessages().get(0));
+				throw new ResponseStatusException(
+						HttpStatus.BAD_REQUEST, ex.getErrorMessages().get(0), ex);
+			} else {
+				logger.error(ex.getMessage());
+				throw new ResponseStatusException(
+						HttpStatus.BAD_REQUEST, ex.getMessage(), ex);
+			}
 		}
 	}
 }
