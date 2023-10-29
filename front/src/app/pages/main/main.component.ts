@@ -16,7 +16,8 @@ enum SelectedButton {
   Areas = 'Areas',
   AreasConhecimento = 'AreasConhecimento',
   Organizadores = 'Organizadores',
-  TemplateEmail = 'TemplateEmail'
+  TemplateEmail = 'TemplateEmail',
+  Score = 'Score',
 }
 
 
@@ -83,6 +84,10 @@ export class MainComponent implements OnInit {
 
   abrirTemplateEmail(): void {
     this.selectedButton = SelectedButton.TemplateEmail;
+  }
+
+  abrirScore(): void {
+    this.selectedButton = SelectedButton.Score;
   }
 
 }

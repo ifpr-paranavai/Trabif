@@ -15,7 +15,7 @@
             tooltipPosition="top" placeholder="Top"></i>
           </h5>
           <div (click)="expandItem(item)" class="spacer"></div>
-          <button class="btn" [routerLink]="['/sendEmail']" [state]="item.trabalho"><i class="fa-solid fa-envelope"></i></button>
+          <button class="btn" [routerLink]="['/sendEmail']" [state]="[[item.trabalho]]"><i class="fa-solid fa-envelope"></i></button>
           <button (click)="downloadWork(item.trabalho)" class="btn"><i class="fa-solid fa-download"></i></button>
           <button *ngIf="item.trabalho.resultado != 'Aprovado'" class="btn btn-primary margin-botoes tamanho-botoes" (click)="aproveWork(item.trabalho)">Aprovar</button>
           <button *ngIf="item.trabalho.resultado == 'Aprovado'" class="btn margin-resultado"><i class="fa-solid fa-circle-check"  pTooltip="Trabalho aprovado" tooltipPosition="top" placeholder="Top"></i></button>

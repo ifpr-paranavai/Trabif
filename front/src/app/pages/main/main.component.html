@@ -17,7 +17,10 @@
       <button id="submissoes" [ngClass]="this.selectedButton == 'Submissoes' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirSubmissoes()">
         Submissões
       </button>
-      <button id="submissoes" [ngClass]="this.selectedButton == 'TemplateEmail' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirTemplateEmail()">
+      <button id="score" [ngClass]="this.selectedButton == 'Score' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirScore()">
+        Score
+      </button>
+      <button id="template" [ngClass]="this.selectedButton == 'TemplateEmail' ? 'botao-menu-selecionado' : 'botao-menu'" (click)="abrirTemplateEmail()">
         Template de e-mail
       </button>
     </ul>
@@ -56,7 +59,10 @@
           <button class="btn btn-primary margin-botoes tamanho-botoes" id="submissoes" (click)="abrirSubmissoes()">
             Submissões
           </button>
-          <button class="btn btn-primary margin-botoes tamanho-botoes" id="submissoes" (click)="abrirTemplateEmail()">
+          <button class="btn btn-primary margin-botoes tamanho-botoes" id="submissoes" (click)="abrirScore()">
+            Score
+          </button>
+          <button class="btn btn-primary margin-botoes tamanho-botoes" id="template" (click)="abrirTemplateEmail()">
             Template de e-mail
           </button>
         </div>
@@ -106,6 +112,10 @@
     <app-organizer-work class="mostrar-scroll" *ngIf="this.selectedButton == 'Submissoes'">
 
     </app-organizer-work>
+
+    <app-organizer-view-work class="mostrar-scroll" *ngIf="this.selectedButton == 'Score'">
+
+    </app-organizer-view-work>
 
     <app-evaluate-work-list class="mostrar-scroll" *ngIf="this.selectedButton == 'AvaliarTrabalhos'">
 

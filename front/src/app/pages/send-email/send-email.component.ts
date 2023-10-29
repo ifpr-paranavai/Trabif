@@ -13,6 +13,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { EmailTemplate } from 'src/app/models/email-template';
 import { EmailTemplateService } from 'src/app/services/api-services/email-template/email-template.service';
 
+interface ItemTrabalho {
+  trabalho: Trabalho;
+  autorTrabalhos: AutorTrabalho[];
+}
+
 @Component({
   selector: 'app-send-email',
   templateUrl: './send-email.component.html',
@@ -29,9 +34,9 @@ export class SendEmailComponent implements OnInit {
     private formBuilde: FormBuilder
   ) {}
 
-  trabalho: Trabalho = new Trabalho();
+  trabalhos: Trabalho[] = [];
+  items: ItemTrabalho[] = [];
   emailTemplates: EmailTemplate[] = [];
-  autorTrabalhos: AutorTrabalho[] = [];
   selectedTemplate: EmailTemplate = new EmailTemplate();
   autorTrabalho = new AutorTrabalho();
   loading: boolean = false;
@@ -42,10 +47,10 @@ export class SendEmailComponent implements OnInit {
       .pipe(map(() => window.history.state))
       .subscribe((res) => {
         console.log(res);
-        if (!res.id) {
+        if (!res[0][0].id) {
           this.mainService.goToMain();
         } else {
-          this.trabalho = res;
+          this.trabalhos = res[0];
         }
       });
     this.emailTemplateService
@@ -55,37 +60,46 @@ export class SendEmailComponent implements OnInit {
           this.emailTemplates = result.content;
         }
       });
-    this.autorTrabalhoService.getAutorTrabalhoByIdTrabalho(this.trabalho.id!).subscribe((result) => {
-      if (result.content) {
-        this.autorTrabalhos = result.content;
-      }
-    });
+
+    for (let i = 0; i < this.trabalhos.length; i++) {
+      this.autorTrabalhoService.getAutorTrabalhoByIdTrabalho(this.trabalhos[i].id!).subscribe((result) => {
+        if (result.content) {
+          this.items.push({
+            trabalho: this.trabalhos[i],
+            autorTrabalhos: result.content
+          });
+        }
+      });
+    }
     this.form = this.formBuilde.group({
       template: [null]
     });
   }
 
   sendEmail() {
-    this.selectedTemplate = this.form.value.template
-    let sendObj = {
-      mensagem: this.selectedTemplate.mensagem,
-      nomeEvento: this.mainService.getEvent?.nome,
-      nomeUsuario: this.autorTrabalho.usuarioDTO?.nome,
-      tituloTrabalho: this.trabalho.titulo,
-      resultadoFinalTrabalho: this.trabalho.resultado
-    }
-    this.autorTrabalhos.forEach(async (autorTrabalho) => {
-      sendObj.nomeUsuario = autorTrabalho.usuarioDTO?.nome
-      await this.emailService.sendEmail(autorTrabalho.usuarioDTO?.email!, sendObj).subscribe({
-        next: (res) => {
-          this.toastService.showSuccess("E-mail enviado com sucesso!");
-          this.mainService.goToMain();
-        },
-        error: (err) => {
-          this.toastService.showError("Ocorreu um erro ao enviar o e-mail!");
+    this.items.forEach(item => {
+      this.selectedTemplate = this.form.value.template;
+
+      item.autorTrabalhos.forEach(async (autorTrabalho) => {
+        let sendObj = {
+          mensagem: this.selectedTemplate.mensagem,
+          nomeEvento: this.mainService.getEvent?.nome,
+          nomeUsuario: autorTrabalho.usuarioDTO?.nome,
+          tituloTrabalho: item.trabalho.titulo,
+          resultadoFinalTrabalho: item.trabalho.resultado
         }
+        await this.emailService.sendEmail(autorTrabalho.usuarioDTO?.email!, sendObj).subscribe({
+          next: (res) => {
+            this.toastService.showSuccess("E-mail enviado com sucesso!");
+            this.mainService.goToMain();
+          },
+          error: (err) => {
+            this.toastService.showError("Ocorreu um erro ao enviar o e-mail!");
+          }
+        });
       });
-    });
+    })
+
   }
 }
 

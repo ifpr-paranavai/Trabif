@@ -1,0 +1,71 @@
+.linha {
+  display: flex;
+  flex-direction: row;
+}
+
+.coluna {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-event {
+  background-color: #fafafa;
+  border: solid 1px #dadada;
+}
+
+h5 {
+  margin-bottom: 0;
+  align-items: center;
+  display: flex;
+  width: 10rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.margin-botoes {
+  margin-right: 12px;
+}
+
+.tamanho-botoes {
+  height: 2.5rem;
+}
+
+.margin-resultado {
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.bom {
+  background-color: #008000;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  color: white;
+}
+
+.ruim {
+  background-color: #ff0000;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  color: white;
+}
+
+.media {
+  background-color: #c7c700;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  color: white;
+}
+
+.icone-aprovado {
+  color: green;
+}
+
+.icone-reprovado {
+  color: red;
+}

@@ -50,6 +50,7 @@ import { OrganizerWorkComponent } from './pages/organizer-work/organizer-work.co
 import { DefineEvaluatorComponent } from './pages/define-evaluator/define-evaluator.component';
 import { EvaluateWorkListComponent } from './pages/evaluate-work-list/evaluate-work-list.component';
 import { SendEmailComponent } from './pages/send-email/send-email.component';
+import { OrganizerViewWorkComponent } from './pages/organizer-view-work/organizer-view-work.component';
 
 
 @NgModule({
@@ -90,6 +91,7 @@ import { SendEmailComponent } from './pages/send-email/send-email.component';
     DefineEvaluatorComponent,
     EvaluateWorkListComponent,
     SendEmailComponent,
+    OrganizerViewWorkComponent,
   ],
   imports: [
     BrowserModule,
