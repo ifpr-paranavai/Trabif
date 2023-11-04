@@ -11,8 +11,15 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 
+import br.com.trabif.domain.Evento;
+import br.com.trabif.domain.Permissao;
 import br.com.trabif.domain.PermissaoUsuario;
+import br.com.trabif.domain.Usuario;
+import br.com.trabif.dto.PermissaoUsuarioDTO;
 import br.com.trabif.exception.BadResourceException;
 import br.com.trabif.exception.ResourceAlreadyExistsException;
 import br.com.trabif.exception.ResourceNotFoundException;
@@ -52,6 +59,40 @@ public class PermissaoUsuarioServiceTeste {
     void saveAvaliador() throws ResourceNotFoundException, BadResourceException, ResourceAlreadyExistsException {
         PermissaoUsuario result = permissaoUsuarioService.saveAvaliador(new PermissaoUsuario());
         assertEquals(null, result);
+    }
+
+    @Test
+    void findPermissaoUsuarioByIdUsuarioAndIdEvento() throws BadResourceException, ResourceAlreadyExistsException, ResourceNotFoundException {
+        Usuario usuario = new Usuario();
+        usuario.setId(1);
+        usuario.setNome("usuario");
+        usuario.setEmail("usuario@gmail.com");
+
+        Permissao permissao = new Permissao();
+        permissao.setId(1);
+        permissao.setDescricao("Autor");
+
+        Evento evento = new Evento();
+        evento.setId(1);
+        evento.setNome("evento");
+
+        PermissaoUsuario permissaoUsuario = new PermissaoUsuario();
+        permissaoUsuario.setUsuario(usuario);
+        permissaoUsuario.setPermissao(permissao);
+        permissaoUsuario.setEvento(evento);
+
+        List<PermissaoUsuario> listaResposta = new ArrayList<>();
+        listaResposta.add(permissaoUsuario);
+
+        Page<PermissaoUsuario> pageEntidade = new PageImpl<>(listaResposta);
+
+        Page<PermissaoUsuarioDTO> pageResposta = new PermissaoUsuarioDTO().converterListaPermissaoUsuarioDTO(pageEntidade);
+
+        Mockito.when(permissaoUsuarioService.findAllByIdUsuarioAndIdEvento(usuario.getId(), evento.getId(), Pageable.unpaged())).thenReturn(pageResposta);
+        
+        Page<PermissaoUsuarioDTO> resultado = permissaoUsuarioService.findAllByIdUsuarioAndIdEvento(usuario.getId(), evento.getId(), Pageable.unpaged());
+
+        assertEquals(pageResposta, resultado);
     }
 
 }
