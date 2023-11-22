@@ -41,6 +41,7 @@ export class SendEmailComponent implements OnInit {
   autorTrabalho = new AutorTrabalho();
   loading: boolean = false;
   form: FormGroup = new FormGroup('');
+  templateMessage: any = new EmailTemplate();
 
   ngOnInit(): void {
     this.activatedRoute.paramMap
@@ -78,7 +79,12 @@ export class SendEmailComponent implements OnInit {
 
   sendEmail() {
     this.items.forEach(item => {
-      this.selectedTemplate = this.form.value.template;
+      if (this.form.value.template) {
+        this.selectedTemplate = this.form.value.template;
+      }
+      else {
+        this.selectedTemplate = this.templateMessage;
+      }
 
       item.autorTrabalhos.forEach(async (autorTrabalho) => {
         let sendObj = {

@@ -10,6 +10,26 @@
             <option class="form-control" *ngFor="let template of emailTemplates" [ngValue]="template">{{template.titulo}}</option>
           </select>
         </div>
+        <p>Ou</p>
+        <h1 class="card-title">Escrever o e-mail</h1>
+        <div class="form-group mb-3">
+          <label for="mensagem">Mensagem:</label>
+          <p>Variáveis disponíveis <i class="fa fa-question-circle"
+            pTooltip="As variáveis vão funcionar como identificadores para as informações do usuário, do evento e do trabalho. As variaveis devem sempre estar entre [] (colchetes) para serem substituidas pelos valores correspondentes"
+            tooltipPosition="top" placeholder="Top"></i>:
+            [nomeUsuario]<i class="fa fa-question-circle"
+            pTooltip="Variável que representa o nome do autor do trabalho"
+            tooltipPosition="top" placeholder="Top"></i>, [emailUsuario]<i class="fa fa-question-circle"
+            pTooltip="Variável que representa o e-mail do autor do trabalho"
+            tooltipPosition="top" placeholder="Top"></i>, [nomeEvento]<i class="fa fa-question-circle"
+            pTooltip="Variável que representa o nome do evento de submissão do trabalho"
+            tooltipPosition="top" placeholder="Top"></i>, [tituloTrabalho]<i class="fa fa-question-circle"
+            pTooltip="Variável que representa o título do trabalho"
+            tooltipPosition="top" placeholder="Top"></i>, [resultadoFinalTrabalho]<i class="fa fa-question-circle"
+            pTooltip="Variável que representa o resultado final do trabalho do autor"
+            tooltipPosition="top" placeholder="Top"></i>.</p>
+           <textarea rows="5" cols="30" class="form-control" pInputTextarea id="mensagem" [(ngModel)]="templateMessage.mensagem"></textarea>
+        </div>
         <div class="linha center">
           <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="this.mainService.returnPreviousPage()">
             Cancelar
