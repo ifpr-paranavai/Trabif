@@ -28,7 +28,7 @@
             tooltipPosition="top" placeholder="Top"></i>, [resultadoFinalTrabalho]<i class="fa fa-question-circle"
             pTooltip="Variável que representa o resultado final do trabalho do autor"
             tooltipPosition="top" placeholder="Top"></i>.</p>
-           <textarea rows="5" cols="30" class="form-control" pInputTextarea id="mensagem" [(ngModel)]="templateMessage.mensagem"></textarea>
+           <textarea rows="5" formControlName="templateMessage" cols="30" class="form-control" pInputTextarea id="mensagem"></textarea>
         </div>
         <div class="linha center">
           <button class="btn btn-secondary" style="margin-right: 2rem;" (click)="this.mainService.returnPreviousPage()">

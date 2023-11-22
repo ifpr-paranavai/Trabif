@@ -73,7 +73,8 @@ export class SendEmailComponent implements OnInit {
       });
     }
     this.form = this.formBuilde.group({
-      template: [null]
+      template: [null],
+      templateMessage: [null],
     });
   }
 
@@ -83,6 +84,7 @@ export class SendEmailComponent implements OnInit {
         this.selectedTemplate = this.form.value.template;
       }
       else {
+        this.templateMessage.mensagem = this.form.value.templateMessage;
         this.selectedTemplate = this.templateMessage;
       }
 
